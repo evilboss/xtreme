@@ -1,0 +1,29 @@
+{ 
+  // Server authentication info 
+  "servers": [ 
+    { 
+      "host": "104.131.121.40", 
+      "username": "root", 
+      "pem": "~/.ssh/id_rsa"
+    } 
+  ], 
+  // Set to False if using Compose.io 
+  "setupMongo": true,
+  // WARNING: Node.js is required! Only skip if you already have Node.js installed on server. 
+  "setupNode": true, 
+  // WARNING: If nodeVersion omitted will setup 0.10.36 by default. Do not use v, only version number. 
+  "nodeVersion": "0.10.38", 
+  // Install PhantomJS in the server 
+  "setupPhantom": true, 
+  // Application name (No spaces) 
+  "appName": "xtreme", 
+  // Location of app (local directory) 
+  "app": "../../app", 
+  // Configure environment 
+  "env": { 
+    "PORT": 80, 
+    "ROOT_URL": "http://104.131.121.40", 
+    "NODE_ENV": "production" 
+}, 
+  "deployCheckWaitTime": 15 
+}
