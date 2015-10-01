@@ -22,10 +22,11 @@
                         <tbody>
                         <tr>
                             <th>Items</th>
+                            <th>Description</th>
                             <th>Quantity</th>
                         </tr>
                             {{#each Inventory}}
-                            {{>ItemInfo name=this.name quantity=this.quantity}}
+                            {{>ItemInfo name=this.name description=this.description quantity=this.quantity}}
                             {{/each}}
                         </tbody>
                     </table>
