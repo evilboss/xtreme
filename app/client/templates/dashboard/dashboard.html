@@ -1,23 +1,131 @@
-<template name="dashboard">
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+<template name="Dashboard">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-            Page Header
-            <small>Optional description</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-            <li class="active">Here</li>
-          </ol>
+            <h1>
+                Dashboard
+                <small>Your Salon at a glance</small>
+            </h1>
+<!--            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li class="active">Here</li>
+            </ol>-->
         </section>
+
 
         <!-- Main content -->
         <section class="content">
-          
-          <!-- Your Page Content Here -->
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Services</span>
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                </div><!-- /.col -->
 
-        </section><!-- /.content -->
-      </div><!-- /.content-wrapper -->
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">New Members</span>
+                            <span class="info-box-number">2,000</span>
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                </div><!-- /.col -->
+            </div>
+            <div class="row">
+                <!-- Left col -->
+                <div class="col-md-8">
+
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <!-- USERS LIST -->
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Latest Members</h3>
+                                    <div class="box-tools pull-right">
+                                        <span class="label label-danger">8 New Members</span>
+                                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                </div><!-- /.box-body -->
+                                <div class="box-footer text-center">
+                                    <a href="javascript::" class="uppercase">View All Users</a>
+                                </div><!-- /.box-footer -->
+                            </div><!--/.box -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+
+                    <!-- TABLE: LATEST ORDERS -->
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Latest Services</h3>
+                            <div class="box-tools pull-right">
+                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="table no-margin">
+                                    <thead>
+                                    <tr>
+                                        <th>Service ID</th>
+                                        <th>Service Name</th>
+                                        <th>Popularity</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>OR9842</td>
+                                        <td>Hair Cut</td>
+
+                                        <td><div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>OR1848</td>
+                                        <td>Hair Color</td>
+                                        <td><div class="sparkbar" data-color="#f39c12" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>OR7429</td>
+                                        <td>Trim</td>
+                                        <td><div class="sparkbar" data-color="#f56954" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="box-footer clearfix">
+                            <a class="btn btn-sm btn-info btn-flat pull-left">Place New Service</a>
+                            <a class="btn btn-sm btn-default btn-flat pull-right">View All Services</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-box bg-yellow">
+                        <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
+                        <div class="info-box-content">
+                            <h1>Inventory</h1>
+                        </div>
+                    </div>
+                    <div class="info-box bg-red">
+                        <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
+                        <div class="info-box-content">
+                            <h1>Sales</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
 </template>

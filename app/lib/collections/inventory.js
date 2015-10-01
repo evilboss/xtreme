@@ -1,5 +1,13 @@
 Inventory = new Mongo.Collection('inventory');
-
+Inventory.attachSchema(new SimpleSchema({
+  "name": {
+    type: String,
+    unique: true
+  },
+  "quantity": {
+    type: Number
+  }
+}));
 
 if (Meteor.isServer) {
   Inventory.allow({

@@ -3,3 +3,8 @@
  *  this.ready();
  * });
  */
+
+
+Meteor.publish('inventorylist', function (/* args */) {
+  return Inventory.find();
+});
