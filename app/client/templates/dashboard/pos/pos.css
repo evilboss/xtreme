@@ -3,3 +3,12 @@
 /*****************************************************************************/
 .pos {
 }
+.twitter-typeahead{
+    width:100%;
+}
+span .input-group-btn{
+    padding-bottom: 5px;
+}
+.typeahead .form-control .tt-input{
+    border:none;
+}

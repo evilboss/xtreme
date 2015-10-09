@@ -60,7 +60,7 @@ Router.route('/dashboard/services/:id', {
     action:'UpdateServices'
 });
 
-Router.plugin('ensureSignedIn', {
+/*Router.plugin('ensureSignedIn', {
     only: ['dashboard']
-});
+});*/
 Router.plugin('dataNotFound', {dataNotFoundTemplate: 'notFound'});
