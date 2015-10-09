@@ -11,6 +11,10 @@ Inventory.attachSchema(new SimpleSchema({
         type: String,
         label:'Description'
 
+    },
+    salesprice:{
+        type: Number,
+        label:"Sales Price"
     }
 }));
 

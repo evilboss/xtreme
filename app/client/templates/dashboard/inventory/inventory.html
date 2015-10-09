@@ -24,10 +24,11 @@
                             <th>Items</th>
                             <th>Description</th>
                             <th>Quantity</th>
+                            <th>Sales Price</th>
                             <th>Operations</th>
                         </tr>
                             {{#each Inventory}}
-                            {{>ItemInfo name=this.name description=this.description quantity=this.quantity id=this._id}}
+                            {{>ItemInfo name=this.name description=this.description quantity=this.quantity id=this._id salesprice=this.salesprice}}
                             {{/each}}
                         </tbody>
                     </table>
