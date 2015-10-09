@@ -1,24 +1,23 @@
 /*****************************************************************************/
-/* Pos: Event Handlers */
+/* ItemInfo: Event Handlers */
 /*****************************************************************************/
-Template.Pos.events({
+Template.ServiceInfo.events({
 });
 
 /*****************************************************************************/
-/* Pos: Helpers */
+/* ItemInfo: Helpers */
 /*****************************************************************************/
-Template.Pos.helpers({
+Template.ServiceInfo.helpers({
 });
 
 /*****************************************************************************/
-/* Pos: Lifecycle Hooks */
+/* ItemInfo: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Pos.created = function () {
+Template.ServiceInfo.created = function () {
 };
 
-Template.Pos.rendered = function () {
-    Meteor.typeahead.inject();
+Template.ServiceInfo.rendered = function () {
 };
 
-Template.Pos.destroyed = function () {
+Template.ServiceInfo.destroyed = function () {
 };

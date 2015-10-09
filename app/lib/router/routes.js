@@ -29,11 +29,35 @@ Router.route('/dashboard/inventory/add', {
     controller:'DashboardController',
     action:'addInventory'
 });
+Router.route('/dashboard/inventory/:id', {
+    name: 'updateInventory',
+    where: 'client',
+    controller:'DashboardController',
+    action:'UpdateInventory'
+});
 Router.route('/dashboard/pos', {
     name: 'dashboard.pos',
     where: 'client',
     controller:'DashboardController',
     action:'pos'
+});
+Router.route('/dashboard/services', {
+    name: 'dashboard.services',
+    where: 'client',
+    controller:'DashboardController',
+    action:'services'
+});
+Router.route('/dashboard/services/add', {
+    name: 'dashboard.services.add',
+    where: 'client',
+    controller:'DashboardController',
+    action:'addServices'
+});
+Router.route('/dashboard/services/:id', {
+    name: 'updateServices',
+    where: 'client',
+    controller:'DashboardController',
+    action:'UpdateServices'
 });
 
 Router.plugin('ensureSignedIn', {

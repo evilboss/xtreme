@@ -1,9 +1,9 @@
-<template name="Inventory">
+<template name="Services">
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Inventory
-                <small>Current Inventory</small>
+                Services
+                <small>Current Services</small>
             </h1>
             <!--            <ol class="breadcrumb">
                             <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -14,21 +14,21 @@
 
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Inventory</h3>
+                    <h3 class="box-title">Services</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <table class="table table-bordered">
                         <tbody>
                         <tr>
-                            <th>Items</th>
+                            <th>Service</th>
                             <th>Description</th>
-                            <th>Quantity</th>
+                            <th>Price</th>
                             <th>Operations</th>
                         </tr>
-                            {{#each Inventory}}
-                            {{>ItemInfo name=this.name description=this.description quantity=this.quantity id=this._id}}
-                            {{/each}}
+                        {{#each Services}}
+                            {{>ServiceInfo name=this.name description=this.description price=this.price id=this._id}}
+                        {{/each}}
                         </tbody>
                     </table>
                 </div>
@@ -45,5 +45,4 @@
             </div>
         </section>
     </div>
-
 </template>

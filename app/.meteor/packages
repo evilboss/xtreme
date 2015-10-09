@@ -35,8 +35,10 @@ iron:router@1.0.0
 yasinuslu:blaze-meta
 aldeed:collection2
 aldeed:autoform
+aldeed:delete-button
 mizzao:jquery-ui
 useraccounts:iron-routing
 natestrauser:animate-css
 chart:chart
 bshamblen:morrisjs
+sergeyt:typeahead

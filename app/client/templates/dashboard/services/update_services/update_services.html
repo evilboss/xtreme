@@ -1,0 +1,18 @@
+<template name="UpdateServices">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>Update Service in Store</h1>
+            <small>Update Service</small>
+            <!--            <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                            <li class="active">Here</li>
+                        </ol>-->
+        </section>
+        <section class="content">
+
+            {{> quickForm collection="Service" doc =selectedItem type="update" id="updateServiceForm" buttonContent="Update Service"}}
+
+
+        </section>
+    </div>
+</template>

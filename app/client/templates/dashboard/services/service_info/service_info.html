@@ -1,0 +1,11 @@
+<template name="ServiceInfo">
+    <tr>
+    <td>{{name}}</td>
+        <td>{{description}}</td>
+    <td>{{price}}</td>
+        <td>
+            {{#linkTo route='updateServices' id=id class='btn btn-primary'}}Update{{/linkTo}}
+            {{> quickRemoveButton collection="Services" class='btn red' _id=id}}
+        </td>
+    </tr>
+</template>

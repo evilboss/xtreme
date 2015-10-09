@@ -1,24 +1,26 @@
 /*****************************************************************************/
-/* Pos: Event Handlers */
+/* UpdateItem: Event Handlers */
 /*****************************************************************************/
-Template.Pos.events({
+Template.UpdateItem.events({
 });
 
 /*****************************************************************************/
-/* Pos: Helpers */
+/* UpdateItem: Helpers */
 /*****************************************************************************/
-Template.Pos.helpers({
+Template.UpdateItem.helpers({
+    selectedItem:function(){
+        return Inventory.findOne({_id:Router.current().params.id});
+    }
 });
 
 /*****************************************************************************/
-/* Pos: Lifecycle Hooks */
+/* UpdateItem: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Pos.created = function () {
+Template.UpdateItem.created = function () {
 };
 
-Template.Pos.rendered = function () {
-    Meteor.typeahead.inject();
+Template.UpdateItem.rendered = function () {
 };
 
-Template.Pos.destroyed = function () {
+Template.UpdateItem.destroyed = function () {
 };

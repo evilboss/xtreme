@@ -1,0 +1,18 @@
+<template name="UpdateItem">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>Update Item in Inventory</h1>
+            <small>Update Inventory</small>
+            <!--            <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                            <li class="active">Here</li>
+                        </ol>-->
+        </section>
+        <section class="content">
+
+            {{> quickForm collection="Inventory" doc =selectedItem type="update" id="updateInventoryForm" buttonContent="Update Inventory"}}
+
+
+        </section>
+    </div>
+</template>

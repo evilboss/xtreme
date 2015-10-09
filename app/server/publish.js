@@ -8,3 +8,7 @@
 Meteor.publish('inventorylist', function (/* args */) {
   return Inventory.find();
 });
+
+Meteor.publish('services', function (/* args */) {
+  return Services.find();
+});

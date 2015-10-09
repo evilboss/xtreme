@@ -3,5 +3,9 @@
     <td>{{name}}</td>
         <td>{{description}}</td>
     <td><span class="badge bg-red">{{quantity}}</span></td>
+        <td>
+            {{#linkTo route='updateInventory' id=id class='btn btn-primary'}}Update{{/linkTo}}
+            {{> quickRemoveButton collection="Inventory" class='btn red' _id=id}}
+        </td>
     </tr>
 </template>
