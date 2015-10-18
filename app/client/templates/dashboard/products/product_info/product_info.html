@@ -1,0 +1,15 @@
+<template name="ProductInfo">
+    <tr>
+        <td>{{name}}</td>
+        <td>{{description}}</td>
+        <td>{{price}}</td>
+
+        <td>
+            {{#if isAdmin}}
+                {{#linkTo route='updateProducts' id=id class='btn btn-primary'}}Update{{/linkTo}}
+                {{> quickRemoveButton collection="Products" class='btn btn-danger' _id=id}}
+            {{/if}}
+            <button class="btn btn-success" data-action="availProduct" value="{{id}}">Avail</button>
+        </td>
+    </tr>
+</template>

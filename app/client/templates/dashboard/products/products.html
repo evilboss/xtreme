@@ -1,0 +1,56 @@
+<template name="Products">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Products
+                <small>Current Products</small>
+            </h1>
+            <!--            <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                            <li class="active">Here</li>
+                        </ol>-->
+        </section>
+        <section class="content">
+            <div class="row">
+           <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">List of Products</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>Product</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Operations</th>
+                            </tr>
+                            {{#each Products}}
+                                {{>ProductInfo name=this.name description=this.description price=this.price id=this._id}}
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body gi-->
+                    <div class="box-footer clearfix">
+                       <!-- <ul class="pagination pagination-sm no-margin pull-right">
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>-->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+
+            </div>
+            <div class="row">
+                {{>ServiceCart}}
+            </div>
+        </section>
+    </div>
+</template>

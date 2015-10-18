@@ -1,0 +1,17 @@
+<template name="AddProducts">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>Add New Product In Store</h1>
+            <small>Add Product</small>
+            <!--            <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                            <li class="active">Here</li>
+                        </ol>-->
+        </section>
+        <section class="content">
+
+            {{> quickForm collection="Products" id="insertProductForm" type="insert" buttonContent="Add New Product"}}
+
+        </section>
+    </div>
+</template>

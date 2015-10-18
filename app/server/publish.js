@@ -16,3 +16,7 @@ Meteor.publish('services', function (/* args */) {
 Meteor.publish('packages', function () {
   return Packages.find();
 });
+
+Meteor.publish('products', function () {
+  return Products.find();
+});

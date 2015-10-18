@@ -15,7 +15,6 @@ Services.attachSchema(new SimpleSchema({
     recipe: {
         type: Array,
         optional: true,
-        unique: true
     },
     'recipe.$': {
         type: Object

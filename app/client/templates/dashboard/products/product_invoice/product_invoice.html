@@ -1,0 +1,25 @@
+<template name="ProductInvoice">
+  <div class="product-invoice">
+      <div class="row">
+          <div class="col-xs-12 table-responsive">
+              <table class="table table-striped">
+                  <thead>
+                  <tr>
+                      <th>Product Name</th>
+                      <th>Quantity</th>
+                      <th>Description</th>
+                      <th>Price</th>
+                      <th>Subtotal</th>
+                      <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {{#each availedProducts}}
+                      {{>ProductInvoiceItem id=this._id name=this.name price=this.price description=this.description qty=this.qty subtotal=this.subtotal}}
+                  {{/each}}
+                  </tbody>
+              </table>
+          </div><!-- /.col -->
+      </div>
+  </div>
+</template>
