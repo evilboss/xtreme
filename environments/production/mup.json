@@ -4,7 +4,7 @@
     {
       "host": "104.131.191.152",
       "username": "root",
-      "pem": "~/.ssh/id_rsa"
+      "pem": "~/.ssh/cs-server"
       // or pem file (ssh based authentication)
       // WARNING: Keys protected by a passphrase are not supported
       //"pem": "~/.ssh/id_rsa"

@@ -6,6 +6,7 @@
         <td>
             {{#linkTo route='updateServices' id=id class='btn btn-primary'}}Update{{/linkTo}}
             {{> quickRemoveButton collection="Services" class='btn red' _id=id}}
+            <button class="AvailService" value="{{id}}">Avail Service</button>
         </td>
     </tr>
 </template>

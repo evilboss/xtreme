@@ -1,0 +1,10 @@
+<template name="ServiceCart">
+    {{#if serviceList}}
+        {{>ServiceInvoice availedServices=serviceList}}
+    {{/if}}
+    {{#if packageList}}
+        {{>PackageInvoice availedPackages=packageList}}
+    {{/if}}
+
+    Total: {{currentBill}}
+</template>

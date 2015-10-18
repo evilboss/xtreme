@@ -5,3 +5,9 @@ Template.registerHelper('truncate', function(string, length) {
 Template.registerHelper('appName', function() {
   return 'Extreme Salon';
 });
+Template.registerHelper('isManager', function() {
+  return Roles.userIsInRole(Meteor.userId(),'manager');  // => true
+});
+Template.registerHelper('isAdmin', function() {
+  return Roles.userIsInRole(Meteor.userId(),'admin');  // => true
+});

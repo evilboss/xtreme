@@ -1,0 +1,12 @@
+<template name="PackageInfo">
+    <tr>
+    <td>{{name}}</td>
+    <td>{{description}}</td>
+    <td>{{price}}</td>
+    <td>
+        {{#linkTo route='updatePackages' id=id class='btn btn-primary'}}Update Package{{/linkTo}}
+        {{> quickRemoveButton collection="Packages" class='btn red' _id=id}}
+        <button class="AvailService" data-action="availPackage" value="{{id}}">Avail Package</button>
+    </td>
+    </tr>
+</template>

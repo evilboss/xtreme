@@ -216,13 +216,13 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="hidden-xs">UserNAme</span>
+                                <span class="hidden-xs">{{currentUser.profile.firstName}}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
                                     <p>
-                                        UserName
+                                        {{currentUser.profile.firstName}}
                                         <small></small>
                                     </p>
                                 </li>
@@ -280,7 +280,18 @@
             <ul class="sidebar-menu">
                 <li class="header">DashBoard Menu</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="{{ isActiveRoute regex='dashboard.sales' }}"><a href="{{ pathFor 'dashboard.sales' }}"><span>Sales</span></a>
+                <!--<li class="{{ isActiveRoute regex='dashboard.sales' }}"><a href="{{ pathFor 'dashboard.sales' }}"><span>Sales</span></a>-->
+                <!--</li>-->
+                <li class="treeview" id="services-tab">
+                    <a href="{{ pathFor 'dashboard.services'}}"><span>Services</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    {{#if isAdmin}}
+                    <ul class="treeview-menu">
+                        <li class="{{ isActiveRoute regex='dashboard.services.add' }}"><a
+                                href="{{ pathFor 'dashboard.services.add' }}"><span>Add Services</span></a></li>
+                        <li class="{{ isActiveRoute regex='dashboard.packages.add' }}"><a
+                                href="{{ pathFor 'dashboard.packages.add' }}"><span>Add Packages</span></a></li>
+                    </ul>
+                    {{/if}}
                 </li>
                 <li class="treeview">
                     <a href="#"><span>Inventory</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -291,16 +302,6 @@
                                 href="{{ pathFor 'dashboard.inventory.add' }}"><span>Add Inventory Item</span></a></li>
                     </ul>
                 </li>
-                <li class="treeview">
-                    <a href="#"><span>Services</span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li class="{{ isActiveRoute regex='dashboard.services'}}"><a
-                                href="{{ pathFor 'dashboard.services'}}"><span>Services List</span></a></li>
-                        <li class="{{ isActiveRoute regex='dashboard.services.add' }}"><a
-                                href="{{ pathFor 'dashboard.services.add' }}"><span>Add Services</span></a></li>
-                    </ul>
-                </li>
-
                 <li class="{{ isActiveRoute regex='dashboard.pos' }}"><a
                         href="{{ pathFor 'dashboard.pos' }}"><span>POS</span></a></li>
             </ul>

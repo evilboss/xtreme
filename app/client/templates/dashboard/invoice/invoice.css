@@ -1,0 +1,14 @@
+/*****************************************************************************/
+/* Invoice: Style */
+/*****************************************************************************/
+.invoice {
+    position: relative;
+    background: #fff;
+    border: 2px solid #f4f4f4;
+    padding: 20px;
+    margin: 10px 25px;
+
+}
+section.invoice > .row > .col.s12{
+    border-bottom: 2px solid;
+}

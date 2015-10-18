@@ -12,3 +12,10 @@ AccountsTemplates.configureRoute('ensureSignedIn', {
 AccountsTemplates.configure({
     hideSignUpLink: true
 });
+AccountsTemplates.configure({
+    texts: {
+        title: {
+            signIn: "Xtreme Salon",
+        }
+    }
+});

@@ -75,6 +75,7 @@ momentjs:moment@2.10.6
 mongo@1.1.1
 mongo-id@1.0.1
 mongo-livedata@1.0.9
+mrt:mongo-counter@1.1.0
 mrt:underscore-string-latest@2.3.3
 natestrauser:animate-css@3.2.6
 npm-bcrypt@0.7.8_2

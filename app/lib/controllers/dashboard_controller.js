@@ -1,11 +1,12 @@
 DashboardController = RouteController.extend({
     layoutTemplate: 'MasterLayout',
     waitOn: function () {
-        return this.subscribe('inventorylist'),this.subscribe('services');
+        return this.subscribe('inventorylist'),this.subscribe('services'),this.subscribe('packages');
     },
     data: {
         Inventory: Inventory.find(),
-        Services:Services.find()
+        Services:Services.find(),
+        Packages:Packages.find()
     },
     onAfterAction: function () {
         Meta.setTitle('Dashboard');
@@ -36,7 +37,20 @@ DashboardController = RouteController.extend({
     },
     pos: function () {
         this.render('Pos');
-    }
+    },
+    packages: function () {
+        this.render('Packages');
+    },
+    addPackages: function () {
+        this.render('AddPackages');
+    },
+    UpdatePackages:function(){
+        this.render('UpdatePackages');
+    },
+    invoice:function(){
+        this.render('Invoice')
+    },
+
 })
 ;
 

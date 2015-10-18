@@ -12,3 +12,7 @@ Meteor.publish('inventorylist', function (/* args */) {
 Meteor.publish('services', function (/* args */) {
   return Services.find();
 });
+
+Meteor.publish('packages', function () {
+  return Packages.find();
+});

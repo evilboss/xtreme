@@ -1,0 +1,14 @@
+<template name="PackageInvoiceItem">
+    <tr>
+        <td>{{name}}</td>
+        <td>{{qty}}</td>
+        <td>{{description}}</td>
+        <td>
+            {{#each services}}
+                <li>{{this}}</li>
+            {{/each}}
+        </td>
+        <td>{{price}}</td>
+        <td>{{subtotal}}</td>
+    </tr>
+</template>
