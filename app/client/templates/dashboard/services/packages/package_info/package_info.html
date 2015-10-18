@@ -4,9 +4,11 @@
     <td>{{description}}</td>
     <td>{{price}}</td>
     <td>
-        {{#linkTo route='updatePackages' id=id class='btn btn-primary'}}Update Package{{/linkTo}}
-        {{> quickRemoveButton collection="Packages" class='btn red' _id=id}}
-        <button class="AvailService" data-action="availPackage" value="{{id}}">Avail Package</button>
+    {{#if isAdmin}}
+    {{#linkTo route='updatePackages' id=id class='btn btn-primary'}}Update{{/linkTo}}
+        {{> quickRemoveButton collection="Packages" class='btn btn-danger' _id=id}}
+    {{/if}}
+        <button class="AvailService btn btn-success" data-action="availPackage" value="{{id}}">Avail</button>
     </td>
     </tr>
 </template>

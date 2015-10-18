@@ -10,11 +10,12 @@
                       <th>Description</th>
                       <th>Price</th>
                       <th>Subtotal</th>
+                      <th></th>
                   </tr>
                   </thead>
                   <tbody>
                   {{#each availedServices}}
-                      {{>ServiceInvoiceItem name=this.name price=this.price description=this.description qty=this.qty subtotal=this.subtotal}}
+                      {{>ServiceInvoiceItem id=this._id name=this.name price=this.price description=this.description qty=this.qty subtotal=this.subtotal}}
                   {{/each}}
                   </tbody>
               </table>

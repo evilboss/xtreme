@@ -3,10 +3,13 @@
     <td>{{name}}</td>
         <td>{{description}}</td>
     <td>{{price}}</td>
+
         <td>
+            {{#if isAdmin}}
             {{#linkTo route='updateServices' id=id class='btn btn-primary'}}Update{{/linkTo}}
-            {{> quickRemoveButton collection="Services" class='btn red' _id=id}}
-            <button class="AvailService" value="{{id}}">Avail Service</button>
+            {{> quickRemoveButton collection="Services" class='btn btn-danger' _id=id}}
+            {{/if}}
+            <button class="AvailService btn btn-success" value="{{id}}">Avail</button>
         </td>
     </tr>
 </template>

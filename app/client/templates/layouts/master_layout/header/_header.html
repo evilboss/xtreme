@@ -293,7 +293,16 @@
                     </ul>
                     {{/if}}
                 </li>
-                <li class="treeview">
+                <li class="treeview" id="products-tab">
+                    <a href="#"><span>Products</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li class="{{ isActiveRoute regex='dashboard.inventory' }}"><a
+                                href="{{ pathFor 'dashboard.inventory' }}"><span>Product List</span></a></li>
+                        <li class="{{ isActiveRoute regex='dashboard.inventory.add' }}"><a
+                                href="{{ pathFor 'dashboard.inventory.add' }}"><span>Add Product From Inventory</span></a></li>
+                    </ul>
+                </li>
+                <li class="treeview" id="inventory-tab">
                     <a href="#"><span>Inventory</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         <li class="{{ isActiveRoute regex='dashboard.inventory' }}"><a

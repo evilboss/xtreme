@@ -1,11 +1,13 @@
 <template name="ServiceInvoiceItem">
-        <tr>
-          <td>{{name}}</td>
-            <td>{{qty}}</td>
-          <td>{{description}}</td>
-          <td>{{price}}</td>
-            <td>{{subtotal}}</td>
-
-        </tr>
+    <tr>
+        <td>{{name}}</td>
+        <td>{{qty}}</td>
+        <td>{{description}}</td>
+        <td>{{price}}</td>
+        <td>{{subtotal}}</td>
+        <td>
+            <button class="btn btn-danger" data-action="removeService" value="{{id}}">Remove</button>
+        </td>
+    </tr>
 
 </template>

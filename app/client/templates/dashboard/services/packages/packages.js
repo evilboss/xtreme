@@ -8,7 +8,6 @@ Template.Packages.events({
         packages.type = 'Package';
         var alreadyAdded = Cart.findOne({_id:e.currentTarget.value});
         if(alreadyAdded){
-            console.log(packages+'is already added');
             Cart.update(alreadyAdded, {$inc: {qty: 1,subtotal:packages.price}});
         }else{
             packages.qty=1;
