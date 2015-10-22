@@ -283,14 +283,15 @@
                 <!--<li class="{{ isActiveRoute regex='dashboard.sales' }}"><a href="{{ pathFor 'dashboard.sales' }}"><span>Sales</span></a>-->
                 <!--</li>-->
                 <li class="treeview" id="services-tab">
-                    <a href="{{ pathFor 'dashboard.services'}}"><span>Services</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <a href="{{ pathFor 'dashboard.services'}}"><span>Services</span> <i
+                            class="fa fa-angle-left pull-right"></i></a>
                     {{#if isAdmin}}
-                    <ul class="treeview-menu">
-                        <li class="{{ isActiveRoute regex='dashboard.services.add' }}"><a
-                                href="{{ pathFor 'dashboard.services.add' }}"><span>Add Services</span></a></li>
-                        <li class="{{ isActiveRoute regex='dashboard.packages.add' }}"><a
-                                href="{{ pathFor 'dashboard.packages.add' }}"><span>Add Packages</span></a></li>
-                    </ul>
+                        <ul class="treeview-menu">
+                            <li class="{{ isActiveRoute regex='dashboard.services.add' }}"><a
+                                    href="{{ pathFor 'dashboard.services.add' }}"><span>Add Services</span></a></li>
+                            <li class="{{ isActiveRoute regex='dashboard.packages.add' }}"><a
+                                    href="{{ pathFor 'dashboard.packages.add' }}"><span>Add Packages</span></a></li>
+                        </ul>
                     {{/if}}
                 </li>
                 <li class="treeview" id="products-tab">
@@ -299,7 +300,8 @@
                         <li class="{{ isActiveRoute regex='dashboard.products' }}"><a
                                 href="{{ pathFor 'dashboard.products' }}"><span>Product List</span></a></li>
                         <li class="{{ isActiveRoute regex='dashboard.products.add' }}"><a
-                                href="{{ pathFor 'dashboard.products.add' }}"><span>Add Product From Inventory</span></a></li>
+                                href="{{ pathFor 'dashboard.products.add' }}"><span>Add Product From Inventory</span></a>
+                        </li>
                     </ul>
                 </li>
                 <li class="treeview" id="inventory-tab">
@@ -313,7 +315,14 @@
                 </li>
                 <li class="{{ isActiveRoute regex='dashboard.pos' }}"><a
                         href="{{ pathFor 'dashboard.pos' }}"><span>POS</span></a></li>
+                {{#if isAdmin}}
+
+                    <li class="{{ isActiveRoute regex='dashboard.pos' }}"><a
+                            href="{{ pathFor 'accounts.add' }}"><span>Manage Accounts</span></a>
+                    </li>
+                {{/if}}
             </ul>
+
             <!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->

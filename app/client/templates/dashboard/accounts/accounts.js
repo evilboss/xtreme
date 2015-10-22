@@ -1,27 +1,23 @@
 /*****************************************************************************/
-/* Invoice: Event Handlers */
+/* Accounts: Event Handlers */
 /*****************************************************************************/
-Template.Invoice.events({
+Template.Accounts.events({
 });
 
 /*****************************************************************************/
-/* Invoice: Helpers */
+/* Accounts: Helpers */
 /*****************************************************************************/
-Template.Invoice.helpers({
-    'today':function(){
-        return moment(Date.now()).format('MM/DD/YYYY');
-
-    }
+Template.Accounts.helpers({
 });
 
 /*****************************************************************************/
-/* Invoice: Lifecycle Hooks */
+/* Accounts: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Invoice.created = function () {
-};
+Template.Accounts.onCreated(function () {
+});
 
-Template.Invoice.rendered = function () {
-};
+Template.Accounts.onRendered(function () {
+});
 
-Template.Invoice.destroyed = function () {
-};
+Template.Accounts.onDestroyed(function () {
+});

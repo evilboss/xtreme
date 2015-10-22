@@ -1,4 +1,4 @@
-Packages = new Mongo.Collection('course');
+Packages = new Mongo.Collection('packages');
 Packages.attachSchema(new SimpleSchema({
     name: {
         type: String,

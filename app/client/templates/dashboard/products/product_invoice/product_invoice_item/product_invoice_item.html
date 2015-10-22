@@ -5,8 +5,9 @@
         <td>{{description}}</td>
         <td>{{price}}</td>
         <td>{{subtotal}}</td>
-        <td>
+        {{#unless isInvoiceRoute}}<td>
             <button class="btn btn-danger" data-action="removeService" value="{{id}}">Remove</button>
         </td>
+        {{/unless}}
     </tr>
 </template>

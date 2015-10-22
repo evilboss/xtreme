@@ -16,6 +16,7 @@
 
 
 
+<!--
                     <div class="input-group input-group-sm">
                         <input type="text" class="typeahead form-control" placeholder="Services"
                                autocomplete="on" spellcheck="on"
@@ -24,7 +25,18 @@
                       <button class="btn btn-info btn-flat" type="button">Add</button>
                     </span>
                     </div>
+-->
 
+
+
+                    <div class='pull-right control-group'>
+                        <div class='clearfix'>
+                        <button class="btn btn-default pull-right" id="daterange-btn">
+                            <i class="fa fa-calendar"></i> Date range picker
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                            </div>
+                    </div>
                 </div>
             </div>
 
@@ -32,24 +44,43 @@
                 <div class="col-s-12">
                     <div class="box box-solid box-warning">
                         <div class="box-header">
-                            <h3 class="box-title">Now serving invoice ID -</h3>
+                            <h3 class="box-title"></h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="box-body table-responsive no-padding">
                                 <table class="table table-hover">
+                                    <tbody>
+                                    <tr>
+                                        <th>Service name</th>
+                                        <th>Date</th>
+                                        <th>Price</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Hair Cut</td>
+                                        <td>10-22-2015</td>
+                                        <td>500</td>
 
+
+                                    </tr>
+                                    <tr>
+                                        <td>Brazilian Blow Dry</td>
+                                        <td>10-22-2015</td>
+                                        <td>800</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Manicure</td>
+                                        <td>10-22-2015</td>
+                                        <td>50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pedecure</td>
+                                        <td>11-7-2014</td>
+                                        <td>100</td>
+                                    </tr>
+                                    </tbody>
                                 </table>
 
-                                <div class="input-group">
-                                    <input type="number" placeholder="Payment" class="form-control" aria-describedby="basic-addon2">
-
-                                        <div class="input-group-btn">
-                                            <button type="button" class="btn btn-success">Apply Payment</button>
-
-
-                                        </div>
-                                </div>
                             </div>
                         </div>
                         <!-- /.box-body -->

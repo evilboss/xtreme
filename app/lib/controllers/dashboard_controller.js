@@ -2,9 +2,9 @@ DashboardController = RouteController.extend({
     layoutTemplate: 'MasterLayout',
     waitOn: function () {
         return this.subscribe('inventorylist'),
-        this.subscribe('services'),
-        this.subscribe('packages'),
-        this.subscribe('products');
+            this.subscribe('services'),
+            this.subscribe('packages'),
+            this.subscribe('products');
     },
     data: {
         Inventory: Inventory.find(),
@@ -72,6 +72,11 @@ DashboardController = RouteController.extend({
     invoice: function () {
         this.render('Invoice')
     },
+    accounts: function () {
+    },
+    accountsAccounts: function () {
+        this.render('AddAccounts');
+    }
 
 })
 ;
