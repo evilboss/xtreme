@@ -1,26 +1,23 @@
 /*****************************************************************************/
-/* UpdateProducts: Event Handlers */
+/* PrintPreview: Event Handlers */
 /*****************************************************************************/
-Template.UpdateProducts.events({
+Template.PrintPreview.events({
 });
 
 /*****************************************************************************/
-/* UpdateProducts: Helpers */
+/* PrintPreview: Helpers */
 /*****************************************************************************/
-Template.UpdateProducts.helpers({
-    selectedItem:function(){
-        return Products.findOne({_id:Router.current().params.id});
-    }
+Template.PrintPreview.helpers({
 });
 
 /*****************************************************************************/
-/* UpdateProducts: Lifecycle Hooks */
+/* PrintPreview: Lifecycle Hooks */
 /*****************************************************************************/
-Template.UpdateProducts.onCreated(function () {
+Template.PrintPreview.onCreated(function () {
 });
 
-Template.UpdateProducts.onRendered(function () {
+Template.PrintPreview.onRendered(function () {
 });
 
-Template.UpdateProducts.onDestroyed(function () {
+Template.PrintPreview.onDestroyed(function () {
 });

@@ -1,5 +1,15 @@
 <template name="UpdateProducts">
-  <div class="update-products">
-    <h1>Find me in app/client/templates/dashboard/products/update_products/update_products</h1>
-  </div>
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>Update Product in Store</h1>
+                <small>Update Inventory</small>
+                <!--            <ol class="breadcrumb">
+                                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                                <li class="active">Here</li>
+                            </ol>-->
+            </section>
+            <section class="content">
+                {{> quickForm collection="Products" doc =selectedItem type="update" id="updateInventoryForm" buttonContent="Update Inventory" omitFields="name"}}
+            </section>
+        </div>
 </template>

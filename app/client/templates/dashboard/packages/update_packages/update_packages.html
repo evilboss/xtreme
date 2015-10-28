@@ -1,5 +1,18 @@
 <template name="UpdatePackages">
-  <div class="update-packages">
-    <h1>Find me in app/client/templates/dashboard/services/packages/update_packages/update_packages</h1>
-  </div>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>Update Package in Store</h1>
+            <small>Update Package</small>
+            <!--            <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                            <li class="active">Here</li>
+                        </ol>-->
+        </section>
+        <section class="content">
+
+            {{> quickForm collection="Packages" doc =selectedItem type="update" id="updatePackagesForm" buttonContent="Update Package"}}
+
+
+        </section>
+    </div>
 </template>

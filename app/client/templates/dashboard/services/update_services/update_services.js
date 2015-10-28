@@ -8,6 +8,9 @@ Template.UpdateServices.events({
 /* UpdateServices: Helpers */
 /*****************************************************************************/
 Template.UpdateServices.helpers({
+    selectedItem:function(){
+        return Services.findOne({_id:Router.current().params.id});
+    }
 });
 
 /*****************************************************************************/

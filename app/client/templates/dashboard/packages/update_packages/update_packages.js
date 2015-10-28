@@ -8,6 +8,9 @@ Template.UpdatePackages.events({
 /* UpdatePackages: Helpers */
 /*****************************************************************************/
 Template.UpdatePackages.helpers({
+    selectedItem:function(){
+        return Packages.findOne({_id:Router.current().params.id});
+    }
 });
 
 /*****************************************************************************/
