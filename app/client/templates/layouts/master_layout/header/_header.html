@@ -1,9 +1,8 @@
 <template name="_header">
     <header class="main-header skin-yellow">
-
         <nav class="navbar navbar-fixed-top" role="navigation">
             <!-- Logo -->
-            <a href="{{pathFor 'dashboard'}}" class="logo"><b>{{appName}}</b></a>
+            <a href="{{pathFor 'dashboard'}}" class="logo"><img class="img-responsive" src="/images/xtremelogo.jpg"></a>
             <!-- Header Navbar: style can be found in header.less -->
             <!-- Sidebar toggle button-->
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -282,6 +281,14 @@
                 <!-- Optionally, you can add icons to the links -->
                 <!--<li class="{{ isActiveRoute regex='dashboard.sales' }}"><a href="{{ pathFor 'dashboard.sales' }}"><span>Sales</span></a>-->
                 <!--</li>-->
+              {{#if isAdmin}}
+                <li class="{{ isActiveRoute regex='accounts.add' }}"><a
+                  href="{{ pathFor 'accounts.add' }}"><span>Manage Accounts</span></a>
+                </li>
+                <li class="{{ isActiveRoute regex='dashboard.branch' }}"><a
+                  href="{{ pathFor 'dashboard.branch' }}"><span>Manage Branches</span></a>
+                </li>
+              {{/if}}
                 <li class="treeview" id="services-tab">
                     <a href="{{ pathFor 'dashboard.services'}}"><span>Services</span> <i
                             class="fa fa-angle-left pull-right"></i></a>
@@ -315,12 +322,7 @@
                 </li>
                 <li class="{{ isActiveRoute regex='dashboard.pos' }}"><a
                         href="{{ pathFor 'dashboard.pos' }}"><span>POS</span></a></li>
-                {{#if isAdmin}}
 
-                    <li class="{{ isActiveRoute regex='dashboard.pos' }}"><a
-                            href="{{ pathFor 'accounts.add' }}"><span>Manage Accounts</span></a>
-                    </li>
-                {{/if}}
             </ul>
 
             <!-- /.sidebar-menu -->

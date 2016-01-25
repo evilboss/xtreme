@@ -1,6 +1,4 @@
 Sales = new Mongo.Collection('sales');
-
-
 if (Meteor.isServer) {
   Sales.allow({
     insert: function (userId, doc) {
@@ -15,7 +13,6 @@ if (Meteor.isServer) {
       return false;
     }
   });
-
   Sales.deny({
     insert: function (userId, doc) {
       return true;
