@@ -11,11 +11,9 @@ Template.registerHelper('isManager', function() {
 Template.registerHelper('isAdmin', function() {
   return Roles.userIsInRole(Meteor.userId(),'admin');  // => true
 });
-
 Template.registerHelper('isInvoiceRoute', function() {
   if(Router.current().route.getName()==='invoice'||Router.current().route.getName()=='print'){
     return true
   }
-
   return false;
 });

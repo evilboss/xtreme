@@ -20,3 +20,7 @@ Meteor.publish('packages', function () {
 Meteor.publish('products', function () {
   return Products.find();
 });
+
+Meteor.publish('branches', function () {
+  return Branches.find();
+});
