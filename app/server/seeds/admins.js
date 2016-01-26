@@ -10,13 +10,13 @@ if (Admin.find({}).count() === 0) {
 //Creates Default admin account
 if (Meteor.users.find({}).count() === 0) {
     Accounts.createUser({
-        email: "admin@admin.com",
+        username: "admin",
         password: "password",
         profile:{firstName:'Admin'}
     });
     Accounts.createUser({
-        email: "manager@manager.com",
+        username: "manager1",
         password: "password",
-        profile:{firstName:'Manager'}
+        profile:{firstName:'Manager1'}
     });
 }
