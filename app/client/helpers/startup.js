@@ -1,4 +1,4 @@
 // Apply AdminLTE skin
 Meteor.startup(function() {
-   $('body').addClass('skin-black');
+   $('body').addClass('skin-purple');
 });

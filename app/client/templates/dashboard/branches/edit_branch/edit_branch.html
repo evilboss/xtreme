@@ -1,0 +1,16 @@
+<template name="EditBranch">
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>Branches
+        <small>Add new Branch</small>
+      </h1>
+
+    </section>
+    <section class="content">
+      {{error}}
+      <div class="box">
+        {{> quickForm collection="Branches" doc =selectedBranch type="update" id="updateBranchForm" buttonContent="Update Branch"}}
+      </div>
+    </section>
+  </div>
+</template>

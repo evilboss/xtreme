@@ -18,9 +18,6 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-footer">
-                                    <!--                                    <div class="pull-left">
-                                                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                                                        </div>-->
                                     <div class="center-block">
                                         <a href="#" data-action="logout" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
@@ -36,76 +33,5 @@
     </header>
 
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
-
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-
-            <!-- Sidebar user panel (optional) -->
-            <!-- <div class="user-panel">
-                 <div class="pull-left image">
-                     <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                 </div>
-                 <div class="pull-left info">
-                     <p>Alexander Pierce</p>
-                     &lt;!&ndash; Status &ndash;&gt;
-                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                 </div>
-             </div>-->
-
-
-            <!-- Sidebar Menu -->
-            <ul class="sidebar-menu">
-                <li class="header">DashBoard Menu</li>
-                <!-- Optionally, you can add icons to the links -->
-                <!--<li class="{{ isActiveRoute regex='dashboard.sales' }}"><a href="{{ pathFor 'dashboard.sales' }}"><span>Sales</span></a>-->
-                <!--</li>-->
-              {{#if isAdmin}}
-                <li class="{{ isActiveRoute regex='accounts.add' }}"><a
-                  href="{{ pathFor 'accounts.add' }}"><span>Manage Accounts</span></a>
-                </li>
-                <li class="{{ isActiveRoute regex='dashboard.branch' }}"><a
-                  href="{{ pathFor 'dashboard.branch' }}"><span>Manage Branches</span></a>
-                </li>
-              {{/if}}
-                <li class="treeview" id="services-tab">
-                    <a href="{{ pathFor 'dashboard.services'}}"><span>Services</span> <i
-                            class="fa fa-angle-left pull-right"></i></a>
-                    {{#if isAdmin}}
-                        <ul class="treeview-menu">
-                            <li class="{{ isActiveRoute regex='dashboard.services.add' }}"><a
-                                    href="{{ pathFor 'dashboard.services.add' }}"><span>Add Services</span></a></li>
-                            <li class="{{ isActiveRoute regex='dashboard.packages.add' }}"><a
-                                    href="{{ pathFor 'dashboard.packages.add' }}"><span>Add Packages</span></a></li>
-                        </ul>
-                    {{/if}}
-                </li>
-                <li class="treeview" id="products-tab">
-                    <a href="#"><span>Products</span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li class="{{ isActiveRoute regex='dashboard.products' }}"><a
-                                href="{{ pathFor 'dashboard.products' }}"><span>Product List</span></a></li>
-                        <li class="{{ isActiveRoute regex='dashboard.products.add' }}"><a
-                                href="{{ pathFor 'dashboard.products.add' }}"><span>Add Product From Inventory</span></a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="treeview" id="inventory-tab">
-                    <a href="#"><span>Inventory</span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li class="{{ isActiveRoute regex='dashboard.inventory' }}"><a
-                                href="{{ pathFor 'dashboard.inventory' }}"><span>Inventory List</span></a></li>
-                        <li class="{{ isActiveRoute regex='dashboard.inventory.add' }}"><a
-                                href="{{ pathFor 'dashboard.inventory.add' }}"><span>Add Inventory Item</span></a></li>
-                    </ul>
-                </li>
-                <li class="{{ isActiveRoute regex='dashboard.pos' }}"><a
-                        href="{{ pathFor 'dashboard.pos' }}"><span>POS</span></a></li>
-
-            </ul>
-
-            <!-- /.sidebar-menu -->
-        </section>
-        <!-- /.sidebar -->
-    </aside>
+{{>sidebar}}
 </template>

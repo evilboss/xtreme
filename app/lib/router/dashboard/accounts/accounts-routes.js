@@ -7,7 +7,12 @@
     controller:'DashboardController',
     action:'accounts'
 });*/
-
+Router.route('dashboard/accounts', {
+  name: 'accounts',
+  where: 'client',
+  controller:'DashboardController',
+  action:'accountsList'
+});
 Router.route('dashboard/accounts/new', {
     name: 'accounts.add',
     where: 'client',

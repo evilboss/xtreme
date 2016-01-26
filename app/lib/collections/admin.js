@@ -1,8 +1,7 @@
 Admin = new Mongo.Collection('admin');
 Admin.attachSchema(new SimpleSchema({
-  "email": {
+  "username": {
     type: String,
-    regEx: SimpleSchema.RegEx.Email,
     unique: true
   }
 }));

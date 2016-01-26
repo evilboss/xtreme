@@ -1,27 +1,23 @@
 /*****************************************************************************/
-/* Accounts: Event Handlers */
+/* AddBranch: Event Handlers */
 /*****************************************************************************/
-Template.Accounts.events({
+Template.AddBranch.events({
 });
 
 /*****************************************************************************/
-/* Accounts: Helpers */
+/* AddBranch: Helpers */
 /*****************************************************************************/
-Template.Accounts.helpers({
-  managers:function(){
-    let manager = Meteor.users.find().fetch();
-    console.log(manager)
-  }
+Template.AddBranch.helpers({
 });
 
 /*****************************************************************************/
-/* Accounts: Lifecycle Hooks */
+/* AddBranch: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Accounts.onCreated(function () {
+Template.AddBranch.onCreated(function () {
 });
 
-Template.Accounts.onRendered(function () {
+Template.AddBranch.onRendered(function () {
 });
 
-Template.Accounts.onDestroyed(function () {
+Template.AddBranch.onDestroyed(function () {
 });
