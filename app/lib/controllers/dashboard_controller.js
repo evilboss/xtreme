@@ -74,10 +74,12 @@ DashboardController = RouteController.extend({
   invoice: function () {
     this.render('Invoice')
   },
-  accounts: function () {
-  },
-  accountsAccounts: function () {
+  accountsAdd: function () {
     this.render('AddAccounts');
+
+  },
+  accounts: function () {
+    this.render('Accounts');
   },
 
   /*Branches Controllers*/

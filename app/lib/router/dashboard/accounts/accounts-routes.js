@@ -11,11 +11,11 @@ Router.route('dashboard/accounts', {
   name: 'accounts',
   where: 'client',
   controller:'DashboardController',
-  action:'accountsList'
+  action:'accounts'
 });
 Router.route('dashboard/accounts/new', {
     name: 'accounts.add',
     where: 'client',
     controller:'DashboardController',
-    action:'accountsAccounts'
+    action:'accountsAdd'
 });
