@@ -24,27 +24,33 @@
         <!--<li class="{{ isActiveRoute regex='dashboard.sales' }}"><a href="{{ pathFor 'dashboard.sales' }}"><span>Sales</span></a>-->
         <!--</li>-->
         {{#if isAdmin}}
-          <li class="{{ isActiveRoute regex='accounts.add' }}"><a
-            href="{{ pathFor 'accounts.add' }}"><span>Manage Accounts</span></a>
+          <li class="{{ isActiveRoute regex='accounts' }}">
+            <a href="{{ pathFor 'accounts' }}"><i class="fa fa-users"></i> <span>Manage Accounts</span></a>
           </li>
-          <li class="{{ isActiveRoute regex='dashboard.branch' }}"><a
-            href="{{ pathFor 'dashboard.branch' }}"><span>Manage Branches</span></a>
+          <li class="{{ isActiveRoute regex='dashboard.branch' }}">
+            <a href="{{ pathFor 'dashboard.branch' }}"><i class="fa fa-building-o"></i><span>Manage Branches</span></a>
           </li>
         {{/if}}
         <li class="treeview" id="services-tab">
-          <a href="{{ pathFor 'dashboard.services'}}"><span>Services</span> <i
-            class="fa fa-angle-left pull-right"></i></a>
+          <a href="{{ pathFor 'dashboard.services'}}">
+            <i class="fa fa-scissors"></i><span>Services</span><i class="fa fa-angle-left pull-right"></i>
+          </a>
           {{#if isAdmin}}
             <ul class="treeview-menu">
-              <li class="{{ isActiveRoute regex='dashboard.services.add' }}"><a
-                href="{{ pathFor 'dashboard.services.add' }}"><span>Add Services</span></a></li>
-              <li class="{{ isActiveRoute regex='dashboard.packages.add' }}"><a
-                href="{{ pathFor 'dashboard.packages.add' }}"><span>Add Packages</span></a></li>
+              <li class="{{ isActiveRoute regex='dashboard.services.add'}}">
+                <a href="{{ pathFor 'dashboard.services.add' }}">
+                  <span>Add Services</span>
+                </a>
+              </li>
+              <li class="{{ isActiveRoute regex='dashboard.packages.add' }}">
+                <a href="{{ pathFor 'dashboard.packages.add' }}"><span>Add Packages</span>
+                </a>
+              </li>
             </ul>
           {{/if}}
         </li>
         <li class="treeview" id="products-tab">
-          <a href="#"><span>Products</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <a href="#"> <i class="fa fa-shopping-cart"></i><span>Products</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
             <li class="{{ isActiveRoute regex='dashboard.products' }}"><a
               href="{{ pathFor 'dashboard.products' }}"><span>Product List</span></a></li>
@@ -54,7 +60,7 @@
           </ul>
         </li>
         <li class="treeview" id="inventory-tab">
-          <a href="#"><span>Inventory</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <a href="#"> <i class="fa fa-list"></i><span>Inventory</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
             <li class="{{ isActiveRoute regex='dashboard.inventory' }}"><a
               href="{{ pathFor 'dashboard.inventory' }}"><span>Inventory List</span></a></li>
@@ -63,7 +69,7 @@
           </ul>
         </li>
         <li class="{{ isActiveRoute regex='dashboard.pos' }}"><a
-          href="{{ pathFor 'dashboard.pos' }}"><span>POS</span></a></li>
+          href="{{ pathFor 'dashboard.pos' }}"> <i class="fa fa-dollar"></i><span>POS</span></a></li>
 
       </ul>
 

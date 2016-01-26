@@ -22,5 +22,29 @@ Meteor.publish('products', function () {
 });
 
 Meteor.publish('branches', function () {
-  return Branches.find();
+  var user = Meteor.users.findOne({
+    _id: this.userId
+  });
+  if (Roles.userIsInRole(user, ['admin'])) {
+    return Branches.find();
+  }else{
+    return Branches.find();
+  }
+});
+
+Meteor.publish('users', function () {
+  var user = Meteor.users.findOne({
+    _id: this.userId
+  });
+  if (Roles.userIsInRole(user, ['admin'])) {
+    return Meteor.users.find({}, {
+      fields: {
+        roles: 1,
+        username:1,
+        profile: 1,
+        branchIds:1,
+      }
+    });
+  }
+  return [];
 });

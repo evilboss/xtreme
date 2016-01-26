@@ -45,3 +45,5 @@ sergeyt:typeahead
 mrt:mongo-counter
 elevatedevdesign:autoform-nouislider
 baysao:bootstrap-daterangepicker
+reactive-var
+emdagon:bootstrap-multiselect

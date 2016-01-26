@@ -2,10 +2,12 @@ Branches = new Mongo.Collection('branches');
 Branches.attachSchema(new SimpleSchema({
   "name": {
     type: String,
-    unique: true
+    unique: true,
+    label:'Branch Name'
   },
   "location": {
-    type: String
+    type: String,
+    label:'Branch Location'
   }
 }));
 if (Meteor.isServer) {

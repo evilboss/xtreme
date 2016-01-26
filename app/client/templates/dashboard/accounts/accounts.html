@@ -7,7 +7,48 @@
 
     </section>
     <section class="content">
-      {{managers}}
+      <section class="content">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Manager List</h3>
+          </div>
+          <div class="box-body no-padding">
+            <div class="col-xs-12">
+              {{#linkTo route='accounts.add' class='btn btn-info pull-right'}}<i class="fa fa-user-plus"></i> NEW
+                USER{{/linkTo}}
+            </div>
+            <table class="table table-condensed">
+              <thead>
+              <tr>
+                <th>User Name</th>
+                <th>Employee Name</th>
+                <th>Role</th>
+                <th>Responcible Branches</th>
+              </tr>
+              </thead>
+            <tbody>
+              {{#each managers}}
+              <tr>
+                <td>{{this.username}}</td>
+                <td>{{this.profile.firstName}} {{this.profile.lastName}}</td>
+                <td>{{this.roles}}</td>
+                {{this.branchIds}}
+                <td>{{#each this.branchIds}}
+                  {{this.branchIds.this}}
+                  {{getBranchNamethis.branchIds.this}}
+                {{/each}}
+                </td>
+              </tr>
+
+              {{/each}}
+              </tbody>
+
+
+            </table>
+          </div>
+        </div>
+      </section>
+
     </section>
   </div>
 </template>
