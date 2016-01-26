@@ -18,12 +18,13 @@ Meteor.startup(function () {
     Accounts.createUser({
       username: "admin",
       password: "password",
-      profile: {firstName: 'Admin'}
+      profile: {firstName: 'Admin',lastName:"Power"}
     });
     Accounts.createUser({
       username: "manager1",
       password: "password",
-      profile: {firstName: 'Manager1'}
+      profile: {firstName: 'Manager1',lastName:"Croft"}
+
     });
   }
 });

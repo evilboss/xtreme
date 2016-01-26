@@ -32,8 +32,7 @@ Template.AddAccounts.events({
 
     }
     if (!newUser.profile.lastName) {
-      error.push('LastName Required')
-
+      error.push('LastName Required');
     }
     errors.set(error);
     if (error.length === 0) {
@@ -51,7 +50,8 @@ Template.AddAccounts.events({
       }
       Meteor.call('new.user', newUser, function (err, result) {
         if (err) {
-          errors.set(err);
+          error.push(err.reason);
+          errors.set(error);
         }
       });
 

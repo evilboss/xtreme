@@ -12,18 +12,7 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     {{#if currentUser}}
-                        <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="hidden-xs">{{currentUser.profile.firstName}}</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="user-footer">
-                                    <div class="center-block">
-                                        <a href="#" data-action="logout" class="btn btn-default btn-flat">Sign out</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
+                      {{#if Branches.count}}
                       <li class="dropdown tasks-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                           <i class="fa fa-building-o"></i>
@@ -35,19 +24,32 @@
                               <ul class="menu">
                                 {{#each Branches}}
 
-                                <li>
-                                  <a href="#">
-                                    <h3>
-                                      {{this.name}}
-                                      <small class="pull-right">{{this.location}}</small>
-                                    </h3>
-                                  </a>
-                                </li>
+                                  <li>
+                                    <a href="#">
+                                      <h3>
+                                        {{this.name}}
+                                        <small class="pull-right">{{this.location}}</small>
+                                      </h3>
+                                    </a>
+                                  </li>
                                 {{/each}}
-                            </ul><div class="slimScrollBar"></div></div>
+                              </ul><div class="slimScrollBar"></div></div>
                           </li>
                         </ul>
                       </li>
+                      {{/if}}
+                      <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="hidden-xs">{{currentUser.profile.firstName}}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="user-footer">
+                                    <div class="center-block">
+                                        <a href="#" data-action="logout" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
                     {{else}}
                         <a href="{{ pathFor 'atSignIn' }}" class="btn btn-default navbar-btn">Sign in</a>
                     {{/if}}

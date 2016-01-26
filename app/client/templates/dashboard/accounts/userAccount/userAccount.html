@@ -5,8 +5,11 @@
     <td>{{roles}}</td>
     <td>
       {{#each profile.branchIds}}
-      {{getBranchName this}},
-    {{/each}}
+        {{getBranchName this}},
+      {{/each}}
+    </td>
+    <td>
+      {{> quickRemoveButton collection="Meteor.users" class='btn btn-danger' _id=this._id}}
     </td>
   </tr>
 

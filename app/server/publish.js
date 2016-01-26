@@ -28,7 +28,15 @@ Meteor.publish('branches', function () {
   if (Roles.userIsInRole(user, ['admin'])) {
     return Branches.find();
   }else{
-    return Branches.find();
+    if(user.profile.branchIds){
+      var ids = user.profile.branchIds;
+      if(ids){
+        ids = ids.map(function(id) { return ObjectId(id); });
+        Branches.find({_id: {$in: ids}});
+      }
+      return Branches.find();
+    }
+
   }
 });
 

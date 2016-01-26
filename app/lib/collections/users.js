@@ -26,18 +26,15 @@ if (Meteor.isServer) {
       return true;
     },
     remove: function (userId, doc) {
-      return true;
+      var user = Meteor.users.findOne({
+        _id: userId
+      });
+      if (Roles.userIsInRole(user, ['admin'])) {
+        return true;
+
+      }
+      return false
     }
   });
-  Meteor.users.deny({
-    insert: function (userId, doc) {
-      return false;
-    },
-    update: function (userId, doc, fieldNames, modifier) {
-      return false;
-    },
-    remove: function (userId, doc) {
-      return false;
-    }
-  });
+
 }

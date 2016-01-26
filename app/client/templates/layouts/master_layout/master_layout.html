@@ -1,4 +1,8 @@
 <template name="MasterLayout">
-    {{> _header}}
+  {{> _header}}
+  {{#if Branches.count}}
     {{> yield}}
+  {{else}}
+    {{>NotActive}}
+  {{/if}}
 </template>
