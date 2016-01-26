@@ -1,13 +1,12 @@
 <template name="loginLayout">
   <div class="login-box">
-    <div class="login-logo">
-      <a href="{{pathFor 'home'}}" class="logo brand=logo"><img class="img-responsive carousel-inner brand-logo"
-                                                                src="/images/xtreme-logo.png">
-      </a>
-    </div>
     <div class="login-box-body">
-      <p class="login-box-msg">Sign in to start your session</p>
-          {{> yield}}
+      <div class="login-logo">
+        <a href="{{pathFor 'home'}}" class="logo brand=logo">
+          <img class="img-responsive carousel-inner brand-logo" src="/images/xtreme-logo.png">
+        </a>
+      </div>
+      {{> yield}}
     </div>
   </div>
 </template>

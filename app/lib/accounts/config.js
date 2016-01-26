@@ -24,7 +24,7 @@ AccountsTemplates.addFields([
 AccountsTemplates.configure({
     texts: {
         title: {
-            signIn: "eXtreme Salon",
+            signIn: "",
         }
     }
 });
