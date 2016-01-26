@@ -28,22 +28,9 @@
               </thead>
             <tbody>
               {{#each managers}}
-              <tr>
-                <td>{{this.username}}</td>
-                <td>{{this.profile.firstName}} {{this.profile.lastName}}</td>
-                <td>{{this.roles}}</td>
-                {{this.branchIds}}
-                <td>{{#each this.branchIds}}
-                  {{this.branchIds.this}}
-                  {{getBranchNamethis.branchIds.this}}
-                {{/each}}
-                </td>
-              </tr>
-
+                {{>userAccount this}}
               {{/each}}
               </tbody>
-
-
             </table>
           </div>
         </div>

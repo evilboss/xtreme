@@ -18,9 +18,7 @@ Template.Accounts.helpers({
     });
     return managers;
   },
-  getBranchName:function(branchId){
-    return Branches.findOne({_id:branchId}).fetch().name;
-  }
+
 });
 
 /*****************************************************************************/

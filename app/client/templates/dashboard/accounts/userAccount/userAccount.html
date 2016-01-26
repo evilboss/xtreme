@@ -1,0 +1,13 @@
+<template name="userAccount">
+  <tr>
+    <td>{{username}}</td>
+    <td>{{profile.firstName}} {{this.profile.lastName}}</td>
+    <td>{{roles}}</td>
+    <td>
+      {{#each profile.branchIds}}
+      {{getBranchName this}},
+    {{/each}}
+    </td>
+  </tr>
+
+</template>

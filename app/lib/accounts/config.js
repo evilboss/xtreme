@@ -1,9 +1,9 @@
 AccountsTemplates.configureRoute('signIn', {
-    layoutTemplate: 'publicLayout',
+    layoutTemplate: 'loginLayout',
     redirect: '/dashboard'
 });
 AccountsTemplates.configureRoute('ensureSignedIn', {
-    layoutTemplate: 'publicLayout'
+    layoutTemplate: 'loginLayout'
 });
 AccountsTemplates.configure({
     hideSignUpLink: true
