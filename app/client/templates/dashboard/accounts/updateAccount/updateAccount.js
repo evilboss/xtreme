@@ -1,11 +1,9 @@
-/*****************************************************************************/
-/* AddAccounts: Event Handlers */
-/*****************************************************************************/
-var errors = new ReactiveVar();
-let managerSelected = new ReactiveVar(true);
-let selectedBranch = new ReactiveVar([]);
-Template.AddAccounts.events({
-  'submit #registration': function (e) {
+Template.updateAccount.helpers({
+  //add you helpers here
+});
+
+Template.updateAccount.events({
+  'submit #updateAccountForm': function (e) {
     e.preventDefault();
     console.log('registration called');
     errors.set();
@@ -48,7 +46,7 @@ Template.AddAccounts.events({
         }
         console.log(newUser);
       }
-      Meteor.call('new.user', newUser, function (err, result) {
+      Meteor.call('update.user', newUser, function (err, result) {
         if (err) {
           error.push(err.reason);
           errors.set(error);
@@ -79,23 +77,17 @@ Template.AddAccounts.events({
       currentBranches.slice(e.currentTarget.value);
     }
     selectedBranch.set(currentBranches);
-  }
+  }});
 
+Template.updateAccount.onCreated(function () {
+  //add your statement here
 });
-Template.AddAccounts.helpers({
-  hasErrors: function () {
-    if (errors.get()) {
-      return errors.get();
-    }
-    return '';
-  },
-  isManagerSelected: function () {
-    return managerSelected.get();
-  }
+
+Template.updateAccount.onRendered(function () {
+  //add your statement here
 });
-Template.AddAccounts.onCreated(function () {
+
+Template.updateAccount.onDestroyed(function () {
+  //add your statement here
 });
-Template.AddAccounts.onRendered(function () {
-});
-Template.AddAccounts.onDestroyed(function () {
-});
+
