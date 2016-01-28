@@ -18,6 +18,9 @@ DashboardController = RouteController.extend({
   onAfterAction: function () {
     Meta.setTitle('Dashboard');
   },
+  paramTest: function () {
+    this.render('Paramtest');
+  },
   action: function () {
     this.render('dashboard');
   },
