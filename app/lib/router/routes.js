@@ -11,11 +11,7 @@ Router.route('/dashboard/sales', {
     controller:'DashboardController',
     action:'sales'
 });
-
-
-
-
 Router.plugin('ensureSignedIn', {
-    except: ['home']
+    except: ['home','atSignIn']
 });
 Router.plugin('dataNotFound', {dataNotFoundTemplate: 'notFound'});

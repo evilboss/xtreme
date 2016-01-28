@@ -1,16 +1,20 @@
 <template name="AddItem">
-    <div class="content-wrapper">
-        <section class="content-header">
-            <h1>Add New Item in Inventory</h1>
-            <small>Add Inventory</small>
-            <!--            <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                            <li class="active">Here</li>
-                        </ol>-->
-        </section>
-        <section class="content">
+  <div class="content-wrapper">
+    <div class="container">
+      <section class="content-header">
+        <h1>Add New Item in Inventory</h1>
+        <small>Add Inventory</small>
+      </section>
+      <section class="content">
+        <div class="box box-solid">
+          <div class="box-header with-border">
+          </div>
+          <div class="box-body">
             {{> quickForm collection="Inventory" id="insertInventoryForm" type="insert" buttonContent="Add Item"}}
-        </section>
+          </div>
+        </div>
+      </section>
     </div>
+  </div>
 
 </template>

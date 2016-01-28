@@ -48,7 +48,7 @@ Template.AddAccounts.events({
         }
         console.log(newUser);
       }
-      Meteor.call('new.user', newUser, function (err, result) {
+      Meteor.call('new.account', newUser, function (err, result) {
         if (err) {
           error.push(err.reason);
           errors.set(error);

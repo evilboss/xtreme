@@ -56,3 +56,7 @@ Meteor.publish('users', function () {
   }
   return [];
 });
+
+Meteor.publish('staff', function () {
+  return Staff.find();
+});

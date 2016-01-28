@@ -44,6 +44,7 @@ email@1.0.7
 emdagon:bootstrap-multiselect@0.0.2
 es5-shim@4.1.13
 fastclick@1.0.7
+fortawesome:fontawesome@4.5.0
 geojson-utils@1.0.4
 handlebars@1.0.4
 hot-code-push@1.0.0

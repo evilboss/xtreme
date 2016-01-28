@@ -1,3 +1,3 @@
-Template.Dashboard.rendered = function() {
-   
+Template.dashboard.rendered = function() {
+
 };

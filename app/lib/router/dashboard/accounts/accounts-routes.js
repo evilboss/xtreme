@@ -1,12 +1,7 @@
 /**
  * Created by jrreyes on 10/21/15.
  */
-/*Router.route('dashboard/accounts', {
-    name: 'accounts',
-    where: 'client',
-    controller:'DashboardController',
-    action:'accounts'
-});*/
+
 Router.route('dashboard/accounts', {
   name: 'accounts',
   where: 'client',
@@ -18,4 +13,10 @@ Router.route('dashboard/accounts/new', {
     where: 'client',
     controller:'DashboardController',
     action:'accountsAdd'
+});
+Router.route('dashboard/accounts/:id', {
+  name: 'updateAccounts',
+  where: 'client',
+  controller:'DashboardController',
+  action:'updateAccounts'
 });

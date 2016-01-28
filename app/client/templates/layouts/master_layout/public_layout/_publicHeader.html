@@ -1,90 +1,54 @@
 <template name="_publicHeader">
-    <header class="main-header">
-        <nav class="navbar navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
+  <header class="main-header">
+    <nav class="navbar navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
 
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="{{pathFor 'home'}}" class="navbar-brand"><b>{{appName}}</b></a>
-                </div>
-                <div class="navbar-custom-menu">
-                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li class="">
-                                <a href="#mainslider">Home</a>
-                            </li>
-                            <li class="">
-                                <a href="#title_about">About</a>
-                            </li>
-                            <li class="">
-                                <a href="#team">Our Team</a>
-                            </li>
-                            <li class="">
-                                <a href="#services">Services</a>
-                            </li>
-                            <li class="">
-                                <a href="#portfolio">Portfolio</a>
-                            </li>
-                            <li class="">
-                                <a href="#faq">FAQ</a>
-                            </li>
-                            <li class="">
-                                <a href="#contact">Contact</a>
-                            </li>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1"
+                  aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="{{pathFor 'home'}}" class="navbar-brand"><b>{{appName}}</b></a>
+        </div>
+        <div class="navbar-custom-menu">
+          <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="">
+                <a href="#mainslider">Home</a>
+              </li>
+              <li class="">
+                <a href="#title_about">About</a>
+              </li>
+              <li class="">
+                <a href="#team">Our Team</a>
+              </li>
+              <li class="">
+                <a href="#services">Services</a>
+              </li>
+              <li class="">
+                <a href="#portfolio">Portfolio</a>
+              </li>
+              <li class="">
+                <a href="#faq">FAQ</a>
+              </li>
+              <li class="">
+                <a href="#contact">Contact</a>
+              </li>
+            <li class="">
+              {{#if currentUser}}
+                <a href="#" data-action="logout"><i class="fa fa-sign-out"></i> Sign-Out</a>
+                {{else}}
+                {{#linkTo route='atSignIn'}}<i class="fa fa-sign-in"></i> Sign-in{{/linkTo}}
+              {{/if}}
+              </li>
 
-                            <li class="dropdown notifications-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs">Select Branch</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="header">Select from our branches</li>
-                                    <li>
-                                        <!-- inner menu: contains the actual data -->
-                                        <ul class="menu">
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-users text-aqua"></i> Branch 1
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-users text-aqua"></i> Branch 1
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-users text-aqua"></i> Branch 1
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-users text-aqua"></i> Branch 1
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-users text-aqua"></i> Branch 1
-                                                </a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li class="footer"><a href="#">View all</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
 </template>

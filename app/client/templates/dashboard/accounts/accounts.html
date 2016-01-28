@@ -1,5 +1,6 @@
 <template name="Accounts">
   <div class="content-wrapper">
+    <div class="container">
     <section class="content-header">
       <h1>All Managers
         <small>eXtreme Salon Managers</small>
@@ -7,7 +8,6 @@
 
     </section>
     <section class="content">
-      <section class="content">
         <div class="box box-primary">
           <div class="box-header with-border">
             <h3 class="box-title">Manager List</h3>
@@ -27,7 +27,7 @@
                 <th>Actions</th>
               </tr>
               </thead>
-            <tbody>
+              <tbody>
               {{#each managers}}
                 {{>userAccount this}}
               {{/each}}
@@ -35,8 +35,8 @@
             </table>
           </div>
         </div>
-      </section>
 
     </section>
+    </div>
   </div>
 </template>

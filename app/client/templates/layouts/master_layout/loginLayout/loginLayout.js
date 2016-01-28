@@ -13,9 +13,6 @@ Template.loginLayout.onCreated(function () {
 Template.loginLayout.onRendered(function () {
   $('.container').removeClass('container');
   $('.at-form').removeClass('at-form');
-
-
-
   //add your statement here
 });
 

@@ -1,82 +1,64 @@
 <template name="updateAccount">
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Update Account
-        <small>Edit User Details</small>
-      </h1>
-      <!--            <ol class="breadcrumb">
-                      <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                      <li class="active">Here</li>
-                  </ol>-->
-    </section>
+    <div class="container">
+      <section class="content-header">
+        <h1>
+          Update Account
+          <small>Edit User Details</small>
+        </h1>
+      </section>
+      <section class="content">
+        {{#if hasErrors}}
+          <div class="callout callout-danger">
+            <h4>Warning!</h4>
+            {{#each hasErrors}}
+              <p>{{this}}</p>
+            {{/each}}
+          </div>
+        {{/if}}
+        <div class="box box-primary">
+          <div class="box-header with-border">
+          </div>
+          <form role="form" id="updateAccountForm">
+            <div class="box-body">
+              {{#with selectedAccount}}
 
-
-    <!-- Main content -->
-    <section class="content">
-      {{#if hasErrors}}
-        <div class="callout callout-danger">
-          <h4>Warning!</h4>
-          {{#each hasErrors}}
-            <p>{{this}}</p>
-          {{/each}}
-        </div>
-      {{/if}}
-      <div class="box box-primary">
-        <div class="box-header with-border">
-        </div>
-        <!-- /.box-header -->
-        <!-- form start -->
-        <form role="form" id="updateAccountForm">
-          <div class="box-body">
-            <div class="form-group">
-              <label for="exampleInputEmail1">User Name</label>
-              <input type="text" class="form-control" name="username" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" name="password" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">First Name</label>
-              <input type="text" class="form-control" name="firstName" placeholder="First Name">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Last Name</label>
-              <input type="text" class="form-control" name="lastName" placeholder="Last Name">
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputPassword1">Contact Number</label>
-              <input type="tel" class="form-control" name="number" placeholder="Phone Number">
-            </div>
-
-            <div class="form-group">
-              <label>Role</label>
-              <select class="form-control" id="role" name="role">
-                <option value="manager">Manager</option>
-                <option value="admin">Admin</option>
-              </select>
-            </div>
-            {{#if isManagerSelected}}
               <div class="form-group">
-                <label>Branch Reponcibility</label>
-                {{#Multiselect name='branchList' class="form-control" options=Branches selected=selectedOptions }}
-                  <option value="{{ this._id }}" {{ attrs }}>{{this.name}}</option>
-                {{/Multiselect}}
+                <label for="exampleInputPassword1"></label>
+                <input type="text" class="form-control" name="firstName" placeholder="{{profile.firstName}}">
               </div>
-            {{/if}}
-          </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Last Name</label>
+                <input type="text" class="form-control" name="lastName" placeholder="{{profile.lastName}}">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Contact Number</label>
+                <input type="tel" class="form-control" name="number" placeholder="{{profile.number}}">
+              </div>
+              <div class="form-group">
+                <label>Role</label>
+                <select class="form-control" id="role" name="role">
+                  <option value="manager">Manager</option>
+                  <option value="admin">Admin</option>
+                </select>
+              </div>
+            {{/with}}
+              {{#if isManagerSelected}}
+                <div class="form-group">
+                  <label>Branch Reponcibility</label>
+                  {{#Multiselect name='branchList' class="form-control" options=Branches selected=selectedBranch}}
+                    <option value="{{ this._id }}" {{ attrs }}>{{this.name}}</option>
+                  {{/Multiselect}}
+                </div>
+              {{/if}}
+            </div>
+            <div class="box-footer">
+              <button type="submit" class="btn btn-primary">Update Account</button>
+            </div>
 
-
-          <!-- /.box-body -->
-
-          <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Add New Account</button>
-          </div>
-        </form>
-      </div>
-    </section>
+          </form>
+        </div>
+      </section>
+    </div>
   </div>
 </template>

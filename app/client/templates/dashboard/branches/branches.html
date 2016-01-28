@@ -1,44 +1,46 @@
 <template name="Branches">
   <div class="content-wrapper">
-    <section class="content-header">
-      <h1>Branches
-        <small>List Of Current Branches</small>
-      </h1>
-    </section>
-    <section class="content">
+    <div class="container">
+      <section class="content-header">
+        <h1>Branches
+          <small>List Of Current Branches</small>
+        </h1>
+      </section>
+      <section class="content">
+        <div class="box">
 
-      <div class="box">
-
-        <div class="box-header"><h3 class="box-title">Branch List</h3></div>
-        <div class="col-xs-12">
-          {{#linkTo route='dashboard.branch.add' class='btn btn-info pull-right'}}NEW Branch{{/linkTo}}
-        </div>
-        <div class="box-body no-padding">
-          <table class="table">
-            <thead>
-            <tr>
-              <th>Name</th>
-              <th>Location</th>
-              <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#each Branches}}
+          <div class="box-header"><h3 class="box-title">Branch List</h3></div>
+          <div class="col-xs-12">
+            {{#linkTo route='dashboard.branch.add' class='btn btn-info pull-right'}}NEW Branch{{/linkTo}}
+          </div>
+          <div class="box-body no-padding">
+            <table class="table">
+              <thead>
               <tr>
-                <td>{{this.name}}</td>
-                <td>{{this.location}}</td>
-                <td>
-                  <a class="btn btn-success">View Branch</a>
-                  {{#linkTo route='updateBranch' id=this._id class='btn btn-info'}}Update Branch{{/linkTo}}
-                  {{> quickRemoveButton collection="Branches" class='btn btn-danger' _id=this._id}}
-                </td>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Action</th>
               </tr>
-            {{/each}}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+              {{#each Branches}}
+                <tr>
+                  <td>{{this.name}}</td>
+                  <td>{{this.location}}</td>
+                  <td>
+                    <a class="btn btn-success">View Branch</a>
+                    {{#linkTo route='updateBranch' id=this._id class='btn btn-info'}}Update Branch{{/linkTo}}
+                    {{> quickRemoveButton collection="Branches" class='btn btn-danger' _id=this._id}}
+                  </td>
+                </tr>
+              {{/each}}
+              </tbody>
+            </table>
 
+          </div>
         </div>
-      </div>
-    </section>
+
+      </section>
+    </div>
   </div>
 </template>

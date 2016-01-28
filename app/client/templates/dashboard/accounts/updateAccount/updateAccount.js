@@ -1,5 +1,24 @@
+var errors = new ReactiveVar();
+let managerSelected = new ReactiveVar(true);
+let selectedBranch = new ReactiveVar([]);
 Template.updateAccount.helpers({
-  //add you helpers here
+  hasErrors: function () {
+    if (errors.get()) {
+      return errors.get();
+    }
+    return '';
+  },
+  isManagerSelected: function () {
+    return managerSelected.get();
+  },
+  selectedAccount: function () {
+    let currentSelectedAccount = Meteor.users.findOne({_id: Router.current().params.id});
+    if(currentSelectedAccount.profile.branchIds){
+      let branches = currentSelectedAccount.profile.branchIds;
+      selectedBranch.set(branches);
+    }
+    return currentSelectedAccount;
+  },
 });
 
 Template.updateAccount.events({
@@ -9,8 +28,6 @@ Template.updateAccount.events({
     errors.set();
     let formData = e.target;
     newUser = {
-      username: formData.username.value,
-      password: formData.password.value,
       profile: {
         firstName: formData.firstName.value,
         lastName: formData.lastName.value,
@@ -18,20 +35,6 @@ Template.updateAccount.events({
       }
     };
     let error = [];
-    if (!newUser.username) {
-      error.push('Username Required')
-    }
-    if (!newUser.password) {
-      error.push('Password Required')
-
-    }
-    if (!newUser.profile.firstName) {
-      error.push('firstName Required')
-
-    }
-    if (!newUser.profile.lastName) {
-      error.push('LastName Required');
-    }
     errors.set(error);
     if (error.length === 0) {
       if (formData.role.value === 'admin') {
@@ -46,17 +49,13 @@ Template.updateAccount.events({
         }
         console.log(newUser);
       }
-      Meteor.call('update.user', newUser, function (err, result) {
+      Meteor.call('update.account', newUser, function (err, result) {
         if (err) {
           error.push(err.reason);
           errors.set(error);
         }
       });
-
-
     }
-
-
   },
   'change #role': function (e) {
     console.log(e);
@@ -77,7 +76,8 @@ Template.updateAccount.events({
       currentBranches.slice(e.currentTarget.value);
     }
     selectedBranch.set(currentBranches);
-  }});
+  }
+});
 
 Template.updateAccount.onCreated(function () {
   //add your statement here

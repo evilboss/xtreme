@@ -1,83 +1,69 @@
 <template name="Services">
-    <div class="content-wrapper">
-        <section class="content-header">
-            <h1>
-                Services
-                <small>Current Services</small>
-            </h1>
-            <!--            <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                            <li class="active">Here</li>
-                        </ol>-->
-        </section>
-        <section class="content">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="box box-default">
-                        <div class="box-header with-border">
-                            <i class="fa fa-bookmark-o"></i>
+  <div class="content-wrapper">
+    <div class="container">
+      <section class="content-header">
+        <h1>
+          Services
+          <small>Current Services</small>
+        </h1>
+      </section>
+      <section class="content">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="box box-default">
+              <div class="box-header with-border">
+                <i class="fa fa-bookmark-o"></i>
 
-                            <h3 class="box-title">Service Menu</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <a href="{{ pathFor 'dashboard.services' }}">
-                                <div class="callout callout-info">
-                                    <h4>Services</h4>
-                                </div>
-                            </a>
-                            <a href="{{ pathFor 'dashboard.packages' }}">
-                                <div class="callout">
-                                    <h4>Packages</h4>
-                                </div>
-                            </a>
+                <h3 class="box-title">Service Menu</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <a href="{{ pathFor 'dashboard.services' }}">
+                  <div class="callout callout-info">
+                    <h4>Services</h4>
+                  </div>
+                </a>
+                <a href="{{ pathFor 'dashboard.packages' }}">
+                  <div class="callout">
+                    <h4>Packages</h4>
+                  </div>
+                </a>
 
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">List Of Single Services</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <table class="table table-bordered">
-                                <tbody>
-                                <tr>
-                                    <th>Service</th>
-                                    <th>Description</th>
-                                    <th>Price</th>
-                                    <th>Operations</th>
-                                </tr>
-                                {{#each Services}}
-                                    {{>ServiceInfo name=this.name description=this.description price=this.price id=this._id}}
-                                {{/each}}
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.box-body gi-->
-                        <div class="box-footer clearfix">
-                            <!--<ul class="pagination pagination-sm no-margin pull-right">
-                                <li><a href="#">«</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">»</a></li>
-                            </ul>-->
-                        </div>
-                    </div>
-                </div>
+              </div>
+              <!-- /.box-body -->
             </div>
-            <div class="row">
-
-
+          </div>
+          <div class="col-md-8">
+            <div class="box">
+              <div class="box-header with-border">
+                <h3 class="box-title">List Of Single Services</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <th>Service</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Operations</th>
+                  </tr>
+                  {{#each Services}}
+                    {{>ServiceInfo name=this.name description=this.description price=this.price id=this._id}}
+                  {{/each}}
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div class="row">
-                {{>ServiceCart}}
-            </div>
-{{>PrintPreview}}
-        </section>
+          </div>
+        </div>
+        <div class="row">
+        </div>
+        <div class="row">
+          {{>ServiceCart}}
+        </div>
+        {{>PrintPreview}}
+      </section>
     </div>
+  </div>
 </template>

@@ -7,7 +7,6 @@ DashboardController = RouteController.extend({
       this.subscribe('products'),
       this.subscribe('branches'),
       this.subscribe('users');
-
   },
   data: {
     Inventory: Inventory.find(),
@@ -20,7 +19,7 @@ DashboardController = RouteController.extend({
     Meta.setTitle('Dashboard');
   },
   action: function () {
-    this.render('Dashboard');
+    this.render('dashboard');
   },
   sales: function () {
     this.render('Sales');
@@ -36,7 +35,6 @@ DashboardController = RouteController.extend({
     this.render('UpdateItem');
   },
   /*services Controllers*/
-
   services: function () {
     this.render('Services');
   },
@@ -76,14 +74,15 @@ DashboardController = RouteController.extend({
   invoice: function () {
     this.render('Invoice')
   },
-  accountsAdd: function () {
-    this.render('AddAccounts');
-
-  },
   accounts: function () {
     this.render('Accounts');
   },
-
+  accountsAdd: function () {
+    this.render('AddAccounts');
+  },
+  updateAccounts:function(){
+    this.render('updateAccount');
+  },
   /*Branches Controllers*/
   branch: function () {
     this.render('Branches');
@@ -93,9 +92,18 @@ DashboardController = RouteController.extend({
   },
   updateBranch: function () {
     this.render('EditBranch');
+  },
+
+  /*Staff Controllers*/
+  staff:function(){
+    this.render('Staff');
+  },
+  addStaff:function(){
+    this.render('AddStaff');
+  },
+  updateStaff:function(){
+    this.render('UpdateStaff');
   }
-
-
 })
 ;
 

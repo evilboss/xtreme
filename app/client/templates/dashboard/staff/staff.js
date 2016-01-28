@@ -1,33 +1,33 @@
 /*****************************************************************************/
-/* Accounts: Event Handlers */
+/* Staff: Event Handlers */
 /*****************************************************************************/
-Template.Accounts.events({});
+Template.Staff.events({});
 
 /*****************************************************************************/
-/* Accounts: Helpers */
+/* Staff: Helpers */
 /*****************************************************************************/
-Template.Accounts.helpers({
-  managers: function () {
+Template.Staff.helpers({
+  staff: function () {
     let users = Meteor.users.find({}).fetch();
-    let managers = [];
+    let staff = [];
     _.forEach(users, function (user) {
-      if (Roles.userIsInRole(user._id, 'manager')) {
-         managers.push(user);
+      if (Roles.userIsInRole(user._id, 'staff')) {
+        staff.push(user);
       }
     });
-    return managers;
-  }
+    return staff;
+  },
 
 });
 
 /*****************************************************************************/
-/* Accounts: Lifecycle Hooks */
+/* Staff: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Accounts.onCreated(function () {
+Template.Staff.onCreated(function () {
 });
 
-Template.Accounts.onRendered(function () {
+Template.Staff.onRendered(function () {
 });
 
-Template.Accounts.onDestroyed(function () {
+Template.Staff.onDestroyed(function () {
 });

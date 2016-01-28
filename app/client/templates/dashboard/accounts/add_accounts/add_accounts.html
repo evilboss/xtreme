@@ -17,6 +17,7 @@
 
         <!-- Main content -->
         <section class="content">
+          <div class="container">
           {{#if hasErrors}}
             <div class="callout callout-danger">
               <h4>Warning!</h4>
@@ -64,7 +65,7 @@
                 {{#if isManagerSelected}}
                   <div class="form-group">
                     <label>Branch Reponcibility</label>
-                    {{#Multiselect name='branchList' class="form-control" options=Branches selected=selectedOptions }}
+                    {{#Multiselect name='branchList' class="form-control" options=Branches selected=selectedOptions}}
                       <option value="{{ this._id }}" {{ attrs }}>{{this.name}}</option>
                     {{/Multiselect}}
                   </div>
@@ -78,6 +79,7 @@
                 <button type="submit" class="btn btn-primary">Add New Account</button>
               </div>
             </form>
+          </div>
           </div>
         </section>
       </div>

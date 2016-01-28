@@ -2,7 +2,7 @@
  * Created by jrreyes on 27/01/16.
  */
 Meteor.methods({
-  'new.user': function (user) {
+  'new.account': function (user) {
     console.log('new user called');
     console.log(user);
     Accounts.createUser({
@@ -16,7 +16,7 @@ Meteor.methods({
       }
     });
   },
-  'update.user': function (user) {
+  "update.account": function (user) {
     console.log('new user called');
     console.log(user);
     Meteor.users.update({
