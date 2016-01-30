@@ -15,6 +15,7 @@ Template.Accounts.helpers({
          managers.push(user);
       }
     });
+    console.log(users);
     return managers;
   }
 

@@ -17,6 +17,7 @@ Template.updateAccount.helpers({
       let branches = currentSelectedAccount.profile.branchIds;
       selectedBranch.set(branches);
     }
+    console.log(currentSelectedAccount);
     return currentSelectedAccount;
   },
 });
@@ -24,32 +25,26 @@ Template.updateAccount.helpers({
 Template.updateAccount.events({
   'submit #updateAccountForm': function (e) {
     e.preventDefault();
-    console.log('registration called');
-    errors.set();
-    let formData = e.target;
-    newUser = {
-      profile: {
-        firstName: formData.firstName.value,
-        lastName: formData.lastName.value,
-        number: formData.number.value
-      }
-    };
+    console.log('update-account called');
+    var data = SimpleForm.processForm(event.target);
+
     let error = [];
     errors.set(error);
     if (error.length === 0) {
-      if (formData.role.value === 'admin') {
-        if (Admin.find({username: newUser.username}).count() === 0) {
-          Admin.insert({username: newUser.username});
+      if (data.role.value === 'admin') {
+        if (Admin.find({username: data.username}).count() === 0) {
+          Admin.insert({username: data.username});
         }
       }
-      else if (formData.role.value === 'manager') {
-        if (Managers.find({username: newUser.username}).count() === 0) {
+      else if (data.role.value === 'manager') {
+        if (Managers.find({username: data.username}).count() === 0) {
           newUser.profile.branchIds = selectedBranch.get();
           Managers.insert({username: newUser.username});
         }
-        console.log(newUser);
       }
-      Meteor.call('update.account', newUser, function (err, result) {
+      console.log(selectedBranch.get());
+      data.branchIds = selectedBranch.get();
+      Meteor.call('update.account', data, function (err, result) {
         if (err) {
           error.push(err.reason);
           errors.set(error);
