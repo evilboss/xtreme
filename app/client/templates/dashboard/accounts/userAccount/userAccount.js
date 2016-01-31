@@ -4,6 +4,12 @@ Template.userAccount.helpers({
   },
   getBranchId:function(branchId){
     return Branches.findOne({_id:branchId})._id;
+  },
+  isUserAdmin: function (id) {
+    return Roles.userIsInRole(id,'admin');
+  },
+  isSameUser:function(id){
+    return Meteor.userId() === id;
   }
 });
 

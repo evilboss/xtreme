@@ -25,19 +25,25 @@ Meteor.publish('branches', function () {
   var user = Meteor.users.findOne({
     _id: this.userId
   });
-  if (Roles.userIsInRole(user, ['admin'])) {
-    return Branches.find();
-  }else{
-    if(user.profile.branchIds){
-      var ids = user.profile.branchIds;
-      if(ids){
-        ids = ids.map(function(id) { return ObjectId(id); });
-        Branches.find({_id: {$in: ids}});
-      }
+  if (user) {
+    if (Roles.userIsInRole(user, ['admin'])) {
       return Branches.find();
+    } else {
+      if (user.profile) {
+        if (user.profile.branchIds) {
+          var ids = user.profile.branchIds;
+          if (ids) {
+            ids = ids.map(function (id) {
+              return ObjectId(id);
+            });
+            Branches.find({_id: {$in: ids}});
+          }
+          return Branches.find();
+        }
+      }
     }
-
   }
+
 });
 
 Meteor.publish('users', function () {
@@ -48,9 +54,8 @@ Meteor.publish('users', function () {
     return Meteor.users.find({}, {
       fields: {
         roles: 1,
-        username:1,
-        profile: 1,
-        branchIds:1,
+        username: 1,
+        profile: 1
       }
     });
   }

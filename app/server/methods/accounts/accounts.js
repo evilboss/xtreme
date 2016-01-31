@@ -3,8 +3,6 @@
  */
 Meteor.methods({
   'new.account': function (user) {
-    console.log('new user called');
-    console.log(user);
     Accounts.createUser({
       username: user.username,
       password: user.password,
@@ -17,8 +15,6 @@ Meteor.methods({
     });
   },
   'update.account': function (user) {
-    console.log('update user called');
-    console.log(user);
     let updateUser = Meteor.users.findOne({_id:user.id});
     console.log(updateUser);
     Meteor.users.update(updateUser, {
@@ -28,7 +24,9 @@ Meteor.methods({
           lastName: user.lastName,
           number: user.number,
           branchIds: user.branchIds,
-        }}
+        },
+      roles:[user.role]
+      }
     });
 
   }

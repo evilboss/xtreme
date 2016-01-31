@@ -1,12 +1,26 @@
+let onSignIn = function (error, state) {
+  if (!error) {
+    if (state === "signIn") {
+      console.log('signin completed');
+    }
+    if (state === "signUp") {
+      // Successfully registered
+      // ...
+    }
+  }
+};
+
 AccountsTemplates.configureRoute('signIn', {
-    layoutTemplate: 'loginLayout',
-    redirect: '/dashboard'
+  layoutTemplate: 'loginLayout',
+  redirect: '/dashboard'
 });
 AccountsTemplates.configureRoute('ensureSignedIn', {
-    layoutTemplate: 'loginLayout'
+  layoutTemplate: 'loginLayout'
 });
 AccountsTemplates.configure({
-    hideSignUpLink: true
+  hideSignUpLink: true,
+  onSubmitHook: onSignIn
+
 });
 var pwd = AccountsTemplates.removeField('password');
 AccountsTemplates.removeField('email');
@@ -22,9 +36,9 @@ AccountsTemplates.addFields([
 ]);
 
 AccountsTemplates.configure({
-    texts: {
-        title: {
-            signIn: "",
-        }
+  texts: {
+    title: {
+      signIn: "",
     }
+  }
 });

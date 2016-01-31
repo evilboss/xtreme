@@ -1,21 +1,26 @@
 <template name="userAccount">
   <tr>
     <td>{{username}}</td>
-    <td>{{profile.firstName}} {{this.profile.lastName}}</td>
+    <td> {{#linkTo route='updateAccounts' id=_id}}{{profile.firstName}} {{this.profile.lastName}}{{/linkTo}}</td>
     <td>{{roles}}</td>
     <td>
-      {{#if profile.branchIds}}
-        {{#each profile.branchIds}}
-          {{getBranchName this}},
-        {{/each}}
+      {{#if isUserAdmin _id}}
+        <p class="text-blue">ALL</p>
       {{else}}
-        <p class="text-red"> {{roles}} is Unasigned</p>
-        {{#linkTo route='updateAccounts' id=_id}}Assign Now{{/linkTo}}
+        {{#if profile.branchIds}}
+          {{#each profile.branchIds}}
+            {{getBranchName this}},
+          {{/each}}
+        {{else}}
+          <p class="text-red"> {{roles}} is Unasigned</p>
+          {{#linkTo route='updateAccounts' id=_id}}Assign Now{{/linkTo}}
+        {{/if}}
       {{/if}}
     </td>
     <td>
-      {{> quickRemoveButton collection="Meteor.users" class='btn btn-danger' _id=this._id}}
+      {{#unless isSameUser _id}}
+      {{> quickRemoveButton collection="Meteor.users" class='btn btn-danger' _id=_id}}
+      {{/unless}}
     </td>
   </tr>
-
 </template>

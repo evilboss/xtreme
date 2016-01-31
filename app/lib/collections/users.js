@@ -1,6 +1,7 @@
 Meteor.users.after.insert(function (userId, doc) {
   var adminlist = Admin.find().fetch();
   var managerList = Managers.find().fetch();
+  var staffList = Staff.find().fetch();
 
   if (doc.username) {
     for (var admin in adminlist) {
@@ -15,6 +16,13 @@ Meteor.users.after.insert(function (userId, doc) {
         break;
       }
     }
+    for (var staff in staffList) {
+      if (doc.username === staffList[staff].username) {
+        Meteor.users.update({_id: doc._id}, {$set: {roles: ['staff']}});
+        break;
+      }
+    }
+
   }
 });
 if (Meteor.isServer) {
