@@ -18,7 +18,9 @@ Customers.attachSchema(new SimpleSchema({
   },
   total: {
     type: Number,
-    optional: true
+    optional: true,
+    defaultValue: 0
+
   },
   createdAt: {
     type: Date,
@@ -45,7 +47,7 @@ Customers.attachSchema(new SimpleSchema({
     type: String
   },
   "items.$.qty": {
-    type: String
+    type: Number
   },
   "items.$.description": {
     type: String
@@ -74,7 +76,7 @@ Customers.before.update(function (userId, doc) {
       itemList.push({
         name: item.name,
         description: item.description,
-        qty: item.qty,
+        qty: parseInt(item.qty),
         price: item.price,
         type: item.type,
         subtotal: item.subtotal
@@ -99,7 +101,7 @@ if (Meteor.isClient) {
         itemList.push({
           name: item.name,
           description: item.description,
-          qty: item.qty,
+          qty: parseInt(item.qty),
           price: item.price,
           type: item.type,
           subtotal: item.subtotal

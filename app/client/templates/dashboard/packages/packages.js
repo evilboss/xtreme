@@ -13,7 +13,6 @@ Template.Packages.events({
             packages.qty=1;
             packages.subtotal = packages.price;
             Cart.insert(packages);
-
         }
     }
 });

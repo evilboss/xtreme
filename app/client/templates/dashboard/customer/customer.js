@@ -10,16 +10,14 @@ let clean = function (collection) {
 }
 Template.customer.helpers({
   currentCustomer: function () {
-    let customer = '';
+    let customer = Customers.findOne({_id: Router.current().params.id});
     if (Router.current().params.id) {
-      customer = Customers.findOne({_id: Router.current().params.id});
-      console.log(customer);
       if (customer) {
         if (customer.items) {
           _.each(customer.items, function (item) {
-            if (Cart.find({name: item.name}).count() === 0) {
-              Cart.insert(item);
-            }
+            let cartContents =Cart.find({name: item.name});
+            item.qty = parseInt(item.qty);
+            Cart.insert(item);
           });
         }
 
