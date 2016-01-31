@@ -32,8 +32,8 @@ Customers.attachSchema(new SimpleSchema({
       }
     }
   },
-  active:{
-    type:Boolean,
+  active: {
+    type: Boolean,
     defaultValue: true
   },
   items: {
@@ -64,7 +64,7 @@ Customers.attachSchema(new SimpleSchema({
 
 
 }));
-Customers.before.insert(function (userId, doc) {
+Customers.before.update(function (userId, doc) {
   if (Cart.find().count()) {
     let itemList = [];
     let items = Cart.find().fetch();
@@ -80,34 +80,54 @@ Customers.before.insert(function (userId, doc) {
         subtotal: item.subtotal
       });
     });
+    doc.branchId = Session.get('branch');
     doc.total = total;
     doc.items = itemList;
   }
   doc.staffId = userId;
-
-  console.log(doc);
   return doc;
 
 });
-/*
- Customers.after.insert(function (userId, doc) {
- console.log(doc);
- if (Cart.find().count()) {
- let itemList = [];
- let items = Cart.find().fetch();
- _.each(items, function (item) {
- itemList.push({
- name: item.name,
- description: item.description,
- qty: item.qty,
- price: item.price,
- type: item.type
- });
- });
- Meteor.call('customer.update', doc, itemList);
- }
- });
- */
+if (Meteor.isClient) {
+  Customers.before.insert(function (userId, doc) {
+    if (Cart.find().count()) {
+      let itemList = [];
+      let items = Cart.find().fetch();
+      let total = 0;
+      _.each(items, function (item) {
+        total += item.subtotal;
+        itemList.push({
+          name: item.name,
+          description: item.description,
+          qty: item.qty,
+          price: item.price,
+          type: item.type,
+          subtotal: item.subtotal
+        });
+      });
+      doc.total = total;
+      doc.items = itemList;
+    }
+    if (Session.get('branch')) {
+      doc.branchId = Session.get('branch');
+    } else {
+      doc.branchId = Meteor.user().profile.branchIds[0];
+    }
+    doc.staffId = userId;
+    return doc;
+
+  });
+  Customers.after.insert(function (userId, doc) {
+    let currentPath = Router.current().route.getName();
+    if(!currentPath.includes('customer')){
+      Router.go(currentPath+'.customer',{id:doc._id});
+    }
+  });
+
+
+}
+
+
 if (Meteor.isServer) {
   Customers.allow({
     insert: function (userId, doc) {

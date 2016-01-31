@@ -17,7 +17,9 @@
           {{/if}}
         </div>
         <div class="box-footer">
-          {{>PrintPreview}}
+          {{#if isManager}}
+            {{>PrintPreview}}
+          {{/if}}
         </div>
       </div>
 

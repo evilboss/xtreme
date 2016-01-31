@@ -15,7 +15,7 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           {{#if currentUser}}
-            {{#if Branches.count}}
+            {{#if Branches}}
               <li class="dropdown tasks-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                   <i class="fa fa-building-o"></i>
@@ -26,9 +26,8 @@
                     <div class="slimScrollDiv" style="height: auto">
                       <ul class="menu">
                         {{#each Branches}}
-
-                          <li>
-                            <a href="#">
+                          <li class="branch-item">
+                            <a value="{{this._id}}" href="#">
                               <h3>
                                 {{this.name}}
                                 <small class="pull-right">{{this.location}}</small>

@@ -32,15 +32,11 @@ Meteor.publish('branches', function () {
       if (user.profile) {
         if (user.profile.branchIds) {
           var ids = user.profile.branchIds;
-          if (ids) {
-            ids = ids.map(function (id) {
-              return ObjectId(id);
-            });
-            Branches.find({_id: {$in: ids}});
-          }
-          return Branches.find();
+          return Branches.find({_id: {$in: ids}});
+
         }
       }
+      return [];
     }
   }
 
@@ -59,6 +55,13 @@ Meteor.publish('users', function () {
       }
     });
   }
+  if (Roles.userIsInRole(user, ['manager'])) {
+    return Meteor.users.find({}, {
+      fields: {
+        profile: 1
+      }
+    });
+  }
   return [];
 });
 
@@ -67,5 +70,25 @@ Meteor.publish('staff', function () {
 });
 
 Meteor.publish('customers', function () {
-  return Customers.find();
+  var user = Meteor.users.findOne({
+    _id: this.userId
+  });
+  if (user) {
+    if (Roles.userIsInRole(user, ['admin'])) {
+      return Customers.find();
+    } else {
+      if (user.profile) {
+        if (user.profile.branchIds) {
+          if (Roles.userIsInRole(user, ['manager'])) {
+            var ids = user.profile.branchIds;
+            return Customers.find({branchId: {$in: ids}});
+          } else {
+            return Customers.find({staffId: user._id});
+
+          }
+        }
+      }
+      return [];
+    }
+  }
 });

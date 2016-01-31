@@ -10,30 +10,7 @@
       </section>
       <section class="content">
         <div class="row">
-          <div class="col-md-4">
-            <div class="box box-default">
-              <div class="box-header with-border">
-                <i class="fa fa-bookmark-o"></i>
-
-                <h3 class="box-title">Service Menu</h3>
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                <a href="{{ pathFor 'dashboard.services' }}">
-                  <div class="callout callout-info">
-                    <h4>Services</h4>
-                  </div>
-                </a>
-                <a href="{{ pathFor 'dashboard.packages' }}">
-                  <div class="callout">
-                    <h4>Packages</h4>
-                  </div>
-                </a>
-
-              </div>
-              <!-- /.box-body -->
-            </div>
-          </div>
+          {{>serviceMenu}}
           <div class="col-md-8">
             <div class="box">
               <div class="box-header with-border">

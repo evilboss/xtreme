@@ -13,55 +13,51 @@
             <div class='pull-right control-group'>
               <div class='clearfix'>
                 <button class="btn btn-default pull-right" id="daterange-btn">
-                  <i class="fa fa-calendar"></i> Date range picker
+                  <i class="fa fa-calendar"></i>Date range picker
                   <i class="fa fa-caret-down"></i>
                 </button>
               </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-s-12">
-            <div class="box box-solid box-warning">
-              <div class="box-header">
-                <h3 class="box-title"></h3>
-              </div>
-              <div class="box-body">
-                <div class="box-body table-responsive no-padding">
-                  <table class="table table-hover">
-                    <tbody>
-                    <tr>
-                      <th>Service name</th>
-                      <th>Date</th>
-                      <th>Price</th>
-                    </tr>
-                    <tr>
-                      <td>Hair Cut</td>
-                      <td>10-22-2015</td>
-                      <td>500</td>
-                    </tr>
-                    <tr>
-                      <td>Brazilian Blow Dry</td>
-                      <td>10-22-2015</td>
-                      <td>800</td>
-                    </tr>
-                    <tr>
-                      <td>Manicure</td>
-                      <td>10-22-2015</td>
-                      <td>50</td>
-                    </tr>
-                    <tr>
-                      <td>Pedecure</td>
-                      <td>11-7-2014</td>
-                      <td>100</td>
-                    </tr>
-                    </tbody>
-                  </table>
+        {{#each Branches}}
+          <div class="row">
+            <div class="col-s-12">
+              <div class="box box-solid box-warning">
+                <div class="box-header">
+                  <h3 class="box-title">{{this.name}}</h3>
+                </div>
+                <div class="box-body">
+                  <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                      <thead>
+                      <tr>
+                        <th>Service name</th>
+                        <th>Stylist Name</th>
+                        <th>Date</th>
+                        <th>Total Price</th>
+
+                      </tr>
+                      </thead>
+
+                      <tbody>
+                      {{#each customerByBranch this._id}}
+                        <tr>
+                          <th>{{this.name}}</th>
+                          <th>{{getUserName this.staffId}}</th>
+                          <th>{{formatDate this.createdAt}} {{this.createdAt}}</th>
+                          <th>{{this.total}}</th>
+
+                        </tr>
+                      {{/each}}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        {{/each}}
       </section>
     </div>
   </div>

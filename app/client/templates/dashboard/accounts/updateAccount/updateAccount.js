@@ -1,5 +1,5 @@
 var errors = new ReactiveVar();
-let managerSelected = new ReactiveVar(true);
+let managerSelected = new ReactiveVar(false);
 let selectedBranch = new ReactiveVar([]);
 Template.updateAccount.helpers({
   hasErrors: function () {
@@ -13,13 +13,20 @@ Template.updateAccount.helpers({
   },
   selectedAccount: function () {
     let currentSelectedAccount = Meteor.users.findOne({_id: Router.current().params.id});
-    if(currentSelectedAccount.profile.branchIds){
+    if (currentSelectedAccount.profile.branchIds) {
       let branches = currentSelectedAccount.profile.branchIds;
       selectedBranch.set(branches);
     }
-    console.log(currentSelectedAccount);
     return currentSelectedAccount;
   },
+  isSelectedRole: function (role, option) {
+    if (role[0] === 'manager' || role[0] === 'staff') {
+      managerSelected.set(true);
+    }
+    if (role[0] === option) {
+      return 'selected';
+    }
+  }
 });
 
 Template.updateAccount.events({
@@ -38,11 +45,14 @@ Template.updateAccount.events({
       }
       else if (data.role.value === 'manager') {
         if (Managers.find({username: data.username}).count() === 0) {
-          newUser.profile.branchIds = selectedBranch.get();
           Managers.insert({username: newUser.username});
         }
       }
-      console.log(selectedBranch.get());
+      else if (data.role.value === 'staff') {
+        if (Staff.find({username: data.username}).count() === 0) {
+          Staff.insert({username: newUser.username});
+        }
+      }
       data.branchIds = selectedBranch.get();
       Meteor.call('update.account', data, function (err, result) {
         if (err) {
@@ -53,7 +63,6 @@ Template.updateAccount.events({
     }
   },
   'change #role': function (e) {
-    console.log(e);
     if (e.currentTarget.value === 'admin') {
       managerSelected.set(false);
     } else {

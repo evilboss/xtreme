@@ -1,4 +1,19 @@
-Template.MasterLayout.helpers({});
+Template.MasterLayout.helpers({
+  availableBranches:function(){
+    if(Roles.userIsInRole(Meteor.userId(),'admin')){
+      return true;
+    }
+    if(Meteor.user()){
+      if(Meteor.user().profile){
+        if(Meteor.user().profile.branchIds){
+          Session.set('branch',Meteor.user().profile.branchIds[0]);
+          return Meteor.user().profile.branchIds[0];
+        }
+      }
+    }
+    return false;
+  }
+});
 
 Template.MasterLayout.events({
   'click [data-action=logout]': function () {

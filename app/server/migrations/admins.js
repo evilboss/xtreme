@@ -1,23 +1,23 @@
 Meteor.startup(function () {
   if (Admin.find({}).count() === 0) {
     console.log('Starting Admin Migration');
-    var defaultAdmins = ['admin'];
-    for (var admins in defaultAdmins) {
-      var admin = {username: defaultAdmins[admins]};
+    let defaultAdmins = ['admin'];
+    for (let admins in defaultAdmins) {
+      let admin = {username: defaultAdmins[admins]};
       Admin.insert(admin);
     }
   }
   if (Managers.find({}).count() === 0) {
-    var defaultManagers = ['main'];
-    for (var managers in defaultManagers) {
-      var manager = {username: defaultManagers[managers]};
+    let defaultManagers = ['main'];
+    for (let managers in defaultManagers) {
+      let manager = {username: defaultManagers[managers]};
       Managers.insert(manager);
     }
   }
   if (Staff.find({}).count() === 0) {
-    var defaultStaffs = ['staff1'];
-    for (var staffs in defaultStaffs) {
-      var staff = {username: defaultStaffs[staffs]};
+    let defaultStaffs = ['staff1'];
+    for (let staffs in defaultStaffs) {
+      let staff = {username: defaultStaffs[staffs]};
       Staff.insert(staff);
     }
   }

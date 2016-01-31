@@ -1,13 +1,12 @@
 /*****************************************************************************/
 /* AddAccounts: Event Handlers */
 /*****************************************************************************/
-var errors = new ReactiveVar();
-let managerSelected = new ReactiveVar(true);
+let errors = new ReactiveVar();
+let managerSelected = new ReactiveVar(false);
 let selectedBranch = new ReactiveVar([]);
 Template.AddAccounts.events({
   'submit #registration': function (e) {
     e.preventDefault();
-    console.log('registration called');
     errors.set();
     let formData = e.target;
     newUser = {
@@ -64,7 +63,6 @@ Template.AddAccounts.events({
 
   },
   'change #role': function (e) {
-    console.log(e);
     if (e.currentTarget.value === 'admin') {
       managerSelected.set(false);
     } else {

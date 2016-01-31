@@ -16,7 +16,6 @@ Meteor.methods({
   },
   'update.account': function (user) {
     let updateUser = Meteor.users.findOne({_id:user.id});
-    console.log(updateUser);
     Meteor.users.update(updateUser, {
       $set: {
         profile: {

@@ -1,7 +1,7 @@
 <template name="MasterLayout">
   {{> sAlert}}
   {{> _header}}
-  {{#if Branches.count}}
+  {{#if availableBranches}}
     {{> yield}}
   {{else}}
     {{>NotActive}}

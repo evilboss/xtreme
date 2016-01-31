@@ -1,6 +1,9 @@
 /*****************************************************************************/
 /* Pos: Event Handlers */
 /*****************************************************************************/
+let startDate = new ReactiveVar();
+let endDate = new ReactiveVar();
+
 Template.Pos.events({
 });
 
@@ -8,6 +11,15 @@ Template.Pos.events({
 /* Pos: Helpers */
 /*****************************************************************************/
 Template.Pos.helpers({
+  customerByBranch:function(branchId){
+    return Customers.find({
+      branchId:branchId,
+      createdAt:{$gte:startDate.get(),$lte:endDate.get()}
+    });
+  },
+  formatDate:function(date){
+    return moment(date).format('ll');
+  }
 });
 
 /*****************************************************************************/
@@ -21,6 +33,10 @@ Template.Pos.rendered = function () {
     $(function() {
         function cb(start, end) {
             $('#daterange-btn ').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+          console.log('change triggered');
+          startDate.set(moment(start).toDate());
+          endDate.set(moment(end).toDate());
         }
         cb(moment().subtract(29, 'days'), moment());
 

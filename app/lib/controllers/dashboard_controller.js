@@ -114,10 +114,13 @@ DashboardController = RouteController.extend({
     this.render('customerList');
   },
   customerPackages:function(){
-    this.render('Products');
+    this.render('Packages');
   },
   customerServices:function(){
     this.render('Services');
+  },
+  customerProducts:function(){
+    this.render('Products');
   }
 
 
