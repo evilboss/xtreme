@@ -6,7 +6,8 @@ DashboardController = RouteController.extend({
       this.subscribe('packages'),
       this.subscribe('products'),
       this.subscribe('branches'),
-      this.subscribe('users');
+      this.subscribe('users'),
+      this.subscribe('customers');
   },
   data: {
     Inventory: Inventory.find(),
@@ -14,6 +15,7 @@ DashboardController = RouteController.extend({
     Packages: Packages.find(),
     Products: Products.find(),
     Branches: Branches.find(),
+    Customers: Customers.find(),
   },
   onAfterAction: function () {
     Meta.setTitle('Dashboard');
@@ -106,7 +108,19 @@ DashboardController = RouteController.extend({
   },
   updateStaff:function(){
     this.render('UpdateStaff');
+  },
+  /*Customer Controllers*/
+  customersList:function(){
+    this.render('customerList');
+  },
+  customerPackages:function(){
+    this.render('Products');
+  },
+  customerServices:function(){
+    this.render('Services');
   }
+
+
 })
 ;
 

@@ -65,3 +65,7 @@ Meteor.publish('users', function () {
 Meteor.publish('staff', function () {
   return Staff.find();
 });
+
+Meteor.publish('customers', function () {
+  return Customers.find();
+});

@@ -1,0 +1,43 @@
+<template name="customerList">
+
+  <div class="content-wrapper" style="min-height: 1036px;">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        My Customers
+      </h1>
+    </section>
+    <div class="container">
+      <section class="content">
+        <div class="row">
+          {{#each customerList}}
+            <div class="col-md-4">
+              {{#linkTo route='dashboard.customer.services' id=this._id}}
+                <div class="box box-widget widget-user">
+                  <div class="widget-user-header bg-aqua-active">
+                    <small class="time pull-right"><i class="fa fa-clock-o"></i> {{livestamp this.createdAt}}</small>
+                    <small style="color: white">Customer Name</small>
+                    <h5 class="widget-user-username"> {{this.name}}</h5>
+                    <h5 class="widget-user-desc">Serving Stylist: {{this.staffId}}</h5>
+                  </div>
+                  <div class="box-footer">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="description-block">
+                          <h5 class="description-header">Total Bill</h5>
+
+                          <h2 class="description-text">{{this.total}}</h2>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{/linkTo}}
+            </div>
+          {{/each}}
+        </div>
+      </section>
+    </div>
+  </div>
+</template>

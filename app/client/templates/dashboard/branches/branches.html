@@ -29,8 +29,10 @@
                   <td>{{this.location}}</td>
                   <td>
                     <a class="btn btn-success">View Branch</a>
-                    {{#linkTo route='updateBranch' id=this._id class='btn btn-info'}}Update Branch{{/linkTo}}
-                    {{> quickRemoveButton collection="Branches" class='btn btn-danger' _id=this._id}}
+                    {{#linkTo route='updateBranch' id=this._id class='btn btn-info'}}<i class="fa refresh"></i>Update Branch{{/linkTo}}
+                    {{#quickRemoveButton collection="Branches" class='btn btn-danger' _id=this._id}}
+                      <i class="fa fa-trash"></i>
+                    {{/quickRemoveButton}}
                   </td>
                 </tr>
               {{/each}}

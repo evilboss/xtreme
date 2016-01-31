@@ -26,6 +26,7 @@ check@1.0.6
 clubfest:raphael@1.0.0
 cmather:handlebars-server@0.2.0
 coffeescript@1.0.9
+copleykj:livestamp@1.1.7
 cunneen:mailgun@0.9.1
 dburles:collection-helpers@1.0.3
 dburles:factory@0.3.10
@@ -62,6 +63,7 @@ iron:router@1.0.9
 iron:url@1.0.9
 joshowens:simple-form@0.2.1
 jquery@1.11.4
+juliancwirko:s-alert@3.1.4
 launch-screen@1.0.4
 less@2.5.0_2
 livedata@1.0.15

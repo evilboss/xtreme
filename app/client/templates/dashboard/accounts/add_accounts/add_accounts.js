@@ -46,13 +46,16 @@ Template.AddAccounts.events({
           newUser.profile.branchIds = selectedBranch.get();
           Managers.insert({username: newUser.username});
         }
-        console.log(newUser);
       }
       Meteor.call('new.account', newUser, function (err, result) {
         if (err) {
           error.push(err.reason);
           errors.set(error);
+        }else{
+          Router.go('/dashboard/accounts');
+
         }
+
       });
 
 

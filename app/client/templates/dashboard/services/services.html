@@ -1,6 +1,6 @@
 <template name="Services">
   <div class="content-wrapper">
-{{>newCustomer}}
+    {{>customer}}
     <div class="container">
       <section class="content-header">
         <h1>
@@ -58,13 +58,9 @@
             </div>
           </div>
         </div>
-        <div class="row">
-        </div>
-        <div class="row">
-          {{>ServiceCart}}
-        </div>
-        {{>PrintPreview}}
       </section>
+
     </div>
+    {{>ServiceCart}}
   </div>
 </template>

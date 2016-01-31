@@ -8,7 +8,6 @@ Template.Services.events({
         service.type = 'Service';
         var alreadyAdded = Cart.findOne({_id:e.currentTarget.value});
         if(alreadyAdded){
-            console.log(service+'is already added');
             Cart.update(alreadyAdded, {$inc: {qty: 1,subtotal:service.price}});
         }else{
             service.qty=1;

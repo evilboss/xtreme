@@ -12,14 +12,16 @@
             {{getBranchName this}},
           {{/each}}
         {{else}}
-          <p class="text-red"> {{roles}} is Unasigned</p>
+          <small class="text-red">Unassigned</small>
           {{#linkTo route='updateAccounts' id=_id}}Assign Now{{/linkTo}}
         {{/if}}
       {{/if}}
     </td>
     <td>
       {{#unless isSameUser _id}}
-      {{> quickRemoveButton collection="Meteor.users" class='btn btn-danger' _id=_id}}
+      {{#quickRemoveButton collection="Meteor.users" class='btn btn-danger' _id=_id}}
+        <i class="fa fa-trash"></i>
+      {{/quickRemoveButton}}
       {{/unless}}
     </td>
   </tr>

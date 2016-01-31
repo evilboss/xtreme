@@ -1,4 +1,4 @@
-<template name="newCustomer">
+<template name="customer">
   <div class="container">
     <section class="content-header">
       <h1>Customer</h1>
@@ -8,8 +8,9 @@
         <div class="box-header with-border">
         </div>
         <div class="box-body">
-          {{> quickForm collection="Cart" id="insertCartForm" type="insert" buttonContent="Add New Customer" omitFields="createdAt"}}
+          {{> quickForm collection="Customers" id="insertCustomersForm" type="insert" buttonContent="Add New Customer" omitFields="createdAt,branchId,staffId,items,total,active"}}
         </div>
-      </div>    </section>
+      </div>
+    </section>
   </div>
 </template>
