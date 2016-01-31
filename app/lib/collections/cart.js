@@ -1,5 +1,10 @@
 Cart = new Mongo.Collection('cart');
 Cart.attachSchema(new SimpleSchema({
+  "name": {
+    type: String,
+    label: "Customer name",
+    optional:false
+  },
   createdAt: {
     type: Date,
     autoValue: function () {

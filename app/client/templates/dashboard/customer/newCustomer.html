@@ -1,0 +1,15 @@
+<template name="newCustomer">
+  <div class="container">
+    <section class="content-header">
+      <h1>Customer</h1>
+    </section>
+    <section class="content">
+      <div class="box box-solid">
+        <div class="box-header with-border">
+        </div>
+        <div class="box-body">
+          {{> quickForm collection="Cart" id="insertCartForm" type="insert" buttonContent="Add New Customer" omitFields="createdAt"}}
+        </div>
+      </div>    </section>
+  </div>
+</template>
