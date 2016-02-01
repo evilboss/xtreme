@@ -15,7 +15,6 @@ Template.customer.helpers({
           let cartContents = Cart.findOne({name: item.name});
           if (cartContents) {
             cartContents.qty+=item.qty;
-            console.log(cartContents.qty);
             Cart.update(cartContents);
           } else {
             item.qty = parseInt(item.qty);

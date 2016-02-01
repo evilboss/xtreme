@@ -34,7 +34,6 @@ Template.Pos.rendered = function () {
         function cb(start, end) {
             $('#daterange-btn ').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 
-          console.log('change triggered');
           startDate.set(moment(start).toDate());
           endDate.set(moment(end).toDate());
         }
