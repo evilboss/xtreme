@@ -2,14 +2,21 @@
   <div class="content-wrapper">
     <section class="content-header">
       <h1>Branches
-        <small>Add new Branch</small>
+        <small>Update Branch</small>
       </h1>
 
     </section>
     <section class="content">
       {{error}}
-      <div class="box">
-        {{> quickForm collection="Branches" doc =selectedBranch type="update" id="updateBranchForm" buttonContent="Update Branch"}}
+      <div class="container">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Update BRANCH</h3>
+          </div>
+          <div class="box-body">
+            {{> quickForm collection="Branches" doc =selectedBranch type="update" id="updateBranchForm" buttonContent="Update Branch"}}
+          </div>
+        </div>
       </div>
     </section>
   </div>
