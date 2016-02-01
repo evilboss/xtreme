@@ -10,10 +10,6 @@ Inventory.attachSchema(new SimpleSchema({
   description: {
     type: String,
     label: 'Description'
-  },
-  volume: {
-    type: Number,
-    label: "Volume"
   }
 }));
 
