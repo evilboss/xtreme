@@ -7,7 +7,8 @@ Template.Services.events({
     let customer = Customers.findOne({_id: Router.current().params.id});
     var service = Services.findOne({_id: e.currentTarget.value})
     service.type = 'Service';
-    var alreadyAdded = Cart.findOne({_id: e.currentTarget.value});
+    console.log(service);
+    var alreadyAdded = Cart.findOne({name: service.name});
     if (alreadyAdded) {
       Cart.update(alreadyAdded, {$inc: {qty: 1, subtotal: service.price}});
     } else {

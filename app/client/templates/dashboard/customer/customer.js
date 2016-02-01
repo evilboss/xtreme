@@ -1,7 +1,5 @@
 let clean = function (collection) {
   if (collection) {
-
-    // clean items
     _.each(collection.find().fetch(), function (item) {
       collection.remove({_id: item._id});
     });
@@ -11,19 +9,23 @@ let clean = function (collection) {
 Template.customer.helpers({
   currentCustomer: function () {
     let customer = Customers.findOne({_id: Router.current().params.id});
-    if (Router.current().params.id) {
-      if (customer) {
-        if (customer.items) {
-          _.each(customer.items, function (item) {
-            let cartContents =Cart.find({name: item.name});
+    if (customer) {
+      if (customer.items) {
+        _.each(customer.items, function (item) {
+          let cartContents = Cart.findOne({name: item.name});
+          if (cartContents) {
+            cartContents.qty+=item.qty;
+            console.log(cartContents.qty);
+            Cart.update(cartContents);
+          } else {
             item.qty = parseInt(item.qty);
             Cart.insert(item);
-          });
-        }
-
+          }
+        });
       }
     }
-    return Customers.findOne({_id: Router.current().params.id});
+
+    return customer;
   }
 });
 

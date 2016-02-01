@@ -12,28 +12,26 @@ Template.ServiceInvoiceItem.events({
       Cart.update(serviceToRemove, {$inc: {qty: -1, subtotal: -serviceToRemove.price}});
     }
     if (customer) {
-      if (!Cart.find().count()===0) {
-        let itemList = [];
-        let items = Cart.find().fetch();
-        let total = 0;
-        _.each(items, function (item) {
-          total += item.subtotal;
-          itemList.push({
-            name: item.name,
-            description: item.description,
-            qty: parseInt(item.qty),
-            price: item.price,
-            type: item.type,
-            subtotal: item.subtotal
-          });
+      let itemList = [];
+      let items = Cart.find().fetch();
+      let total = 0;
+      _.each(items, function (item) {
+        total += item.subtotal;
+        itemList.push({
+          name: item.name,
+          description: item.description,
+          qty: parseInt(item.qty),
+          price: item.price,
+          type: item.type,
+          subtotal: item.subtotal
         });
-        customer.total = total;
-        customer.items = itemList;
-      }
+      });
+      customer.total = total;
+      customer.items = itemList;
       Customers.update(customer._id, {
           $set: {
-            items:customer.items,
-            total:customer.total
+            items: customer.items,
+            total: customer.total
           }
         }
       );

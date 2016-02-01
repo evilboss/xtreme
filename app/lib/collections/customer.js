@@ -66,30 +66,7 @@ Customers.attachSchema(new SimpleSchema({
 
 
 }));
-Customers.before.update(function (userId, doc) {
-  if (Cart.find().count()) {
-    let itemList = [];
-    let items = Cart.find().fetch();
-    let total = 0;
-    _.each(items, function (item) {
-      total += item.subtotal;
-      itemList.push({
-        name: item.name,
-        description: item.description,
-        qty: parseInt(item.qty),
-        price: item.price,
-        type: item.type,
-        subtotal: item.subtotal
-      });
-    });
-    doc.branchId = Session.get('branch');
-    doc.total = total;
-    doc.items = itemList;
-  }
-  doc.staffId = userId;
-  return doc;
 
-});
 if (Meteor.isClient) {
   Customers.before.insert(function (userId, doc) {
     if (Cart.find().count()) {

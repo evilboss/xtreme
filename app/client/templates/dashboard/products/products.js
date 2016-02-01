@@ -2,27 +2,25 @@
 /* Products: Event Handlers */
 /*****************************************************************************/
 Template.Products.events({
-    'click [data-action=availProduct]':function(e){
-        e.preventDefault();
-        var product = Products.findOne({_id:e.currentTarget.value})
-        product.type = 'Product';
-        var alreadyAdded = Cart.findOne({_id:e.currentTarget.value});
-        if(alreadyAdded){
-            Cart.update(alreadyAdded, {$inc: {qty: 1,subtotal:product.price}});
-        }else{
-            product.qty=1;
-            product.subtotal = product.price;
-            Cart.insert(product);
-        }
+  'click [data-action=availProduct]': function (e) {
+    e.preventDefault();
+    var product = Products.findOne({_id: e.currentTarget.value})
+    product.type = 'Product';
+    var alreadyAdded = Cart.findOne({name: product.name});
+    if (alreadyAdded) {
+      Cart.update(alreadyAdded, {$inc: {qty: 1, subtotal: product.price}});
+    } else {
+      product.qty = 1;
+      product.subtotal = product.price;
+      Cart.insert(product);
     }
+  }
 });
 
 /*****************************************************************************/
 /* Products: Helpers */
 /*****************************************************************************/
-Template.Products.helpers({
-
-});
+Template.Products.helpers({});
 
 /*****************************************************************************/
 /* Products: Lifecycle Hooks */
