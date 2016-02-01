@@ -14,7 +14,7 @@
           {{#each customerList}}
             <div class="col-md-4">
               {{#linkTo route='dashboard.services.customer' id=this._id}}
-                <div class="widget-user-header bg-aqua-active">
+                <div class="widget-user-header bg-red-gradient">
                   <div class="container">
                     <small class="time pull-right"><i class="fa fa-clock-o"></i> {{livestamp this.createdAt}}</small>
                     <h3 class="widget-user-username truncate">Customer Name: {{this.name}}</h3>

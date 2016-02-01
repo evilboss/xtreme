@@ -8,25 +8,27 @@
         </h1>
       </section>
       <section class="content">
-        <div class="box">
-          <div class="box-header with-border">
-            <h3 class="box-title">Inventory</h3>
-          </div>
-          <div class="box-body">
-            <table class="table table-bordered">
-              <tbody>
-              <tr>
-                <th>Items</th>
-                <th>Description</th>
-                <th>Quantity</th>
-                <th>Sales Price</th>
-                <th>Operations</th>
-              </tr>
-              {{#each Inventory}}
-                {{>ItemInfo name=this.name description=this.description quantity=this.quantity id=this._id salesprice=this.salesprice}}
-              {{/each}}
-              </tbody>
-            </table>
+        <div class="container">
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Inventory</h3>
+            </div>
+            <div class="box-body">
+              <table class="table table-bordered">
+                <tbody>
+                <tr>
+                  <th>Item Name</th>
+                  <th>Description</th>
+                  <th>Quantity</th>
+                  <th>Sales Price</th>
+                  <th>Operations</th>
+                </tr>
+                {{#each Inventory}}
+                  {{>ItemInfo name=this.name description=this.description quantity=this.quantity id=this._id salesprice=this.salesprice}}
+                {{/each}}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>

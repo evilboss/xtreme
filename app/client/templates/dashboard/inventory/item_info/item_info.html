@@ -5,8 +5,8 @@
     <td><span class="badge bg-red">{{quantity}}</span></td>
     <td><span class="badge bg-red">{{salesprice}}</span></td>
     <td>
-      {{#linkTo route='updateInventory' id=id class='btn btn-primary'}}<i class="fa refresh"></i>Update{{/linkTo}}
-      {{#quickRemoveButton collection="Inventory" class='btn red' _id=id}}
+      {{#linkTo route='updateInventory' id=id class='btn btn-primary'}}<i class="fa fa-refresh"></i>{{/linkTo}}
+      {{#quickRemoveButton collection="Inventory" class='btn btn-danger' _id=id}}
         <i class="fa fa-trash"></i>
       {{/quickRemoveButton}}
     </td>

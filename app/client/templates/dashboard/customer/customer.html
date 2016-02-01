@@ -9,11 +9,11 @@
         </div>
         <div class="box-body">
           {{#if currentCustomer}}
-            <div class="alert alert-info">
+            <div class="alert alert-danger">
               <h3><i class="icon fa fa-user"></i> {{currentCustomer.name}}</h3>
             </div>
           {{else}}
-            {{> quickForm collection="Customers" id="insertCustomersForm" type="insert" buttonContent="Add New Customer" omitFields="createdAt,branchId,staffId,items,total,active"}}
+            {{> quickForm collection="Customers" id="insertCustomersForm" type="insert" buttonClasses="btn btn-danger" buttonContent="Add New Customer" omitFields="createdAt,branchId,staffId,items,total,active"}}
           {{/if}}
         </div>
       </div>

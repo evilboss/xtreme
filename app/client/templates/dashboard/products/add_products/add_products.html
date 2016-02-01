@@ -6,11 +6,11 @@
             <small>Add Product</small>
         </section>
           <section class="content">
-            <div class="box box-solid">
+            <div class="box box-solid box-danger">
               <div class="box-header with-border">
               </div>
               <div class="box-body">
-            {{> quickForm collection="Products" id="insertProductForm" type="insert" buttonContent="Add New Product"}}
+                {{> quickForm collection="Products" id="insertProductForm" type="insert" buttonClasses="btn btn-danger" buttonContent="Add New Product"}}
               </div>
             </div>
         </section>

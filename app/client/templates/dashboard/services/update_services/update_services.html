@@ -3,16 +3,9 @@
         <section class="content-header">
             <h1>Update Service in Store</h1>
             <small><i class="fa refresh"></i>Update Service</small>
-            <!--            <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                            <li class="active">Here</li>
-                        </ol>-->
         </section>
         <section class="content">
-
-            {{> quickForm collection="Services" doc =selectedItem type="update" id="updateServiceForm" buttonContent="Update Service"}}
-
-
+          {{> quickForm collection="Services" doc =selectedItem type="update" id="updateServiceForm" buttonClasses="btn btn-danger" buttonContent="Update Service"}}
         </section>
     </div>
 </template>

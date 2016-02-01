@@ -121,6 +121,11 @@ DashboardController = RouteController.extend({
   },
   customerProducts:function(){
     this.render('Products');
+  },
+
+  /*Stocks Controllers*/
+  stocks: function () {
+    this.render('stocks');
   }
 
 

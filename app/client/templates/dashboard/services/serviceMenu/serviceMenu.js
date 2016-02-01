@@ -1,7 +1,14 @@
 Template.serviceMenu.helpers({
   isActiveButton: function (activeRoute) {
     if (Router.current().route.getName() === activeRoute) {
-      return 'callout-info'
+      return 'callout-danger'
+    }
+  },
+  isNotActiveButton: function (activeRoute) {
+    if (Router.current().route.getName() === activeRoute) {
+      return ''
+    } else {
+      return 'text-red';
     }
   },
   hasCustomer: function () {

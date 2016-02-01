@@ -1,6 +1,6 @@
 <template name="serviceMenu">
   <div class="col-md-4">
-    <div class="box box-default">
+    <div class="box box-danger">
       <div class="box-header with-border">
         <i class="fa fa-bookmark-o"></i>
 
@@ -11,42 +11,36 @@
         {{#if hasCustomer}}
           {{#linkTo route='dashboard.services.customer' id=hasCustomer._id}}
             <div class="callout {{isActiveButton 'dashboard.services.customer'}}">
-              <h4>Services</h4>
+              <h4 class="{{isNotActiveButton 'dashboard.services.customer'}}">Services</h4>
             </div>
           {{/linkTo}}
           {{#linkTo route='dashboard.packages.customer' id=hasCustomer._id}}
             <div class="callout {{isActiveButton 'dashboard.packages.customer'}}">
-              <h4>Services</h4>
+              <h4 class="{{isNotActiveButton 'dashboard.packages.customer'}}">Services</h4>
             </div>
           {{/linkTo}}
           {{#linkTo route='dashboard.products.customer' id=hasCustomer._id}}
             <div class="callout {{isActiveButton 'dashboard.products.customer'}}">
-              <h4>Services</h4>
+              <h4 class="{{isNotActiveButton 'dashboard.products.customer'}}">Services</h4>
             </div>
           {{/linkTo}}
-
         {{else}}
-
           <a href="{{ pathFor 'dashboard.services' }}">
             <div class="callout {{isActiveButton 'dashboard.services'}}">
-              <h4>Services</h4>
+              <h4 class="{{isNotActiveButton 'dashboard.services'}}">Services</h4>
             </div>
           </a>
           <a href="{{ pathFor 'dashboard.packages' }}">
             <div class="callout {{isActiveButton 'dashboard.packages'}}">
-              <h4>Packages</h4>
+              <h4 class="{{isNotActiveButton 'dashboard.packages'}}">Packages</h4>
             </div>
           </a>
           <a href="{{ pathFor 'dashboard.products' }}">
             <div class="callout {{isActiveButton 'dashboard.products'}}">
-              <h4>Products</h4>
+              <h4 class="{{isNotActiveButton 'dashboard.products'}}">Products</h4>
             </div>
           </a>
-
-
         {{/if}}
-
-
       </div>
       <!-- /.box-body -->
     </div>
