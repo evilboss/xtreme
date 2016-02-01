@@ -12,3 +12,8 @@ span .input-group-btn{
 .typeahead .form-control .tt-input{
     border:none;
 }
+
+.branch-selector {
+  color: red;
+  cursor: hand;
+}

@@ -19,7 +19,7 @@
                     <small class="time pull-right"><i class="fa fa-clock-o"></i> {{livestamp this.createdAt}}</small>
                     <h3 class="widget-user-username truncate">Customer Name: {{this.name}}</h3>
                     <h5 class="widget-user-desc">Serving Stylist: {{getUserName this.staffId}}</h5>
-                    <h5 class="widget-user-desc">branch Stylist: {{this.branchId}}</h5>
+                    <h5 class="widget-user-desc">Serving Branch: {{getBranchName this.branchId}}</h5>
                     <h5 class="widget-user-desc">Total: <strong>{{this.total}}</strong></h5>
                   </div>
                 </div>

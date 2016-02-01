@@ -2,42 +2,45 @@
   <div class="col-md-4">
     <div class="box box-danger">
       <div class="box-header with-border">
-        <i class="fa fa-bookmark-o"></i>
+        <i class="fa fa-bookmark-o text-red"></i>
 
-        <h3 class="box-title">Service Menu</h3>
+        <h3 class="box-title text-red">Service Menu</h3>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
         {{#if hasCustomer}}
           {{#linkTo route='dashboard.services.customer' id=hasCustomer._id}}
             <div class="callout {{isActiveButton 'dashboard.services.customer'}}">
-              <h4 class="{{isNotActiveButton 'dashboard.services.customer'}}">Services</h4>
+              <h4 class="{{isNotActiveButton 'dashboard.services.customer'}}"><i class="fa fa-scissors"></i> Services
+              </h4>
             </div>
           {{/linkTo}}
           {{#linkTo route='dashboard.packages.customer' id=hasCustomer._id}}
             <div class="callout {{isActiveButton 'dashboard.packages.customer'}}">
-              <h4 class="{{isNotActiveButton 'dashboard.packages.customer'}}">Packages</h4>
+              <h4 class="{{isNotActiveButton 'dashboard.packages.customer'}}"><i class="fa fa-dropbox"></i> Packages
+              </h4>
             </div>
           {{/linkTo}}
           {{#linkTo route='dashboard.products.customer' id=hasCustomer._id}}
             <div class="callout {{isActiveButton 'dashboard.products.customer'}}">
-              <h4 class="{{isNotActiveButton 'dashboard.products.customer'}}">Products</h4>
+              <h4 class="{{isNotActiveButton 'dashboard.products.customer'}}"><i class="fa fa-shopping-cart"></i>
+                Products</h4>
             </div>
           {{/linkTo}}
         {{else}}
           <a href="{{ pathFor 'dashboard.services' }}">
             <div class="callout {{isActiveButton 'dashboard.services'}}">
-              <h4 class="{{isNotActiveButton 'dashboard.services'}}">Services</h4>
+              <h4 class="{{isNotActiveButton 'dashboard.services'}}"><i class="fa fa-scissors"></i> Services</h4>
             </div>
           </a>
           <a href="{{ pathFor 'dashboard.packages' }}">
             <div class="callout {{isActiveButton 'dashboard.packages'}}">
-              <h4 class="{{isNotActiveButton 'dashboard.packages'}}">Packages</h4>
+              <h4 class="{{isNotActiveButton 'dashboard.packages'}}"><i class="fa fa-dropbox"></i> Packages</h4>
             </div>
           </a>
           <a href="{{ pathFor 'dashboard.products' }}">
             <div class="callout {{isActiveButton 'dashboard.products'}}">
-              <h4 class="{{isNotActiveButton 'dashboard.products'}}">Products</h4>
+              <h4 class="{{isNotActiveButton 'dashboard.products'}}"><i class="fa fa-shopping-cart"></i> Products</h4>
             </div>
           </a>
         {{/if}}

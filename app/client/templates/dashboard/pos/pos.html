@@ -21,35 +21,21 @@
           </div>
           <div class="col-s-6">
             <div class='pull-right control-group'>
-              <li class="dropdown menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <i class="fa fa-building-o"></i>
-                </a>
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedBranch}}
+                  <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li class="header">Select Branch</li>
-                  <li>
-                    <div class="slimScrollDiv" style="height: auto">
-                      <ul class="menu">
-                        {{#each Branches}}
-                          <li class="branch-item">
-                            <a value="{{this._id}}" href="#">
-                              <h3>
-                                {{this.name}}
-                                <small class="pull-right">{{this.location}}</small>
-                              </h3>
-                            </a>
-                          </li>
-                        {{/each}}
-                      </ul>
-                      <div class="slimScrollBar"></div>
-                    </div>
-                  </li>
+                  {{#each Branches}}
+                    <li><a href="#" class="branch-selector" data-name="{{this.name}}">{{this.name}}</a></li>
+                  {{/each}}
+                  <li><a href="#" class="branch-selector">All</a></li>
                 </ul>
-              </li>
+              </div>
+
             </div>
           </div>
         </div>
-        {{#each Branches}}
+        {{#each branchList}}
           <div class="row">
             <div class="col-s-12">
               <div class="box box-solid box-danger">

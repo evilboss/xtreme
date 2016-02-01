@@ -32,3 +32,13 @@ Template.registerHelper('getUserName', function (id) {
   return '';
 
 });
+Template.registerHelper('getBranchName', function (id) {
+  let branch = Branches.findOne({_id: id});
+  if (branch) {
+    if (branch.name) {
+      return branch.name;
+    }
+  }
+  return '';
+
+});
