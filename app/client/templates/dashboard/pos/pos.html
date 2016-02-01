@@ -9,7 +9,7 @@
       </section>
       <section class="content">
         <div class="row">
-          <div class="col-s-12">
+          <div class="col-s-6">
             <div class='pull-right control-group'>
               <div class='clearfix'>
                 <button class="btn btn-default pull-right" id="daterange-btn">
@@ -17,6 +17,35 @@
                   <i class="fa fa-caret-down"></i>
                 </button>
               </div>
+            </div>
+          </div>
+          <div class="col-s-6">
+            <div class='pull-right control-group'>
+              <li class="dropdown menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-building-o"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">Select Branch</li>
+                  <li>
+                    <div class="slimScrollDiv" style="height: auto">
+                      <ul class="menu">
+                        {{#each Branches}}
+                          <li class="branch-item">
+                            <a value="{{this._id}}" href="#">
+                              <h3>
+                                {{this.name}}
+                                <small class="pull-right">{{this.location}}</small>
+                              </h3>
+                            </a>
+                          </li>
+                        {{/each}}
+                      </ul>
+                      <div class="slimScrollBar"></div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
             </div>
           </div>
         </div>
@@ -45,7 +74,7 @@
                         <tr>
                           <th>{{this.name}}</th>
                           <th>{{getUserName this.staffId}}</th>
-                          <th>{{formatDate this.createdAt}} {{this.createdAt}}</th>
+                          <th>{{formatDate this.createdAt}}</th>
                           <th>{{this.total}}</th>
 
                         </tr>

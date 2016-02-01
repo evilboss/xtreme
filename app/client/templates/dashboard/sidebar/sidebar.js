@@ -4,15 +4,15 @@ Template.sidebar.helpers({
 
 Template.sidebar.events({
   'click #services-tab': function (e) {
-    e.preventDefault();
     Router.go('dashboard.services');
 
 
   },
   'click #products-tab': function (e) {
-    e.preventDefault();
     Router.go('dashboard.products');
-  }
+  },
+
+
 });
 
 Template.sidebar.onCreated(function () {

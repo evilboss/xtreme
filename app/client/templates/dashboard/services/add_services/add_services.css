@@ -3,3 +3,8 @@
 /*****************************************************************************/
 .add-services {
 }
+
+.btn-primary {
+  background-color: #dd4b39 !important;
+  border-color: #d73925 !important;
+}

@@ -22,12 +22,12 @@
           </a>
           {{#if isAdmin}}
             <ul class="treeview-menu">
-              <li class="{{ isActiveRoute regex='dashboard.services.add'}}">
+              <li id="add-service" class="{{ isActiveRoute regex='dashboard.services.add'}}">
                 <a href="{{ pathFor 'dashboard.services.add' }}">
                   <span>Add Services</span>
                 </a>
               </li>
-              <li class="{{ isActiveRoute regex='dashboard.packages.add' }}">
+              <li id="add-package" class="{{ isActiveRoute regex='dashboard.packages.add' }}">
                 <a href="{{ pathFor 'dashboard.packages.add' }}"><span>Add Packages</span>
                 </a>
               </li>
@@ -39,14 +39,10 @@
             class="fa fa-angle-left pull-right"></i>{{/if}}
           </a>
           {{#if isAdmin}}
+
             <ul class="treeview-menu">
-              <li class="{{ isActiveRoute regex='dashboard.products'}}">
-                <a href="{{ pathFor 'dashboard.products' }}">
-                  <span>Add Services</span>
-                </a>
-              </li>
               <li class="{{ isActiveRoute regex='dashboard.products.add' }}">
-                <a href="{{ pathFor 'dashboard.products.add' }}"><span>Add Packages</span>
+                <a href="{{ pathFor 'dashboard.products.add' }}"><span>Add Products</span>
                 </a>
               </li>
             </ul>

@@ -88,7 +88,7 @@ Template.updateAccount.onCreated(function () {
 });
 
 Template.updateAccount.onRendered(function () {
-  //add your statement here
+  selectedBranch.set([]);
 });
 
 Template.updateAccount.onDestroyed(function () {
