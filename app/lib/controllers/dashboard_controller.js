@@ -7,7 +7,9 @@ DashboardController = RouteController.extend({
       this.subscribe('products'),
       this.subscribe('branches'),
       this.subscribe('users'),
-      this.subscribe('customers');
+      this.subscribe('customers'),
+      this.subscribe('request'),
+      this.subscribe('stocks');
   },
   data: {
     Inventory: Inventory.find(),
@@ -16,6 +18,8 @@ DashboardController = RouteController.extend({
     Products: Products.find(),
     Branches: Branches.find(),
     Customers: Customers.find(),
+    Request: Request.find(),
+    Stocks: Stocks.find(),
   },
   onAfterAction: function () {
     Meta.setTitle('Dashboard');
@@ -85,7 +89,7 @@ DashboardController = RouteController.extend({
   accountsAdd: function () {
     this.render('AddAccounts');
   },
-  updateAccounts:function(){
+  updateAccounts: function () {
     this.render('updateAccount');
   },
   /*Branches Controllers*/
@@ -100,32 +104,35 @@ DashboardController = RouteController.extend({
   },
 
   /*Staff Controllers*/
-  staff:function(){
+  staff: function () {
     this.render('Staff');
   },
-  addStaff:function(){
+  addStaff: function () {
     this.render('AddStaff');
   },
-  updateStaff:function(){
+  updateStaff: function () {
     this.render('UpdateStaff');
   },
   /*Customer Controllers*/
-  customersList:function(){
+  customersList: function () {
     this.render('customerList');
   },
-  customerPackages:function(){
+  customerPackages: function () {
     this.render('Packages');
   },
-  customerServices:function(){
+  customerServices: function () {
     this.render('Services');
   },
-  customerProducts:function(){
+  customerProducts: function () {
     this.render('Products');
   },
 
   /*Stocks Controllers*/
   stocks: function () {
     this.render('stocks');
+  },
+  addStocks: function () {
+    this.render('addStock');
   }
 
 

@@ -4,6 +4,7 @@
 let startDate = new ReactiveVar();
 let endDate = new ReactiveVar();
 let selectedBranch = new ReactiveVar('All');
+let totalSold = new ReactiveVar(0);
 Template.Pos.events({
   'click .branch-selector': function (e) {
     selectedBranch.set($(e.currentTarget).text())
@@ -32,7 +33,11 @@ Template.Pos.helpers({
     } else {
       return Branches.find({name: selectedBranch.get()});
     }
+  },
+  totalSold: function () {
+    return totalSold.get();
   }
+
 });
 
 /*****************************************************************************/

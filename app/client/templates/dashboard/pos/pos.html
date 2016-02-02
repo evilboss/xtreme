@@ -58,21 +58,32 @@
                       <tbody>
                       {{#each customerByBranch this._id}}
                         <tr>
-                          <th>{{this.name}}</th>
-                          <th>{{getUserName this.staffId}}</th>
-                          <th>{{formatDate this.createdAt}}</th>
-                          <th>{{this.total}}</th>
+                          <td>{{this.name}}</td>
+                          <td>{{getUserName this.staffId}}</td>
+                          <td>{{formatDate this.createdAt}}</td>
+                          <td>{{this.total}}</td>
 
                         </tr>
                       {{/each}}
                       </tbody>
+                      <tfoot>
+
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <th><h2>Total:<span class="text-red">Total</span></h2></th>
+                      </tr>
+                      </tfoot>
                     </table>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
         {{/each}}
+        <div class="row"><h2 class="pull-right">Total:<span class="text-red">Total:{{totalSold}}</span></h2></div>
       </section>
     </div>
   </div>

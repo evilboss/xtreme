@@ -40,10 +40,15 @@ Customers.attachSchema(new SimpleSchema({
   },
   items: {
     type: [Object],
-    optional: true
+    optional: true,
+    defaultValue:[]
+
   },
 
   "items.$.name": {
+    type: String
+  },
+  "items.$.serviceId": {
     type: String
   },
   "items.$.qty": {
@@ -66,7 +71,6 @@ Customers.attachSchema(new SimpleSchema({
 
 
 }));
-
 if (Meteor.isClient) {
   Customers.before.insert(function (userId, doc) {
     if (Cart.find().count()) {
@@ -81,7 +85,8 @@ if (Meteor.isClient) {
           qty: parseInt(item.qty),
           price: item.price,
           type: item.type,
-          subtotal: item.subtotal
+          subtotal: item.subtotal,
+          serviceId: item.serviceId
         });
       });
       doc.total = total;
@@ -105,8 +110,6 @@ if (Meteor.isClient) {
 
 
 }
-
-
 if (Meteor.isServer) {
   Customers.allow({
     insert: function (userId, doc) {

@@ -1,0 +1,106 @@
+<template name="addStock">
+  <div class="content-wrapper">
+    <div class="container">
+      <section class="content-header">
+        <h1>
+          Restock {{currentBranch.name}}
+        </h1>
+      </section>
+      <section class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Inventory</h3>
+                </div>
+                <div class="box-body"></div>
+                <div class="container">
+                  <table class="table table-bordered">
+                    <thead>
+                    <th>Item Name</th>
+                    <th>Item quantity</th>
+                    <th>Items to send</th>
+                    <th>Restock</th>
+                    </thead>
+                    <tbody>
+                    {{#each Inventory}}
+                      <tr>
+                        <td>{{this.name}}</td>
+                        <td>{{this.quantity}}</td>
+                        <td>
+                          <input class="form-control item-quantity" type="number" id="{{this._id}}" min="0"
+                                 max="{{this.quantity}}"/>
+                        </td>
+                        <td>
+                          <button class="btn btn-success stockup-button" data-value="{{this._id}}"><i
+                            class="fa fa-check-circle-o"></i>
+                          </button>
+                        </td>
+                      </tr>
+
+
+                    {{/each}}
+
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">{{currentBranch.name}} Delivery</h3>
+                </div>
+                <div class="box-body"></div>
+                <div class="container">
+                  <table class="table table-bordered">
+
+                    <thead>
+                    <th>Item Name</th>
+                    <th>Number of Items Sent</th>
+                    <th>Status</th>
+                    </thead>
+                    <tbody>
+                    {{#each addedItems}}
+                      <tr>
+                        <td>{{this.name}}</td>
+                        <td>{{this.qty}}</td>
+                        <td>
+                          {{this.status}}
+                        </td>
+                      </tr>
+                    {{/each}}
+
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                  </table>
+                  <div class="box-footer">
+                    <div class="row">
+                      {{#if addedItems}}
+                        <div class="col-xs-6">
+                          <button id="cancel-delivery" class="btn btn-danger">Cancel</button>
+                        </div>
+                        <div class="col-xs-6">
+                          <button id="send-delivery" class="btn btn-success">Send</button>
+                        </div>
+                      {{/if}}
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</template>

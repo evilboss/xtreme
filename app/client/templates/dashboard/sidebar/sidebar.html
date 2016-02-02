@@ -35,23 +35,6 @@
           {{/if}}
         </li>
         {{#if isManager}}
-          <li class="treeview" id="products-tab">
-            <a href="#"> <i class="fa fa-shopping-cart"></i><span>Products</span>{{#if isAdmin}}<i
-              class="fa fa-angle-left pull-right"></i>{{/if}}
-            </a>
-            {{#if isAdmin}}
-
-              <ul class="treeview-menu">
-                <li class="{{ isActiveRoute regex='dashboard.products.add' }}">
-                  <a href="{{ pathFor 'dashboard.products.add' }}"><span>Add Products</span>
-                  </a>
-                </li>
-              </ul>
-            {{/if}}
-          </li>
-        {{/if}}
-
-        {{#if isManager}}
           <li class="treeview" id="inventory-tab">
             <a href="#"> <i class="fa fa-list"></i><span>Inventory</span> <i
               class="fa fa-angle-left pull-right"></i></a>

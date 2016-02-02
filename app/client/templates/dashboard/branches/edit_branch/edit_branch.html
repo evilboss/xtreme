@@ -14,7 +14,7 @@
             <h3 class="box-title">Update BRANCH</h3>
           </div>
           <div class="box-body">
-            {{> quickForm collection="Branches" doc =selectedBranch type="update" id="updateBranchForm" buttonClasses="btn btn-danger" buttonContent="Update Branch"}}
+            {{> quickForm collection="Branches" doc =selectedBranch type="update" id="updateBranchForm" omitFields="stocks" buttonClasses="btn btn-danger" buttonContent="Update Branch"}}
           </div>
         </div>
       </div>

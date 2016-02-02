@@ -1,13 +1,27 @@
 Branches = new Mongo.Collection('branches');
 Branches.attachSchema(new SimpleSchema({
-  "name": {
+  name: {
     type: String,
     unique: true,
-    label:'Branch Name'
+    label: 'Branch Name'
   },
-  "location": {
+  location: {
     type: String,
-    label:'Branch Location'
+    label: 'Branch Location'
+  },
+  stocks: {
+    type: [Object],
+    optional: true,
+    defaultValue:[]
+  },
+  "stocks.$.name": {
+    type: String
+  },
+  "stocks.$.id": {
+    type: String
+  },
+  "stocks.$.qty": {
+    type: Number
   }
 }));
 if (Meteor.isServer) {

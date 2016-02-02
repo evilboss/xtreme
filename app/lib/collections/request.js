@@ -1,24 +1,12 @@
-Inventory = new Mongo.Collection('inventory');
-Inventory.attachSchema(new SimpleSchema({
-  name: {
-    type: String,
-    unique: true
-  },
-  quantity: {
-    type: Number
-  },
-  description: {
-    type: String,
-    label: 'Description'
-  },
-  price: {
-    type: Number,
-    optional: false
-  }
-}));
+Request = new Mongo.Collection('request');
 
+Request.after.insert(function(userid,doc){
+  if(Meteor.isClient){
+    sAlert.info('Delivery Sent');
+  }
+});
 if (Meteor.isServer) {
-  Inventory.allow({
+  Request.allow({
     insert: function (userId, doc) {
       return true;
     },
@@ -32,7 +20,7 @@ if (Meteor.isServer) {
     }
   });
 
-  Inventory.deny({
+  Request.deny({
     insert: function (userId, doc) {
       return false;
     },

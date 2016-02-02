@@ -92,3 +92,43 @@ Meteor.publish('customers', function () {
     }
   }
 });
+
+Meteor.publish('request', function (/* args */) {
+  var user = Meteor.users.findOne({
+    _id: this.userId
+  });
+  if (user) {
+    if (Roles.userIsInRole(user, ['admin'])) {
+      return Request.find();
+    } else {
+      if (user.profile) {
+        if (user.profile.branchIds) {
+          if (Roles.userIsInRole(user, ['manager'])) {
+            var ids = user.profile.branchIds;
+            return Request.find({branchId: {$in: ids}});
+          }
+        }
+      }
+      return [];
+    }
+  }
+});
+
+Meteor.publish('stocks', function (/* args */) {
+  var user = Meteor.users.findOne({
+    _id: this.userId
+  });
+  if (user) {
+    if (Roles.userIsInRole(user, ['admin'])) {
+      return Stocks.find();
+    } else {
+      if (user.profile) {
+        if (user.profile.branchIds) {
+          var ids = user.profile.branchIds;
+          return Stocks.find({branchId: {$in: ids}});
+        }
+      }
+      return [];
+    }
+  }
+});

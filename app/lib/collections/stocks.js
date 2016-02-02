@@ -1,24 +1,8 @@
-Inventory = new Mongo.Collection('inventory');
-Inventory.attachSchema(new SimpleSchema({
-  name: {
-    type: String,
-    unique: true
-  },
-  quantity: {
-    type: Number
-  },
-  description: {
-    type: String,
-    label: 'Description'
-  },
-  price: {
-    type: Number,
-    optional: false
-  }
-}));
+Stocks = new Mongo.Collection('stocks');
+
 
 if (Meteor.isServer) {
-  Inventory.allow({
+  Stocks.allow({
     insert: function (userId, doc) {
       return true;
     },
@@ -32,7 +16,7 @@ if (Meteor.isServer) {
     }
   });
 
-  Inventory.deny({
+  Stocks.deny({
     insert: function (userId, doc) {
       return false;
     },
