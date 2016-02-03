@@ -27,7 +27,7 @@
                     <th>Operations</th>
                   </tr>
                   {{#each Services}}
-                    {{>ServiceInfo name=this.name description=this.description price=this.price id=this._id}}
+                    {{>ServiceInfo this}}
                   {{/each}}
                   </tbody>
                 </table>

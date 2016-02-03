@@ -38,35 +38,9 @@ Customers.attachSchema(new SimpleSchema({
     type: Boolean,
     defaultValue: true
   },
-  items: {
-    type: [Object],
-    optional: true,
-    defaultValue:[]
-
-  },
-
-  "items.$.name": {
-    type: String
-  },
-  "items.$.serviceId": {
-    type: String
-  },
-  "items.$.qty": {
-    type: Number
-  },
-  "items.$.description": {
-    type: String
-  },
-
-  "items.$.type": {
-    type: String
-  },
-
-  "items.$.price": {
-    type: Number
-  },
-  "items.$.subtotal": {
-    type: Number
+  cartId:{
+    type: String,
+    optional: true
   }
 
 

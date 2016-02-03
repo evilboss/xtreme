@@ -22,24 +22,27 @@ Template.addStock.events({
       let valToAdd = parseInt($(t.find('#' + buttonId)).val());
       if (valToAdd || valToAdd == 0) {
         let selectedItem = Inventory.findOne({_id: buttonId});
-        let itemList = stockList.get();
-
-
-        let match = _.where(itemList, {id: selectedItem._id});
-        console.log(match);
-        if (match.length) {
-          match[0].qty += valToAdd;
+        if (selectedItem.quantity < valToAdd) {
+          sAlert.error('You are tying to add more than the quantity of the Item');
         } else {
-          itemList.push({
-            name: selectedItem.name,
-            id: selectedItem._id,
-            qty: valToAdd,
-            status: 'for delivery',
-            branchId: branchSelected._id
-          });
-        }
-        stockList.set(itemList);
+          let itemList = stockList.get();
+          let match = _.where(itemList, {id: selectedItem._id});
+          console.log(match);
+          if (match.length) {
+            match[0].qty += valToAdd;
+          } else {
+            itemList.push({
+              name: selectedItem.name,
+              id: selectedItem._id,
+              qty: valToAdd,
+              status: 'for delivery',
+              branchId: branchSelected._id
+            });
+          }
+          stockList.set(itemList);
 
+
+        }
 
       } else {
         sAlert.error('Must add Item');
@@ -51,17 +54,17 @@ Template.addStock.events({
     console.log('change');
     console.log($(e.currentTarget).val());
   },
-  'click #cancel-delivery':function(){
+  'click #cancel-delivery': function () {
     stockList.set([]);
   },
-  'click #send-delivery':function(){
-      let itemlist = stockList.get();
-      _.each(itemlist,function(item){
-        item.createdAt = new Date();
-        Inventory.update({_id:item.id},{$inc:{quantity:-item.qty}});
-        console.log(item);
-        Request.insert(item);
-      });
+  'click #send-delivery': function () {
+    let itemlist = stockList.get();
+    _.each(itemlist, function (item) {
+      item.createdAt = new Date();
+      Inventory.update({_id: item.id}, {$inc: {quantity: -item.qty}});
+      console.log(item);
+      Request.insert(item);
+    });
     stockList.set([]);
   }
 });

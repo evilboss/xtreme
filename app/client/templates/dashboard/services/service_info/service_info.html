@@ -6,12 +6,12 @@
 
     <td>
       {{#if isAdmin}}
-        {{#linkTo route='updateServices' id=id class='btn btn-primary'}}<i class="fa fa-refresh"></i>{{/linkTo}}
-        {{#quickRemoveButton collection="Services" class='btn btn-danger' _id=id}}
+        {{#linkTo route='updateServices' id=_id class='btn btn-primary'}}<i class="fa fa-refresh"></i>{{/linkTo}}
+        {{#quickRemoveButton collection="Services" class='btn btn-danger' _id=_id}}
           <i class="fa fa-trash"></i>
         {{/quickRemoveButton}}
       {{/if}}
-      <button class="AvailService btn btn-success" value="{{id}}"><i class="fa fa-check"></i></button>
+      <button class="AvailService btn btn-success" value="{{_id}}"><i class="fa fa-check"></i></button>
     </td>
   </tr>
 </template>

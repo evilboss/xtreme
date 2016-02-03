@@ -51,7 +51,7 @@ Template.AddAccounts.events({
           error.push(err.reason);
           errors.set(error);
         }else{
-          Router.go('/dashboard/accounts');
+          Router.go('accounts');
 
         }
 

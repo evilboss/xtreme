@@ -54,12 +54,13 @@ Template.updateAccount.events({
         }
       }
       data.branchIds = selectedBranch.get();
-      Meteor.call('update.account', data, function (err, result) {
+      Meteor.call('accounts', data, function (err, result) {
         if (err) {
           error.push(err.reason);
           errors.set(error);
         }
       });
+      Router.go('accounts');
     }
   },
   'change #role': function (e) {
@@ -81,6 +82,7 @@ Template.updateAccount.events({
     }
     selectedBranch.set(currentBranches);
   }
+
 });
 
 Template.updateAccount.onCreated(function () {
