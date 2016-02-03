@@ -125,7 +125,7 @@ Meteor.publish('stocks', function (/* args */) {
       if (user.profile) {
         if (user.profile.branchIds) {
           var ids = user.profile.branchIds;
-          return Stocks.find({branchId: {$in: ids}});
+          return Stocks.find({branchId: {$in: ids},qty: { $ne: 0 } });
         }
       }
       return [];

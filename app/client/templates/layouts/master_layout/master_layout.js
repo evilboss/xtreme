@@ -42,10 +42,26 @@ Template.MasterLayout.events({
           console.log(itemToAdd);
           let currentData = CartData.findOne({customerId: customerId, itemId: itemId});
           let currentSubtotal = itemToAdd.price;
+          let update = true;
           if (currentData) {
 
             console.log('Already Added');
-            CartData.update({_id: currentData._id}, {$inc: {qty: 1, subtotal: itemToAdd.price}});
+            if (transType === 'Product') {
+              let checkStocks = Stocks.findOne({id: itemId});
+              console.log(checkStocks);
+              console.log(currentData.qty);
+              if (checkStocks.qty <= currentData.qty) {
+                sAlert.error('You cannot add any more');
+                update = false;
+              } else {
+                CartData.update({_id: currentData._id}, {$inc: {qty: 1, subtotal: itemToAdd.price}});
+
+              }
+            } else {
+              CartData.update({_id: currentData._id}, {$inc: {qty: 1, subtotal: itemToAdd.price}});
+
+            }
+
 
           } else {
             CartData.insert({
@@ -61,9 +77,12 @@ Template.MasterLayout.events({
               subtotal: parseInt(itemToAdd.price)
             });
           }
-          let total = Customers.findOne({_id: customerId}).total;
-          total += itemToAdd.price;
-          Customers.update({_id: customerId}, {$set: {total: total}});
+          if (update) {
+            let total = Customers.findOne({_id: customerId}).total;
+            total += itemToAdd.price;
+            Customers.update({_id: customerId}, {$set: {total: total}});
+          }
+
 
         }
 
