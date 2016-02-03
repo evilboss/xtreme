@@ -20,16 +20,51 @@ Template.MasterLayout.events({
   },
   'click .avail-button': function (e) {
     e.preventDefault();
+    console.log('click');
     let event = $(e.currentTarget);
     let itemId = e.currentTarget.value;
     let transType = event.attr('data-type');
-    let itemToAdd;
-    if (transType === 'Product') {
-      itemToAdd = Stocks.findOne({id: itemId});
+    let customerId = Router.current().params.id;
+    if (customerId) {
+      let itemToAdd;
+      if (transType === 'Product') {
+        itemToAdd = Inventory.findOne({_id: itemId});
+      }
+      let branchId = Session.get('branch');
+      if (branchId) {
+        if (itemToAdd) {
+          let currentData = CartData.findOne({customerId: customerId, itemId: itemId});
+          let currentSubtotal = itemToAdd.price;
+          if (currentData) {
+
+            console.log('Already Added');
+            CartData.update({_id: currentData._id}, {$inc: {qty: 1, subtotal: itemToAdd.price}});
+
+          } else {
+            CartData.insert({
+              type: transType,
+              customerId: customerId,
+              itemId: itemId,
+              branchId: branchId,
+              qty: 1,
+              staffId: Meteor.user()._id,
+              name: itemToAdd.name,
+              description: itemToAdd.description,
+              price: parseInt(itemToAdd.price),
+              subtotal: parseInt(itemToAdd.price)
+            });
+          }
+          let total = Customers.findOne({_id: customerId}).total;
+          total += itemToAdd.price;
+          Customers.update({_id: customerId}, {$set: {total: total}});
+
+        }
+
+      } else {
+        sAlert.error('Please Set your branch');
+      }
     }
-    if (itemToAdd) {
-      itemsIn.push({name: itemToAdd.name, qty: 1, id: itemId, type: itemToAdd.type});
-    }
+
 
   },
 });

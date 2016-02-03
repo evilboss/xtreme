@@ -8,7 +8,14 @@
           <h3><i class="icon fa fa-user"></i> {{currentCustomer.name}}</h3>
         </div>
       {{else}}
-        {{> quickForm collection="Customers" id="insertCustomersForm" type="insert" buttonClasses="btn btn-danger" buttonContent="Add New Customer" omitFields="createdAt,branchId,staffId,items,total,active"}}
+        <form id="insertCustomersForm">
+          <div class="form-group" data-required="true">
+            <label for="name" class="control-label">Customer name</label>
+            <input type="text" name="name" id="name" required="" data-schema-key="name" class="form-control">
+            <span class="help-block"></span>
+          </div>
+          <button type="submit" class="btn btn-primary">NEW CUSTOMER</button>
+        </form>
       {{/if}}
     </div>
   </div>

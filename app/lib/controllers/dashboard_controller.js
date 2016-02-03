@@ -10,7 +10,7 @@ DashboardController = RouteController.extend({
       this.subscribe('customers'),
       this.subscribe('request'),
       this.subscribe('stocks'),
-      this.subscribe('cart');
+      this.subscribe('cartData');
   },
   data: {
     Inventory: Inventory.find(),
@@ -21,7 +21,7 @@ DashboardController = RouteController.extend({
     Customers: Customers.find(),
     Request: Request.find(),
     Stocks: Stocks.find(),
-    Cart:Cart.find(),
+    CartData:CartData.find(),
   },
   onAfterAction: function () {
     Meta.setTitle('Dashboard');

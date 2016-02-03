@@ -38,12 +38,13 @@ Customers.attachSchema(new SimpleSchema({
     type: Boolean,
     defaultValue: true
   }
+
 }));
 if (Meteor.isClient) {
   Customers.after.insert(function (userId, doc) {
     let currentPath = Router.current().route.getName();
-    if(!currentPath.includes('customer')){
-      Router.go(currentPath+'.customer',{id:doc._id});
+    if (!currentPath.includes('customer')) {
+      Router.go(currentPath + '.customer', {id: doc._id});
     }
   });
 

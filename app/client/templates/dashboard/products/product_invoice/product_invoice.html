@@ -15,7 +15,7 @@
                   </thead>
                   <tbody>
                   {{#each availedProducts}}
-                      {{>ProductInvoiceItem id=this._id name=this.name price=this.price description=this.description qty=this.qty subtotal=this.subtotal}}
+                      {{>ProductInvoiceItem this}}
                   {{/each}}
                   </tbody>
               </table>

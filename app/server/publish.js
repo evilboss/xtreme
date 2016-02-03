@@ -133,21 +133,21 @@ Meteor.publish('stocks', function (/* args */) {
   }
 });
 
-Meteor.publish('cart', function (/* args */) {
+Meteor.publish('cartData', function (/* args */) {
   var user = Meteor.users.findOne({
     _id: this.userId
   });
   if (user) {
     if (Roles.userIsInRole(user, ['admin'])) {
-      return Cart.find();
+      return CartData.find();
     } else {
       if (user.profile) {
         if (user.profile.branchIds) {
           if (Roles.userIsInRole(user, ['manager'])) {
             var ids = user.profile.branchIds;
-            return Cart.find({branchId: {$in: ids}});
+            return CartData.find({branchId: {$in: ids}});
           } else {
-            return Cart.find({staffId: user._id});
+            return CartData.find({staffId: user._id});
 
           }
         }

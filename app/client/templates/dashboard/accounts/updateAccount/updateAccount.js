@@ -54,13 +54,14 @@ Template.updateAccount.events({
         }
       }
       data.branchIds = selectedBranch.get();
-      Meteor.call('accounts', data, function (err, result) {
+      Meteor.call('update.account', data, function (err, result) {
         if (err) {
           error.push(err.reason);
           errors.set(error);
+        } else {
+          Router.go('accounts');
         }
       });
-      Router.go('accounts');
     }
   },
   'change #role': function (e) {

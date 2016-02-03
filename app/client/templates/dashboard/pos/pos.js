@@ -4,7 +4,6 @@
 let startDate = new ReactiveVar();
 let endDate = new ReactiveVar();
 let selectedBranch = new ReactiveVar('All');
-let totalSold = new ReactiveVar(0);
 Template.Pos.events({
   'click .branch-selector': function (e) {
     selectedBranch.set($(e.currentTarget).text())
@@ -35,7 +34,27 @@ Template.Pos.helpers({
     }
   },
   totalSold: function () {
-    return totalSold.get();
+    let totalList = Customers.find({
+      createdAt: {$gte: startDate.get(), $lte: endDate.get()}
+    }).fetch();
+    let grandTotal = 0;
+    console.log(totalList);
+    _.each(totalList,function(item){
+      grandTotal+=item.total;
+    });
+    return grandTotal;
+
+  },
+  totalSoldBranch: function (branchId) {
+    let totalList = Customers.find({branchId:branchId,createdAt: {$gte: startDate.get(), $lte: endDate.get()}
+    }).fetch();
+    let grandTotal = 0;
+    console.log(totalList);
+    _.each(totalList,function(item){
+      grandTotal+=item.total;
+    });
+    return grandTotal;
+
   }
 
 });

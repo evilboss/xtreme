@@ -1,35 +1,26 @@
-let clean = function (collection) {
-  if (collection) {
-    _.each(collection.find().fetch(), function (item) {
-      collection.remove({_id: item._id});
-    });
-  }
-
-}
 Template.customer.helpers({
   currentCustomer: function () {
     let customer = Customers.findOne({_id: Router.current().params.id});
-    if (customer) {
-      if (customer.items) {
-        _.each(customer.items, function (item) {
-          let cartContents = Cart.findOne({name: item.name});
-          if (cartContents) {
-            cartContents.qty+=item.qty;
-            Cart.update(cartContents);
-          } else {
-            item.qty = parseInt(item.qty);
-            Cart.insert(item);
-          }
-        });
-      }
-    }
-
     return customer;
   }
 });
 
 Template.customer.events({
-  //add your events here
+  'submit #insertCustomersForm': function (e) {
+    e.preventDefault();
+    let data = SimpleForm.processForm(event.target);
+    let branchId = Session.get('branch');
+    if (branchId) {
+      data.staffId = Meteor.userId();
+      data.branchId = branchId;
+      Customers.insert(data);
+    } else {
+      sAlert.error('Select Your Branch');
+    }
+    console.log(data);
+
+  },
+
 });
 
 Template.customer.onCreated(function () {
@@ -37,7 +28,6 @@ Template.customer.onCreated(function () {
 });
 
 Template.customer.onRendered(function () {
-  clean(Cart);
 
 });
 
