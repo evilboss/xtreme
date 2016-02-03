@@ -14,13 +14,23 @@ Template.Products.events({
       product.subtotal = product.price;
       Cart.insert(product);
     }
-  }
+  },
+
 });
 
 /*****************************************************************************/
 /* Products: Helpers */
 /*****************************************************************************/
-Template.Products.helpers({});
+Template.Products.helpers({
+  productList: function () {
+    Stocks.find({qty: {$ne: 0}});
+  },
+  hasCustomer: function () {
+    if (Router.current().params.id) {
+      return Customers.findOne({_id: Router.current().params.id});
+    }
+  }
+});
 
 /*****************************************************************************/
 /* Products: Lifecycle Hooks */

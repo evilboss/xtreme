@@ -1,12 +1,12 @@
 Template.MasterLayout.helpers({
-  availableBranches:function(){
-    if(Roles.userIsInRole(Meteor.userId(),'admin')){
+  availableBranches: function () {
+    if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
       return true;
     }
-    if(Meteor.user()){
-      if(Meteor.user().profile){
-        if(Meteor.user().profile.branchIds){
-          Session.set('branch',Meteor.user().profile.branchIds[0]);
+    if (Meteor.user()) {
+      if (Meteor.user().profile) {
+        if (Meteor.user().profile.branchIds) {
+          Session.set('branch', Meteor.user().profile.branchIds[0]);
           return Meteor.user().profile.branchIds[0];
         }
       }
@@ -14,11 +14,24 @@ Template.MasterLayout.helpers({
     return false;
   }
 });
-
 Template.MasterLayout.events({
   'click [data-action=logout]': function () {
     AccountsTemplates.logout();
-  }
+  },
+  'click .avail-button': function (e) {
+    e.preventDefault();
+    let event = $(e.currentTarget);
+    let itemId = e.currentTarget.value;
+    let transType = event.attr('data-type');
+    let itemToAdd;
+    if (transType === 'Product') {
+      itemToAdd = Stocks.findOne({id: itemId});
+    }
+    if (itemToAdd) {
+      itemsIn.push({name: itemToAdd.name, qty: 1, id: itemId, type: itemToAdd.type});
+    }
+
+  },
 });
 Template.MasterLayout.onRendered(function () {
   $('.sidebar-toggle').each(function () {

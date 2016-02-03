@@ -37,44 +37,9 @@ Customers.attachSchema(new SimpleSchema({
   active: {
     type: Boolean,
     defaultValue: true
-  },
-  cartId:{
-    type: String,
-    optional: true
   }
-
-
 }));
 if (Meteor.isClient) {
-  Customers.before.insert(function (userId, doc) {
-    if (Cart.find().count()) {
-      let itemList = [];
-      let items = Cart.find().fetch();
-      let total = 0;
-      _.each(items, function (item) {
-        total += item.subtotal;
-        itemList.push({
-          name: item.name,
-          description: item.description,
-          qty: parseInt(item.qty),
-          price: item.price,
-          type: item.type,
-          subtotal: item.subtotal,
-          serviceId: item.serviceId
-        });
-      });
-      doc.total = total;
-      doc.items = itemList;
-    }
-    if (Session.get('branch')) {
-      doc.branchId = Session.get('branch');
-    } else {
-      doc.branchId = Meteor.user().profile.branchIds[0];
-    }
-    doc.staffId = userId;
-    return doc;
-
-  });
   Customers.after.insert(function (userId, doc) {
     let currentPath = Router.current().route.getName();
     if(!currentPath.includes('customer')){

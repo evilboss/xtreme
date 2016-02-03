@@ -15,7 +15,7 @@ Template.ServiceCart.helpers({
         return Cart.find({type:'Package'}).fetch();
     },
     'productList':function(){
-        return Cart.find({type:'Product'}).fetch();
+
     },
     'currentBill':function(){
         var billList = Cart.find().fetch();

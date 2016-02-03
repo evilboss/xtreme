@@ -44,13 +44,14 @@ Template._header.events({
             request.qty += selectedStock.qty;
             Stocks.update({_id: selectedStock._id}, {$set: {qty: request.qty}});
           } else {
-             Stocks.insert({
-             name: request.name,
-             id: request.id,
-             qty: request.qty,
-             status: 'received',
-             branchId: request.branchId
-             });
+            Stocks.insert({
+              name: request.name,
+              id: request.id,
+              qty: request.qty,
+              status: 'received',
+              branchId: request.branchId,
+              type: 'Product'
+            });
           }
           Request.update({_id: requestId}, {$set: {status: 'received'}});
           sAlert.info('Stocks Updated');
@@ -59,5 +60,6 @@ Template._header.events({
 
 
     }
-  }
+  },
+
 });

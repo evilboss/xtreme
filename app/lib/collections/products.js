@@ -26,7 +26,11 @@ Products.attachSchema(new SimpleSchema({
     type: String,
     label:'Description'
 
-  }
+  },
+  type: {
+    type: String,
+    defaultValue: 'Product',
+  },
 }));
 if (Meteor.isServer) {
   Products.allow({

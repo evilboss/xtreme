@@ -42,3 +42,9 @@ Template.registerHelper('getBranchName', function (id) {
   return '';
 
 });
+Template.registerHelper('getInventoryDescription', function (id) {
+  return Inventory.findOne({_id: id}).description;
+});
+Template.registerHelper('getInventoryPrice', function (id) {
+  return Inventory.findOne({_id: id}).price;
+});
