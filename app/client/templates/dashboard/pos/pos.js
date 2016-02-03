@@ -17,6 +17,7 @@ Template.Pos.helpers({
   customerByBranch: function (branchId) {
     return Customers.find({
       branchId: branchId,
+      active: false,
       createdAt: {$gte: startDate.get(), $lte: endDate.get()}
     });
   },
@@ -35,23 +36,25 @@ Template.Pos.helpers({
   },
   totalSold: function () {
     let totalList = Customers.find({
+      active: false,
       createdAt: {$gte: startDate.get(), $lte: endDate.get()}
     }).fetch();
     let grandTotal = 0;
     console.log(totalList);
-    _.each(totalList,function(item){
-      grandTotal+=item.total;
+    _.each(totalList, function (item) {
+      grandTotal += item.total;
     });
     return grandTotal;
 
   },
   totalSoldBranch: function (branchId) {
-    let totalList = Customers.find({branchId:branchId,createdAt: {$gte: startDate.get(), $lte: endDate.get()}
+    let totalList = Customers.find({
+      active: false, branchId: branchId, createdAt: {$gte: startDate.get(), $lte: endDate.get()}
     }).fetch();
     let grandTotal = 0;
     console.log(totalList);
-    _.each(totalList,function(item){
-      grandTotal+=item.total;
+    _.each(totalList, function (item) {
+      grandTotal += item.total;
     });
     return grandTotal;
 

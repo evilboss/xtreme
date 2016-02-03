@@ -15,9 +15,12 @@
       {{/if}}
     </div>
     <div class="box-footer">
-      {{#if isManager}}
-        {{>PrintPreview}}
-      {{/if}}
+      {{#unless isInvoiceRoute}}
+
+        {{#if isManager}}
+          {{>PrintPreview}}
+        {{/if}}
+      {{/unless}}
     </div>
   </div>
 </template>

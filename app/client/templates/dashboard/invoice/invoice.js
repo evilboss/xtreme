@@ -2,18 +2,27 @@
 /* Invoice: Event Handlers */
 /*****************************************************************************/
 let CurrentBill = new ReactiveVar(0);
-let totalPaymente = new ReactiveVar(0);
+let totalPayment = new ReactiveVar(0);
+let Change = new ReactiveVar(0);
+let paymentOk = new ReactiveVar(false);
 
 Template.Invoice.events({
-  'click #checkout': function () {
-    console.log('checkojt');
+  'click #confirm-payment': function () {
+    if (Router.current().params.id) {
+      let billing = Customers.findOne({_id: Router.current().params.id});
+      Customers.update({_id: billing._id}, {$set: {active: false}});
+      sAlert.error('Transaction Completed');
+    }
+
+
   },
   'keyup #payment-input': function (e) {
     if (parseInt(e.currentTarget.value)) {
-      totalPaymente.set(parseInt(e.currentTarget.value));
+      totalPayment.set(parseInt(e.currentTarget.value));
     } else {
-      totalPaymente.set(0);
+      totalPayment.set(0);
     }
+
   }
 });
 
@@ -26,20 +35,28 @@ Template.Invoice.helpers({
 
   },
   'currentBill': function () {
-    var billList = Cart.find().fetch();
-    var currentBill = 0;
-    for (var bills in billList) {
-      currentBill += billList[bills].subtotal;
+    if (Router.current().params.id) {
+      CurrentBill.set(Customers.findOne({_id: Router.current().params.id}).total)
+      return CurrentBill.get();
     }
-    CurrentBill.set(currentBill);
-    return CurrentBill.get();
   },
+
   change: function () {
-    let change = totalPaymente.get() - CurrentBill.get();
-    if (change <= 0) {
-      change = 0;
+    Change.set(totalPayment.get() - CurrentBill.get());
+    if (Change.get() <= 0) {
+      Change.set(0);
     }
-    return change;
+    return Change.get();
+  }
+  ,
+  currentId: function () {
+    if (Router.current().params.id) {
+      return Customers.findOne({_id: Router.current().params.id})._id;
+    }
+  },
+
+  hasPaid: function () {
+    return Customers.findOne({_id: Router.current().params.id}).active;
   }
 });
 

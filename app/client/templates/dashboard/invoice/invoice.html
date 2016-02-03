@@ -23,14 +23,20 @@
         </div>
         <div class="row no-print">
           <div class="col s12" style="border-bottom: none;">
-            <a href="{{ pathFor 'print' }}" id="print" class="btn btn-default"><i class="fa fa-print"></i>
-              Print</a>
+            {{#if hasPaid}}
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                Confirm Payment
+              </button>
+
+            {{else}}
+              {{#linkTo route='print' class='btn btn-default' id=currentId}}<i class="fa fa-print"></i> Print
+              {{/linkTo}}
+            {{/if}}
 
           </div>
+
         </div>
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-          Confirm Payment
-        </button>
+
       </section>
     </section>
   </div>
@@ -49,20 +55,20 @@
 
             <div class="form-group">
               <label>Payment</label>
-              <input id="payment-input" type="text" class="form-control" placeholder="Enter Payment">
+              <input id="payment-input" type="number" class="form-control" placeholder="Enter Payment">
             </div>
             <h1>Change: {{change}}</h1>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-          <button type="button" id="confirm-payment" class="btn btn-outline">Save</button>
+          <button type="button" {{paidEnough}} id="confirm-payment" data-dismiss="modal" class="btn btn-outline">Save</button>
         </div>
       </div>
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-    </div>
+  </div>
   <!-- /.modal -->
 
 </template>

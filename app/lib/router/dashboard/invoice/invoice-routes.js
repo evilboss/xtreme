@@ -1,13 +1,13 @@
 /**
  * Created by jrreyes on 10/18/15.
  */
-Router.route('dashboard/invoice', {
+Router.route('dashboard/invoice/:id', {
     name: 'invoice',
     where: 'client',
     controller:'DashboardController',
     action:'invoice'
 });
-Router.route('invoice/print', {
+Router.route('invoice/print/:id', {
     name: 'print',
     controller: 'PrintController',
     action: 'Print',
