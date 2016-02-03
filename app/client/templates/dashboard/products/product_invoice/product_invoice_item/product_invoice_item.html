@@ -1,13 +1,17 @@
 <template name="ProductInvoiceItem">
-    <tr>
-        <td>{{name}}</td>
-        <td>{{qty}}</td>
-        <td>{{description}}</td>
-        <td>{{price}}</td>
-        <td>{{subtotal}}</td>
-        {{#unless isInvoiceRoute}}<td>
-            <button class="btn btn-danger" data-action="removeProduct" value="{{id}}">Remove</button>
-        </td>
-        {{/unless}}
-    </tr>
+  <tr>
+    <td>{{name}}</td>
+    <td>{{qty}}</td>
+    <td>{{description}}</td>
+    <td>{{price}}</td>
+    <td>{{subtotal}}</td>
+    {{#unless isInvoiceRoute}}
+      <td>
+      <td>
+        <button class="remove-item-button btn btn-danger" value="{{_id}}"><i class="fa fa-trash"></i>
+        </button>
+      </td>
+      </td>
+    {{/unless}}
+  </tr>
 </template>

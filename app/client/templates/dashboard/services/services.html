@@ -1,6 +1,5 @@
 <template name="Services">
   <div class="content-wrapper">
-    {{>customer}}
     <div class="container">
       <section class="content-header">
         <h1>
@@ -10,34 +9,47 @@
       </section>
       <section class="content">
         <div class="row">
-          {{>serviceMenu}}
+          <div class="col-md-4">
+            {{>serviceMenu}}
+          </div>
           <div class="col-md-8">
-            <div class="box box-danger">
-              <div class="box-header with-border">
-                <h3 class="box-title">List Of Single Services</h3>
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                <table class="table table-bordered">
-                  <tbody>
-                  <tr>
-                    <th>Service</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Operations</th>
-                  </tr>
-                  {{#each Services}}
-                    {{>ServiceInfo this}}
-                  {{/each}}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            {{>customer}}
           </div>
         </div>
+        <div class="row">
+          {{#if hasCustomer}}
+            <div class="col-md-6">
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">List Of Single Services</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                      <th>Service</th>
+                      <th>Description</th>
+                      <th>Price</th>
+                      <th>Operations</th>
+                    </tr>
+                    {{#each Services}}
+                      {{>ServiceInfo this}}
+                    {{/each}}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              {{>ServiceCart}}
+            </div>
+          {{/if}}
+
+        </div>
+
       </section>
 
     </div>
-    {{>ServiceCart}}
   </div>
 </template>

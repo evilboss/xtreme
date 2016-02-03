@@ -11,9 +11,10 @@
         <td>{{price}}</td>
         <td>{{subtotal}}</td>
         {{#unless isInvoiceRoute}}
-        <td>
-            <button class="btn btn-danger" data-action="removePackage" value="{{id}}">Remove</button>
-        </td>
+          <td>
+            <button class="remove-item-button btn btn-danger" value="{{_id}}"><i class="fa fa-trash"></i>
+            </button>
+          </td>
         {{/unless}}
     </tr>
 </template>

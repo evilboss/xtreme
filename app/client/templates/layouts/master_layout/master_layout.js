@@ -27,12 +27,19 @@ Template.MasterLayout.events({
     let customerId = Router.current().params.id;
     if (customerId) {
       let itemToAdd;
+      if (transType === 'Service') {
+        itemToAdd = Services.findOne({_id: itemId});
+      }
       if (transType === 'Product') {
         itemToAdd = Inventory.findOne({_id: itemId});
+      }
+      if (transType === 'Package') {
+        itemToAdd = Packages.findOne({_id: itemId});
       }
       let branchId = Session.get('branch');
       if (branchId) {
         if (itemToAdd) {
+          console.log(itemToAdd);
           let currentData = CartData.findOne({customerId: customerId, itemId: itemId});
           let currentSubtotal = itemToAdd.price;
           if (currentData) {
@@ -67,6 +74,22 @@ Template.MasterLayout.events({
 
 
   },
+  'click .remove-item-button': function (e) {
+    e.preventDefault();
+    let event = $(e.currentTarget);
+    let itemId = e.currentTarget.value;
+    let customerId = Router.current().params.id;
+    var serviceToRemove = CartData.findOne({_id: itemId});
+    console.log(serviceToRemove);
+    if (serviceToRemove.qty == 1) {
+      CartData.remove({_id: itemId});
+    } else {
+      CartData.update({_id: itemId}, {$inc: {qty: -1, subtotal: -serviceToRemove.price}});
+    }
+    if (customerId) {
+      Customers.update({_id: customerId}, {$inc: {total: -serviceToRemove.price}})
+    }
+  }
 });
 Template.MasterLayout.onRendered(function () {
   $('.sidebar-toggle').each(function () {
