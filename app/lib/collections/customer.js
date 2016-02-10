@@ -52,12 +52,7 @@ if (Meteor.isClient) {
     if (!doc.active) {
       let items = CartData.find({customerId: doc._id}).fetch();
       _.each(items, function (item) {
-        if (item.type === 'Product') {
-          console.log(item, 'Decrement time');
-          let stock = Stocks.findOne({id: item.itemId});
-          Stocks.update({_id: stock._id}, {$inc: {qty: - parseInt(item.qty)}});
 
-        }
 
       })
     }
