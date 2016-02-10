@@ -11,6 +11,39 @@
     <div class="container">
       <section class="content">
         <div class="row">
+          <div class="col-sm-7">
+            <div class="input-group control-group">
+              <input type="text" id="search-box" class="form-control" placeholder="Search by Name"/>
+                <span class="input-group-addon">
+                <i class="fa fa-search"></i>
+                </span>
+            </div>
+          </div>
+
+          <div class="col-sm-5">
+            <div class="pull-right">
+              <div class="dropdown" style="display: inline-block;">
+                <button class="btn btn-primary dropdown-toggle" type="button"
+                        data-toggle="dropdown" style="display: inline-block;">{{selectedBranch}}
+                  <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  {{#each Branches}}
+                    <li><a href="#" class="branch-selector" data-name="{{this.name}}">{{this.name}}</a></li>
+                  {{/each}}
+                  <li><a href="#" class="branch-selector">All</a></li>
+                </ul>
+              </div>
+              <button class="btn btn-default" id="daterange-btn">
+                <i class="fa fa-calendar"></i>Date range picker
+                <i class="fa fa-caret-down"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          {{#if customerList}}
           {{#each customerList}}
             <div class="col-md-4">
               {{#linkTo route='dashboard.services.customer' id=this._id}}
@@ -26,6 +59,9 @@
               {{/linkTo}}
             </div>
           {{/each}}
+          {{else}}
+          <h1>No Customers</h1>
+          {{/if}}
         </div>
       </section>
     </div>

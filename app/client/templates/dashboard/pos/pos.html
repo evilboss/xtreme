@@ -9,20 +9,20 @@
       </section>
       <section class="content">
         <div class="row">
-          <div class="col-s-6">
-            <div class='pull-right control-group'>
-              <div class='clearfix'>
-                <button class="btn btn-default pull-right" id="daterange-btn">
-                  <i class="fa fa-calendar"></i>Date range picker
-                  <i class="fa fa-caret-down"></i>
-                </button>
-              </div>
+          <div class="col-sm-7">
+            <div class="input-group control-group">
+              <input type="text" id="search-box" class="form-control" placeholder="Search by Name"/>
+                <span class="input-group-addon">
+                <i class="fa fa-search"></i>
+                </span>
             </div>
           </div>
-          <div class="col-s-6">
-            <div class='pull-right control-group'>
-              <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{selectedBranch}}
+
+          <div class="col-sm-5">
+            <div class="pull-right">
+              <div class="dropdown" style="display: inline-block;">
+                <button class="btn btn-primary dropdown-toggle" type="button"
+                        data-toggle="dropdown" style="display: inline-block;">{{selectedBranch}}
                   <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                   {{#each Branches}}
@@ -31,10 +31,15 @@
                   <li><a href="#" class="branch-selector">All</a></li>
                 </ul>
               </div>
-
+              <button class="btn btn-default" id="daterange-btn">
+                <i class="fa fa-calendar"></i>Date range picker
+                <i class="fa fa-caret-down"></i>
+              </button>
             </div>
           </div>
+
         </div>
+
         {{#each branchList}}
           <div class="row">
             <div class="col-s-12">
@@ -58,7 +63,11 @@
                       <tbody>
                       {{#each customerByBranch this._id}}
                         <tr>
-                          <td>{{this.name}}</td>
+                          <td>
+                            {{#linkTo route='dashboard.services.customer' id=this._id}}
+                              {{this.name}}
+                            {{/linkTo}}
+                        </td>
                           <td>{{getUserName this.staffId}}</td>
                           <td>{{formatDate this.createdAt}}</td>
                           <td>{{this.total}}</td>

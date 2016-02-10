@@ -1,44 +1,48 @@
 /*****************************************************************************/
-/* Pos: Event Handlers */
+/* StockReport: Event Handlers */
 /*****************************************************************************/
+let selectedBranch = new ReactiveVar('All');
 let startDate = new ReactiveVar();
 let endDate = new ReactiveVar();
-let selectedBranch = new ReactiveVar('All');
 let searchText = new ReactiveVar('');
-Template.Pos.events({
+Template.StockReport.events({
   'click .branch-selector': function (e) {
     selectedBranch.set($(e.currentTarget).text())
   },
   'keyup #search-box': function (e) {
     var text = $(e.target).val().trim();
-    console.log(searchText.get());
     searchText.set(text);
   }
 });
 
 /*****************************************************************************/
-/* Pos: Helpers */
+/* StockReport: Helpers */
 /*****************************************************************************/
-Template.Pos.helpers({
-  customerByBranch: function (branchId) {
+Template.StockReport.helpers({
+  'currentReports': function (branchId) {
     let toSearch = searchText.get();
     if (toSearch) {
-      return Customers.find({
+      return Request.find({
         name: {$regex: '.*' + toSearch + '.*'},
         branchId: branchId,
-        active: false,
         createdAt: {$gte: startDate.get(), $lte: endDate.get()}
       });
     } else {
-      return Customers.find({
+      return Request.find({
         branchId: branchId,
-        active: false,
         createdAt: {$gte: startDate.get(), $lte: endDate.get()}
       });
     }
+  },
+  'getStatus': function (status) {
+    if (status === 'received') {
+      return 'bg-green'
+    }
+    else if (status === 'for delivery') {
+      return 'bg-yellow'
+    }
 
   },
-
   selectedBranch: function () {
     return selectedBranch.get();
   },
@@ -49,40 +53,24 @@ Template.Pos.helpers({
       return Branches.find({name: selectedBranch.get()});
     }
   },
-  totalSold: function () {
-    let totalList = Customers.find({
-      active: false,
-      createdAt: {$gte: startDate.get(), $lte: endDate.get()}
-    }).fetch();
-    let grandTotal = 0;
-    _.each(totalList, function (item) {
-      grandTotal += item.total;
+  totalRecived: function (branchId) {
+    let totalRecieved = Request.find({branchId: branchId, status: 'received'}).fetch();
+    let total = 0;
+    _.each(totalRecieved, function (item) {
+      console.log(item);
+      total += item.qty;
     });
-    return grandTotal;
-
-  },
-  totalSoldBranch: function (branchId) {
-    let totalList = Customers.find({
-      active: false, branchId: branchId, createdAt: {$gte: startDate.get(), $lte: endDate.get()}
-    }).fetch();
-    let grandTotal = 0;
-    console.log(totalList);
-    _.each(totalList, function (item) {
-      grandTotal += item.total;
-    });
-    return grandTotal;
-
+    return total;
   }
-
 });
 
 /*****************************************************************************/
-/* Pos: Lifecycle Hooks */
+/* StockReport: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Pos.created = function () {
+Template.StockReport.created = function () {
 };
 
-Template.Pos.rendered = function () {
+Template.StockReport.rendered = function () {
   Meteor.typeahead.inject();
   $(function () {
     function cb(start, end) {
@@ -108,5 +96,5 @@ Template.Pos.rendered = function () {
   });
 };
 
-Template.Pos.destroyed = function () {
+Template.StockReport.destroyed = function () {
 };

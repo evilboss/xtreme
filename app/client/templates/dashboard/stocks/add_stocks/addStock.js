@@ -36,7 +36,8 @@ Template.addStock.events({
               id: selectedItem._id,
               qty: valToAdd,
               status: 'for delivery',
-              branchId: branchSelected._id
+              branchId: branchSelected._id,
+              requestedBy: Meteor.userId()
             });
           }
           stockList.set(itemList);

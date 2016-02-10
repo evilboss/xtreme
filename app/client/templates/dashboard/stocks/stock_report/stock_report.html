@@ -1,0 +1,120 @@
+<template name="StockReport">
+  <div class="content-wrapper">
+    <div class="container">
+      <section class="content-header">
+        <h1>
+          Stock Reports
+          <small>Stock Request</small>
+        </h1>
+      </section>
+      <section class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="input-group control-group">
+                <input type="text" id="search-box" class="form-control" placeholder="Search by Name"/>
+                <span class="input-group-addon">
+                <i class="fa fa-search"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="col-sm-5">
+              <div class="pull-right">
+                <div class="dropdown" style="display: inline-block;">
+                  <button class="btn btn-primary dropdown-toggle" type="button"
+                          data-toggle="dropdown" style="display: inline-block;">{{selectedBranch}}
+                    <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    {{#each Branches}}
+                      <li><a href="#" class="branch-selector" data-name="{{this.name}}">{{this.name}}</a></li>
+                    {{/each}}
+                    <li><a href="#" class="branch-selector">All</a></li>
+                  </ul>
+                </div>
+                <button class="btn btn-default" id="daterange-btn">
+                  <i class="fa fa-calendar"></i>Date range picker
+                  <i class="fa fa-caret-down"></i>
+                </button>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-s-12">
+              {{#each branchList}}
+
+                <div class="box">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">{{this.name}}</h3>
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body">
+                    <table class="table table-bordered">
+                      <thead>
+                      <tr>
+                        <th>Item</th>
+                        <th>Status</th>
+                        <th>Quantity</th>
+                        <th>Requested By</th>
+
+
+                        <th>Date</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      {{#each currentReports this._id}}
+                        <tr>
+                          <td>{{this.name}}</td>
+                          <td>
+                            <span class="badge {{getStatus this.status}}">{{this.status}}</span>
+                          </td>
+                          <td>
+                            {{this.qty}}
+                          </td>
+                          <td>{{getUserName this.requestedBy}}</td>
+                          <td>
+                            {{formatDate this.createdAt}}
+                          </td>
+                        </tr>
+                      {{/each}}
+                      </tbody>
+                      <tfoot>
+
+                      <tr style=" border:solid">
+                        <th></th>
+                        <th>Total Recived</th>
+                        <td> {{totalRecived this._id}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th></th>
+                        <th>Total Used</th>
+                        <td> 100</td>
+                      </tr>
+                      <tr>
+                        <th></th>
+                        <th>Total Delivering</th>
+                        <td> 100</td>
+                      </tr>
+                      </tfoot>
+                    </table>
+
+                  </div>
+                  <!-- /.box-body -->
+                  <div class="box-footer clearfix">
+
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+    </div>
+  </div>
+</template>

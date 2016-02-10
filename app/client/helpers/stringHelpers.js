@@ -48,3 +48,6 @@ Template.registerHelper('getInventoryDescription', function (id) {
 Template.registerHelper('getInventoryPrice', function (id) {
   return Inventory.findOne({_id: id}).price;
 });
+Template.registerHelper('formatDate', function (date) {
+  return moment(date).format('ll');
+});

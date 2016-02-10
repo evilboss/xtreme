@@ -3,9 +3,15 @@
 /*****************************************************************************/
 ._header {
 }
+
 .active {
   color: #f19b12;
 }
+
 .brand-logo {
   height: 130% !important;
+}
+
+.navbar-nav > .notifications-menu > .dropdown-menu, .navbar-nav > .messages-menu > .dropdown-menu, .navbar-nav > .tasks-menu > .dropdown-menu {
+  width: 300px !important;
 }
