@@ -24,6 +24,45 @@ function checkService(serviceId) {
   }
   return allow;
 }
+function returnService(serviceId) {
+  let service = Services.findOne({_id: serviceId});
+  console.log(service);
+  if (service.recipe) {
+    let items = service.recipe;
+    _.each(items, function (item) {
+      let branchStock = Stocks.findOne({id: item.ingredient});
+      if (branchStock) {
+        incrementProduct(item.ingredient, item.amount);
+      }
+    });
+  }
+
+
+}
+function checkPackage(packageId) {
+  let packages = Packages.findOne({_id: packageId});
+  let allow = true;
+  if (packages.services) {
+    let items = packages.services;
+    _.each(items, function (item) {
+      console.log(item);
+      let service = Services.findOne({_id: item});
+      allow = checkService(service._id);
+    });
+  }
+  return allow;
+}
+function returnPackage(packageId) {
+  let packages = Packages.findOne({_id: packageId});
+  if (packages.services) {
+    let items = packages.services;
+    _.each(items, function (item) {
+      let service = Services.findOne({_id: item});
+      returnService(service._id);
+    });
+  }
+
+}
 Template.MasterLayout.helpers({
   availableBranches: function () {
     if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
@@ -63,6 +102,9 @@ Template.MasterLayout.events({
       }
       if (transType === 'Package') {
         itemToAdd = Packages.findOne({_id: itemId});
+        allowSale = checkPackage(itemId);
+        console.log(allowSale);
+
       }
       if (allowSale) {
         let branchId = Session.get('branch');
@@ -143,14 +185,17 @@ Template.MasterLayout.events({
     if (customerId) {
       let itemToAdd;
       if (transType === 'Service') {
-        itemToAdd = Services.findOne({_id: itemId});
+        let itemToRemove = CartData.findOne({_id: itemId});
+        returnService(itemToRemove.itemId);
       }
       if (transType === 'Product') {
         let itemToRemove = CartData.findOne({_id: itemId});
         incrementProduct(itemToRemove.itemId, 1);
       }
       if (transType === 'Package') {
-        itemToAdd = Packages.findOne({_id: itemId});
+        let itemToRemove = CartData.findOne({_id: itemId});
+        returnPackage(itemToRemove.itemId);
+
       }
     }
 

@@ -22,7 +22,7 @@ Packages.attachSchema(new SimpleSchema({
           var servcies = Services.find().fetch();
           var options = [];
           for (serviceItem in servcies) {
-            var option = {label: servcies[serviceItem].name, value: servcies[serviceItem].name};
+            var option = {label: servcies[serviceItem].name, value: servcies[serviceItem]._id};
             options.push(option)
           }
           return options;
