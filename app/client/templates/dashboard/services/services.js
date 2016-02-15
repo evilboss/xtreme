@@ -1,7 +1,13 @@
 /*****************************************************************************/
 /* Services: Event Handlers */
 /*****************************************************************************/
+let searchText = new ReactiveVar('');
 Template.Services.events({
+  'keyup #search-box': function (e) {
+    var text = $(e.target).val().trim();
+    console.log(searchText.get());
+    searchText.set(text);
+  }
 });
 
 /*****************************************************************************/
@@ -12,6 +18,16 @@ Template.Services.helpers({
     if (Router.current().params.id) {
       return Customers.findOne({_id: Router.current().params.id});
     }
+  },
+  serviceList:function(){
+    let toSearch = searchText.get();
+    if (toSearch) {
+      return Services.find({
+        name: {$regex: '.*' + toSearch + '.*'}
+      });
+    }
+
+    return Services.find().fetch();
   }
 });
 

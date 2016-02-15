@@ -3,13 +3,17 @@
 /*****************************************************************************/
 
 Template.Print.helpers({
-    'today':function(){
-        return moment(Date.now()).format('MM/DD/YYYY');
+  'today': function () {
+    return moment(Date.now()).format('MM/DD/YYYY');
 
+  },
+  currentCustomer: function () {
+    if (Router.current().params.id) {
+      return Customers.findOne({_id: Router.current().params.id});
     }
-    /*TODO: Make this a global helper*/
+  },
 });
 
 Template.Print.rendered = function () {
-    window.print();
+  window.print();
 };

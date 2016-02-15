@@ -28,15 +28,26 @@ Template.ServiceCart.helpers({
   },
   'currentBill': function () {
     if (Router.current().params.id) {
-      return Customers.findOne({_id: Router.current().params.id}).total;
+      let currentCustomer = Customers.findOne({_id: Router.current().params.id});
+      let currentBill = currentCustomer.total - currentCustomer.discount;
+      return currentBill;
     }
-  },
+  }
+  ,
   'hasAvailed': function () {
     if (Router.current().params.id) {
       let availed = CartData.find({customerId: Router.current().params.id}).fetch();
       return availed;
     }
-  },
+  }
+
+  ,
+  currentCustomer: function () {
+    if (Router.current().params.id) {
+      console.log(Customers.findOne({_id: Router.current().params.id}));
+      return Customers.findOne({_id: Router.current().params.id});
+    }
+  }
 
 });
 

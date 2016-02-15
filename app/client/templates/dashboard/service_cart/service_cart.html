@@ -1,9 +1,9 @@
 <template name="ServiceCart">
   <div class="box box-danger">
     <div class="box-header">
-      <h3 class="text-blue">Total: {{currentBill}}</h3>
     </div>
     <div class="box-body">
+
       {{#if productList}}
         {{>ProductInvoice availedProducts=productList}}
       {{/if}}
@@ -13,11 +13,49 @@
       {{#if packageList}}
         {{>PackageInvoice availedPackages=packageList}}
       {{/if}}
+      {{#if isInvoiceRoute}}
+        <div class="col-xs-6">
+          <p class="lead">Amount Due {{currentBill}}</p>
+
+          <div class="table-responsive">
+            <table class="table">
+              <tbody>
+              <tr>
+                <th>Tax (0%)</th>
+                <td>0.00</td>
+              </tr>
+              <tr>
+                <th>Total:</th>
+                <td>{{currentBill}}</td>
+              </tr>
+              {{#if currentCustomer.paid}}
+                <tr>
+                  <th>Paid:</th>
+                  <td>{{currentCustomer.paid}}</td>
+                </tr>
+              {{/if}}
+              {{#if currentCustomer.change}}
+                <tr>
+                  <th>Change:</th>
+                  <td>{{currentCustomer.change}}</td>
+                </tr>
+              {{/if}}
+              {{#if currentCustomer.discount}}
+                <tr>
+                  <th>Discount:</th>
+                  <td>{{currentCustomer.discount}}</td>
+                </tr>
+              {{/if}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      {{/if}}
+
     </div>
     <div class="box-footer">
       {{#if hasAvailed}}
         {{#unless isInvoiceRoute}}
-
           {{#if isManager}}
             {{>PrintPreview}}
           {{/if}}

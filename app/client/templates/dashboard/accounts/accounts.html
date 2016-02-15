@@ -1,42 +1,73 @@
 <template name="Accounts">
   <div class="content-wrapper">
     <div class="container">
-    <section class="content-header">
-      <h1>All Accounts
-        <small>eXtreme Salon Accounts</small>
-      </h1>
+      <section class="content-header">
+        <h1>All Accounts
+          <small>eXtreme Salon Accounts</small>
+        </h1>
 
-    </section>
-    <section class="content">
-      <div class="box box-danger">
-          <div class="box-header with-border">
-            <h3 class="box-title">User List</h3>
-          </div>
-          <div class="box-body no-padding">
-            <div class="col-xs-12">
-              {{#linkTo route='accounts.add' class='btn btn-info pull-right'}}<i class="fa fa-user-plus"></i> NEW
-                USER{{/linkTo}}
+      </section>
+      <section class="content">
+        <div class="row">
+          <div class="col-sm-7">
+            <div class="input-group control-group">
+              <input type="text" id="search-box" class="form-control" placeholder="Search by User Name"/>
+                <span class="input-group-addon">
+                <i class="fa fa-search"></i>
+                </span>
             </div>
-            <table class="table table-condensed">
-              <thead>
-              <tr>
-                <th>User Name</th>
-                <th>Employee Name</th>
-                <th>Role</th>
-                <th>Responcible Branches</th>
-                <th>Actions</th>
-              </tr>
-              </thead>
-              <tbody>
-              {{#each managers}}
-                {{>userAccount this}}
-              {{/each}}
-              </tbody>
-            </table>
+          </div>
+
+          <div class="col-sm-5">
+            <div class="pull-right">
+              <div class="dropdown" style="display: inline-block;">
+                <button class="btn btn-primary dropdown-toggle" type="button"
+                        data-toggle="dropdown" style="display: inline-block;">{{selectedUserRole}}
+                  <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="branch-selector" data-name="admin">Admin</a></li>
+                  <li><a href="#" class="branch-selector" data-name="manager">Manager</a></li>
+                  <li><a href="#" class="branch-selector" data-name="staff">Staff</a></li>
+
+                  <li><a href="#" class="branch-selector">All</a></li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">User List</h3>
+            </div>
+            <div class="box-body no-padding">
+              <div class="col-xs-12">
+                {{#linkTo route='accounts.add' class='btn btn-info pull-right'}}<i class="fa fa-user-plus"></i> NEW
+                  USER{{/linkTo}}
+              </div>
+              <table class="table table-condensed">
+                <thead>
+                <tr>
+                  <th>User Name</th>
+                  <th>Employee Name</th>
+                  <th>Role</th>
+                  <th>Responcible Branches</th>
+                  <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each managers}}
+                  {{>userAccount this}}
+                {{/each}}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
-    </section>
+      </section>
     </div>
   </div>
 </template>

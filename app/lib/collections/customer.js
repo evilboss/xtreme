@@ -37,6 +37,21 @@ Customers.attachSchema(new SimpleSchema({
   active: {
     type: Boolean,
     defaultValue: true
+  },
+  paid: {
+    type: Number,
+    optional: true,
+    defaultValue: 0
+  },
+  change: {
+    type: Number,
+    optional: true,
+    defaultValue: 0
+  },
+  discount: {
+    type: Number,
+    optional: true,
+    defaultValue: 0
   }
 
 }));

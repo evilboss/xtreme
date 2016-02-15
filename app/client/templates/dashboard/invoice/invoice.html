@@ -7,14 +7,69 @@
       </h1>
     </section>
     <section class="content">
+      {{#if hasPaid}}
+        {{#unless hasDiscount}}
+
+          <div class="row">
+            <div class="container">
+              <div class="col s12">
+                <div class="box box-danger">
+                  <div class="box-header">
+                    <h3 class="box-title">Discount Options</h3>
+                  </div>
+                  <div class="box-body">
+                    <div class="radio">
+                      <label><input class="discount-option" discount="0.05" type="radio" name="optradio">5%</label>
+                    </div>
+                    <div class="radio">
+                      <label><input class="discount-option" discount="0.10" type="radio" name="optradio">10%</label>
+                    </div>
+                    <div class="radio">
+                      <label><input class="discount-option" discount="0.20" type="radio" name="optradio">20%</label>
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
+                  <div class="box-footer">
+                    <button id="discount" class="btn btn-danger">Add Discount</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/unless}}
+      {{/if}}
+
+
       <section class="invoice card">
         <div class="row">
           <div class="col s12">
             <h5 class="page-header">
-              <i class="fa fa-globe"></i> Extreme Salon
+              <i class="fa fa-scissors"></i> Extreme Salon
               <small class="pull-right">Date: {{today}}</small>
             </h5>
           </div>
+        </div>
+        <div class="row invoice-info">
+          <div class="col-sm-4 invoice-col">
+            <img class="img-responsive brand-logo" src="/images/xtreme-logo.png"
+                 style="height: 80px!important;">
+            <address>
+              <strong>{{getBranchName currentCustomer.branchId}}</strong><br>
+              {{getBranchAddress currentCustomer.branchId}}<br>
+            </address>
+
+          </div>
+          <div class="col-sm-4 invoice-col">
+
+
+          </div>
+          <!-- /.col -->
+
+          <div class="col-sm-4 invoice-col">
+            <b>Invoice ID: {{currentCustomer._id}}</b><br>
+            <b>Customer Name:</b> {{currentCustomer.name}}<br>
+          </div>
+          <!-- /.col -->
         </div>
         <div class="row">
           <div class="col s12 table-responsive">
@@ -32,7 +87,6 @@
               {{#linkTo route='print' class='btn btn-default' id=currentId}}<i class="fa fa-print"></i> Print
               {{/linkTo}}
             {{/if}}
-
           </div>
 
         </div>
@@ -62,7 +116,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-          <button type="button" {{paidEnough}} id="confirm-payment" data-dismiss="modal" class="btn btn-outline">Save</button>
+          <button type="button" {{paidEnough}} id="confirm-payment" data-dismiss="modal" class="btn btn-outline">Save
+          </button>
         </div>
       </div>
       <!-- /.modal-content -->

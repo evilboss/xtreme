@@ -72,6 +72,9 @@ Template.Pos.helpers({
     });
     return grandTotal;
 
+  },
+  allCartData:function(customerId){
+    return CartData.find({customerId:customerId}).fetch();
   }
 
 });

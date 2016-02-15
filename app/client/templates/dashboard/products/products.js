@@ -1,9 +1,14 @@
 /*****************************************************************************/
 /* Products: Event Handlers */
 /*****************************************************************************/
+let searchText = new ReactiveVar('');
+
 Template.Products.events({
-
-
+  'keyup #search-box': function (e) {
+    var text = $(e.target).val().trim();
+    console.log(searchText.get());
+    searchText.set(text);
+  }
 });
 
 /*****************************************************************************/
@@ -11,7 +16,15 @@ Template.Products.events({
 /*****************************************************************************/
 Template.Products.helpers({
   productList: function () {
-    Stocks.find({qty: {$ne: 0}});
+    let toSearch = searchText.get();
+    if (toSearch) {
+      return Stocks.find({
+
+        name: {$regex: '.*' + toSearch + '.*'},
+        qty:{$ne:0}
+      });
+    }
+    return Stocks.find({qty: {$ne: 0}});
   },
   hasCustomer: function () {
     if (Router.current().params.id) {

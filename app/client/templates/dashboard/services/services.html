@@ -11,7 +11,7 @@
         <div class="row">
           {{#if hasCustomer.active}}
             <div class="col-md-4">
-s              {{>serviceMenu}}
+              {{>serviceMenu}}
             </div>
           {{/if}}
           <div class="col-md-8">
@@ -21,10 +21,20 @@ s              {{>serviceMenu}}
         <div class="row">
           {{#if hasCustomer}}
             {{#if hasCustomer.active}}
+
+
               <div class="col-md-6">
+
+
                 <div class="box box-danger">
                   <div class="box-header with-border">
                     <h3 class="box-title">List Of Single Services</h3>
+                  </div>
+                  <div class="input-group control-group">
+                    <input type="text" id="search-box" class="form-control" placeholder="Search by Name"/>
+                    <span class="input-group-addon">
+                      <i class="fa fa-search"></i>
+                    </span>
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
@@ -36,7 +46,7 @@ s              {{>serviceMenu}}
                         <th>Price</th>
                         <th>Operations</th>
                       </tr>
-                      {{#each Services}}
+                      {{#each serviceList}}
                         {{>ServiceInfo this}}
                       {{/each}}
                       </tbody>

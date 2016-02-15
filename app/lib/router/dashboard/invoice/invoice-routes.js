@@ -2,7 +2,7 @@
  * Created by jrreyes on 10/18/15.
  */
 Router.route('dashboard/invoice/:id', {
-    name: 'invoice',
+    name: 'dashboard.invoice',
     where: 'client',
     controller:'DashboardController',
     action:'invoice'

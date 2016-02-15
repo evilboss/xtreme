@@ -12,7 +12,7 @@ Template.registerHelper('isAdmin', function () {
   return Roles.userIsInRole(Meteor.userId(), 'admin');  // => true
 });
 Template.registerHelper('isInvoiceRoute', function () {
-  if (Router.current().route.getName() === 'invoice' || Router.current().route.getName() == 'print') {
+  if (Router.current().route.getName() === 'dashboard.invoice' || Router.current().route.getName() == 'print') {
     return true
   }
   return false;
@@ -37,6 +37,16 @@ Template.registerHelper('getBranchName', function (id) {
   if (branch) {
     if (branch.name) {
       return branch.name;
+    }
+  }
+  return '';
+
+});
+Template.registerHelper('getBranchAddress', function (id) {
+  let branch = Branches.findOne({_id: id});
+  if (branch) {
+    if (branch.location) {
+      return branch.location;
     }
   }
   return '';

@@ -25,7 +25,7 @@ Services.attachSchema(new SimpleSchema({
   },
   'recipe.$.ingredient': {
     type: String,
-    label: 'Ingredient',
+    label: 'Chemical Mixture  ',
     autoform: {
       afFieldInput: {
         options: function () {
