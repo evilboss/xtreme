@@ -105,6 +105,7 @@ Template.Invoice.created = function () {
 };
 
 Template.Invoice.rendered = function () {
+  Change.set(0);
 };
 
 Template.Invoice.destroyed = function () {
