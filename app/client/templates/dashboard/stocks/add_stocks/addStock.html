@@ -27,16 +27,16 @@
                     {{#each Inventory}}
                       <tr>
                         <td>{{this.name}}</td>
-                        <td>{{this.quantity}}</td>
-                        <td>
-                          <input class="form-control item-quantity" type="number" id="{{this._id}}" min="0"
-                                 max="{{this.quantity}}"/>
-                        </td>
-                        <td>
-                          <button class="btn btn-success stockup-button" data-value="{{this._id}}"><i
-                            class="fa fa-check-circle-o"></i>
-                          </button>
-                        </td>
+                        <td class="{{isLowLevel this.quantity}}">{{isOutOfStock this.quantity}}</td>
+                      <td>
+                        <input class="form-control item-quantity" type="number" id="{{this._id}}" min="0"
+                               max="{{this.quantity}}"/>
+                      </td>
+                      <td>
+                        <button class="btn btn-success stockup-button" data-value="{{this._id}}"><i
+                          class="fa fa-check-circle-o"></i>
+                        </button>
+                      </td>
                       </tr>
 
 
@@ -70,9 +70,7 @@
                       <tr>
                         <td>{{this.name}}</td>
                         <td>{{this.qty}}</td>
-                        <td>
-                          {{this.status}}
-                        </td>
+                        <td>{{this.status}}</td>
                       </tr>
                     {{/each}}
 

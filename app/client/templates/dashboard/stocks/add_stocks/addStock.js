@@ -7,6 +7,20 @@ Template.addStock.helpers({
   },
   'addedItems': function () {
     return stockList.get();
+  },
+  isLowLevel:function(qty){
+    if(parseInt(qty)<=10){
+      return 'bg-red badge';
+    }
+
+  },
+  isOutOfStock:function(qty){
+    console.log(qty);
+    if(qty == 0){
+      return 'Out of Stock';
+    }
+    return qty;
+
   }
 
 });

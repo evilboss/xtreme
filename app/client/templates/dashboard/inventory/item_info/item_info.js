@@ -8,6 +8,20 @@ Template.ItemInfo.events({
 /* ItemInfo: Helpers */
 /*****************************************************************************/
 Template.ItemInfo.helpers({
+  isOutOfStock:function(qty){
+    console.log(qty);
+    if(qty == 0){
+      return 'Out of Stock';
+    }
+    return qty;
+
+  },
+  isLowLevel:function(qty){
+    if(parseInt(qty)<=10){
+      return 'bg-red badge';
+    }
+
+  },
 });
 
 /*****************************************************************************/
