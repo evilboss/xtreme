@@ -29,7 +29,12 @@ Template.addStock.events({
           let match = _.where(itemList, {id: selectedItem._id});
           console.log(match);
           if (match.length) {
-            match[0].qty += valToAdd;
+            if (selectedItem.quantity < valToAdd + match[0].qty) {
+              sAlert.error('Quantity Exided');
+            } else {
+              match[0].qty += valToAdd;
+            }
+
           } else {
             itemList.push({
               name: selectedItem.name,
