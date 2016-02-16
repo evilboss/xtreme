@@ -52,6 +52,22 @@
               {{/if}}
             </ul>
           </li>
+          <li class="treeview" id="members-tab">
+            <a href="#"> <i class="fa fa-group"></i><span>Members</span> <i
+              class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+
+              <li class="{{ isActiveRoute regex='dashboard.stocks' }}">
+                <a href="{{ pathFor 'dashboard.members.add' }}"><span>New Member</span></a>
+              </li>
+
+              <li class="{{ isActiveRoute regex='dashboard.inventory' }}">
+                <a href="{{ pathFor 'dashboard.members' }}"><span>Member List</span></a>
+              </li>
+
+
+            </ul>
+          </li>
         {{/if}}
         <li class="{{ isActiveRoute regex='dashboard.customers.list' }}">
           <a href="{{ pathFor 'dashboard.customers.list' }}"><i class="fa fa-smile-o"></i><span>Customers</span></a>

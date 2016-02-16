@@ -52,6 +52,10 @@ Customers.attachSchema(new SimpleSchema({
     type: Number,
     optional: true,
     defaultValue: 0
+  },
+  member: {
+    type: Boolean,
+    defaultValue: false
   }
 
 }));

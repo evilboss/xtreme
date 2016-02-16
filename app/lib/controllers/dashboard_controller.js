@@ -10,7 +10,8 @@ DashboardController = RouteController.extend({
       this.subscribe('customers'),
       this.subscribe('request'),
       this.subscribe('stocks'),
-      this.subscribe('cartData');
+      this.subscribe('cartData'),
+      this.subscribe('members');
   },
   data: {
     Inventory: Inventory.find(),
@@ -21,7 +22,8 @@ DashboardController = RouteController.extend({
     Customers: Customers.find(),
     Request: Request.find(),
     Stocks: Stocks.find(),
-    CartData:CartData.find(),
+    CartData: CartData.find(),
+    Members: Members.find(),
   },
   onAfterAction: function () {
     Meta.setTitle('Dashboard');
@@ -139,7 +141,18 @@ DashboardController = RouteController.extend({
   ,
   reportStocks: function () {
     this.render('StockReport');
+  },
+  /*Member controllers*/
+  'members': function () {
+    this.render('Members');
+  },
+  'members.add': function () {
+    this.render('NewMember');
+  },
+  'members.update': function () {
+    console.log('members -update');
   }
+
 
 })
 ;
