@@ -27,6 +27,18 @@ Template.Invoice.events({
       totalPayment.set(0);
     }
   },
+  'click #confirm-member': function (e) {
+    if (Router.current().params.id) {
+      let billing = Customers.findOne({_id: Router.current().params.id});
+      Customers.update({_id: billing._id}, {$set: {member:true}});
+      billing = Customers.findOne({_id: Router.current().params.id});
+      console.log(billing);
+      sAlert.error('Member Confirmed');
+      Router.go('dashboard.invoice', {id: Router.current().params.id});
+
+    }
+  },
+
   'click #discount': function () {
     let discount = DiscountValue.get();
     if (discount) {

@@ -3,38 +3,35 @@ let endDate = new ReactiveVar();
 let selectedBranch = new ReactiveVar('All');
 let searchText = new ReactiveVar('');
 Template.customerList.helpers({
-  customerList:function(){
+  customerList: function () {
     let toSearch = searchText.get();
     if (toSearch) {
       return Customers.find({
         name: {$regex: '.*' + toSearch + '.*'},
 
         active: true,
-        createdAt: {$gte: startDate.get(), $lte: endDate.get()
+        createdAt: {
+          $gte: startDate.get(), $lte: endDate.get()
         }
-      },{sort:{createdAt:-1}});
+      }, {sort: {createdAt: -1}});
     } else {
       return Customers.find({
 
         active: true,
         createdAt: {$gte: startDate.get(), $lte: endDate.get()}
-      },{sort:{createdAt:-1}});
+      }, {sort: {createdAt: -1}});
     }
   }
-
-  //add you helpers here
 });
-
 Template.customerList.events({
   'click .branch-selector': function (e) {
     selectedBranch.set($(e.currentTarget).text())
   },
   'keyup #search-box': function (e) {
     var text = $(e.target).val().trim();
-    console.log(searchText.get());
     searchText.set(text);
-  }});
-
+  }
+});
 Template.customerList.onCreated(function () {
   //add your statement here
 });
