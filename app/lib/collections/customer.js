@@ -62,18 +62,20 @@ Customers.attachSchema(new SimpleSchema({
 if (Meteor.isClient) {
   Customers.after.insert(function (userId, doc) {
     let currentPath = Router.current().route.getName();
+    console.log(currentPath);
+
     if (!currentPath.includes('customer')) {
       Router.go(currentPath + '.customer', {id: doc._id});
     }
   });
 
   Customers.after.update(function (userId, doc) {
-    if (!doc.active) {
-      let items = CartData.find({customerId: doc._id}).fetch();
-      _.each(items, function (item) {
-
-
-      })
+    let currentPath = Router.current().route.getName();
+    console.log(currentPath.includes('invoice'));
+    if (currentPath.includes('invoice')) {
+      console.log(location.pathname);
+      window.locaton = location.pathname;
+      Router.go('dashboard.invoice', {id: doc._id});
     }
   });
 }

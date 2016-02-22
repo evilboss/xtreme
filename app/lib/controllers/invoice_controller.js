@@ -1,0 +1,3 @@
+InvoiceController = RouteController.extend({
+
+});

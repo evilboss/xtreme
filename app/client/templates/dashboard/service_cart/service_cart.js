@@ -44,7 +44,6 @@ Template.ServiceCart.helpers({
   ,
   currentCustomer: function () {
     if (Router.current().params.id) {
-      console.log(Customers.findOne({_id: Router.current().params.id}));
       return Customers.findOne({_id: Router.current().params.id});
     }
   }

@@ -28,9 +28,6 @@ DashboardController = RouteController.extend({
   onAfterAction: function () {
     Meta.setTitle('Dashboard');
   },
-  paramTest: function () {
-    this.render('Paramtest');
-  },
   action: function () {
     this.render('dashboard');
   },
@@ -85,7 +82,7 @@ DashboardController = RouteController.extend({
   /*invoice Controllers*/
 
   invoice: function () {
-    this.render('Invoice')
+    this.render('Invoice');
   },
   accounts: function () {
     this.render('Accounts');

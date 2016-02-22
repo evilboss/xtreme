@@ -7,55 +7,60 @@
       </h1>
     </section>
     <section class="content">
-
-
-      {{#if hasPaid}}
-        {{#unless currentCustomer.member}}
-          <div class="row">
-            <div class="col-md-12">
-              <div class="pull-right">
-                <button id="searchMember" type="button" class="btn btn-primary btn-lg" data-toggle="modal"
-                        data-target="#memberLookup"><i class="fa fa-search-plus"></i>Look up member
-                </button>
-              </div>
-            </div>
-          </div>
-
-        {{/unless}}
-        {{#if currentCustomer.member}}
-          {{#unless hasDiscount}}
+      {{#each Customers}}
+        {{#if isCurrentCustomer this._id}}
+          {{#if this.active}}
             <div class="row">
-              <div class="container">
-                <div class="col s12">
-                  <div class="box box-danger">
-                    <div class="box-header">
-                      <h3 class="box-title">Discount Options</h3>
-                    </div>
-                    <div class="box-body">
-                      <div class="radio">
-                        <label><input class="discount-option" discount="0.05" type="radio" name="optradio">5%</label>
-                      </div>
-                      <div class="radio">
-                        <label><input class="discount-option" discount="0.10" type="radio" name="optradio">10%</label>
-                      </div>
-                      <div class="radio">
-                        <label><input class="discount-option" discount="0.20" type="radio" name="optradio">20%</label>
-                      </div>
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer">
-                      <button id="discount" class="btn btn-danger">Add Discount</button>
-                    </div>
-                  </div>
+              <div class="col-md-12">
+                <div class="pull-right">
+                  <button id="searchMember" type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                          data-target="#memberLookup"><i class="fa fa-search-plus"></i>Look up member
+                  </button>
                 </div>
               </div>
             </div>
-          {{/unless}}
+
+            {{#if this.member}}
+              {{#unless this.discount}}
+
+                <div class="row">
+                  <div class="container">
+                    <div class="col s12">
+                      <div class="box box-danger">
+                        <div class="box-header">
+                          <h3 class="box-title">Discount Options</h3>
+                        </div>
+                        <div class="box-body">
+                          <div class="radio">
+                            <label><input class="discount-option" discount="0.05" type="radio"
+                                          name="optradio">5%</label>
+                          </div>
+                          <div class="radio">
+                            <label><input class="discount-option" discount="0.10" type="radio"
+                                          name="optradio">10%</label>
+                          </div>
+                          <div class="radio">
+                            <label><input class="discount-option" discount="0.20" type="radio"
+                                          name="optradio">20%</label>
+                          </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                          <button id="discount" class="btn btn-danger">Add Discount</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{/unless}}
+
+            {{/if}}
+
+          {{/if}}
+
         {{/if}}
-      {{/if}}
 
-
-
+      {{/each}}
       <section class="invoice card">
         <div class="row">
           <div class="col s12">

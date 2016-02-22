@@ -5,13 +5,6 @@ Router.route('/', {
   action: 'action'
 });
 
-Router.route('/dashboard/sales', {
-  name: 'dashboard.sales',
-  where: 'client',
-  controller: 'DashboardController',
-  action: 'sales'
-});
-
 Router.plugin('ensureSignedIn', {
   except: ['home', 'atSignIn']
 });

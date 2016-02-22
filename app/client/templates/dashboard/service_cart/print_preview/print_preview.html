@@ -2,9 +2,10 @@
   <div class="container">
     <div class="row no-print">
       <div class="col s12" style="border-bottom: none;">
-        {{#linkTo route='dashboard.invoice' class='btn btn-default' id = currentId}}<i class="fa fa-cart-arrow-down"></i> Check
-          Out
-        {{/linkTo}}
+        <a href="/dashboard/invoice/{{currentId}}">
+          <i class="fa fa-cart-arrow-down"></i> Check Out
+        </a>
+
       </div>
     </div>
   </div>

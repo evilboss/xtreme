@@ -7,6 +7,7 @@ let Change = new ReactiveVar(0);
 let paymentOk = new ReactiveVar(false);
 let Discount = new ReactiveVar(0);
 let DiscountValue = new ReactiveVar(0);
+let currentCustomer = new ReactiveVar();
 
 Template.Invoice.events({
   'click #confirm-payment': function () {
@@ -30,11 +31,10 @@ Template.Invoice.events({
   'click #confirm-member': function (e) {
     if (Router.current().params.id) {
       let billing = Customers.findOne({_id: Router.current().params.id});
-      Customers.update({_id: billing._id}, {$set: {member:true}});
-      billing = Customers.findOne({_id: Router.current().params.id});
-      console.log(billing);
+      Customers.update({_id: billing._id}, {$set: {member: true}});
+      currentCustomer.set(Customers.findOne({_id: Router.current().params.id}));
+      Router.current().render(Template.Invoice);
       sAlert.error('Member Confirmed');
-      Router.go('dashboard.invoice', {id: Router.current().params.id});
 
     }
   },
@@ -49,8 +49,9 @@ Template.Invoice.events({
       if (myDiscount) {
         let customerToUpdate = Customers.findOne({_id: Router.current().params.id});
         if (customerToUpdate) {
-          Customers.update({_id: customerToUpdate._id}, {$set: {discount: myDiscount}})
-          Router.go('dashboard.invoice', {id: Router.current().params.id});
+          Customers.update({_id: customerToUpdate._id}, {$set: {discount: myDiscount}});
+          currentCustomer.set(Customers.find({_id: Router.current().params.id}).fetch());
+
         }
       }
     }
@@ -61,14 +62,10 @@ Template.Invoice.events({
   }
 });
 
-/*****************************************************************************/
-/* Invoice: Helpers */
-/*****************************************************************************/
 Template.Invoice.helpers({
   currentCustomer: function () {
-    if (Router.current().params.id) {
-      return Customers.findOne({_id: Router.current().params.id});
-    }
+    console.log(currentCustomer.get());
+    return Customers.find({_id: Router.current().params.id}).fetch();
   },
   'today': function () {
     return moment(Date.now()).format('MM/DD/YYYY');
@@ -89,11 +86,13 @@ Template.Invoice.helpers({
       Change.set(0);
     }
     return Change.get();
-  }
-  ,
-  currentId: function () {
+  },
+  isCurrentCustomer(id){
     if (Router.current().params.id) {
-      return Customers.findOne({_id: Router.current().params.id})._id;
+      if(Router.current().params.id == id){
+        Customers.findOne({_id:id});
+        return true;
+      }
     }
   },
 
@@ -101,12 +100,15 @@ Template.Invoice.helpers({
     return Customers.findOne({_id: Router.current().params.id}).active;
   },
   hasDiscount: function () {
-    if (Router.current().params.id) {
-      let currentCustomer = Customers.findOne({_id: Router.current().params.id});
-      return currentCustomer.discount;
-    }
+    console.log(currentCustomer.get());
+
+    return currentCustomer.get().discount;
 
 
+  },
+  isMember: function () {
+    console.log(currentCustomer.get());
+    return currentCustomer.get().member;
   }
 });
 
