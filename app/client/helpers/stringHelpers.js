@@ -61,3 +61,9 @@ Template.registerHelper('getInventoryPrice', function (id) {
 Template.registerHelper('formatDate', function (date) {
   return moment(date).format('ll');
 });
+Template.registerHelper('getTimeStamp', function (date) {
+  return ((date.getMonth() + 1) + '' + (date.getDate()) + '' + date.getFullYear() + "" + date.getHours() + ''
+  + ((date.getMinutes() < 10) ? ("0" + date.getMinutes()) : (date.getMinutes())) + '' + ((date.getSeconds() < 10) ? ("0" + date
+    .getSeconds()) : (date.getSeconds())));
+});
+
