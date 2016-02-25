@@ -56,6 +56,10 @@ Customers.attachSchema(new SimpleSchema({
   member: {
     type: Boolean,
     defaultValue: false
+  },
+  bir:{
+    type: Number,
+    optional:true
   }
 
 }));

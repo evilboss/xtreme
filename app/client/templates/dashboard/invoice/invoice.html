@@ -105,8 +105,9 @@
               </button>
 
             {{else}}
-              {{#linkTo route='print' class='btn btn-default' id=currentId}}<i class="fa fa-print"></i> Print
-              {{/linkTo}}
+              <a class="btn btn-default" href="/dashboard/print/{{currentCustomer._id}}" style="color:black;" target="_blank">
+                <i class=" fa fa-print"></i> Print
+              </a>
             {{/if}}
           </div>
 

@@ -7,7 +7,7 @@ Router.route('dashboard/invoice/:id', {
     controller:'DashboardController',
     action:'invoice'
 });
-Router.route('invoice/print/:id', {
+Router.route('dashboard/print/:id', {
     name: 'print',
     controller: 'PrintController',
     action: 'Print',

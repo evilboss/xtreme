@@ -64,8 +64,8 @@ Template.Invoice.events({
 
 Template.Invoice.helpers({
   currentCustomer: function () {
-    console.log(currentCustomer.get());
-    return Customers.find({_id: Router.current().params.id}).fetch();
+    let currentCustomer =Customers.findOne({_id: Router.current().params.id});
+    return currentCustomer;
   },
   'today': function () {
     return moment(Date.now()).format('MM/DD/YYYY');
