@@ -1,17 +1,23 @@
 Template.NotActive.helpers({
   connectedBranches: function () {
-    if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
-      return true;
-    }
-    if (Meteor.user()) {
-      if (Meteor.user().profile) {
-        if (Meteor.user().profile.branchIds) {
-          Session.set('branch', Meteor.user().profile.branchIds[0]);
-          return Meteor.user().profile.branchIds[0];
+    $(document).ready(function () {
+      if (Meteor.user()) {
+        if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
+          return true;
+        }
+        if (Meteor.user().profile) {
+          if (Meteor.user().profile.branchIds) {
+            if(Meteor.user().profile.branchIds[0]){
+              Session.set('branch', Meteor.user().profile.branchIds[0]);
+              return true;
+            }
+
+          }
         }
       }
-    }
-    return false;
+      return false;
+
+    });
   }});
 
 Template.NotActive.events({
