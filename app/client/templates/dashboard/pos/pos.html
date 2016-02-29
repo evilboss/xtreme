@@ -57,6 +57,8 @@
                         <th>Stylist Name</th>
                         <th>Date</th>
                         <th>Availed Items <span class="pull-right">Quantity</span></th>
+                        <th>Discount</th>
+                        <th>Discounted Price</th>
                         <th>Total Price</th>
 
                       </tr>
@@ -66,7 +68,7 @@
                       {{#each customerByBranch this._id}}
                         <tr>
                           <td>
-                            {{getTimeStamp currentCustomer.createdAt}}
+                            {{getTimeStamp this.createdAt}}
                           </td>
                           <td>
                             {{#linkTo route='dashboard.invoice' id=this._id}}
@@ -88,6 +90,8 @@
 
                             </div>
                           </td>
+                          <td>{{#if this.discount}}{{this.discount}}{{/if}}</td>
+                          <td>{{#if this.discount}}{{getDiscountPrice this.total this.discount}}{{/if}}</td>
                           <td>{{this.total}}</td>
 
                         </tr>

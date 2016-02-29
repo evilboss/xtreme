@@ -32,6 +32,13 @@ Template.ServiceCart.helpers({
       let currentBill = currentCustomer.total - currentCustomer.discount;
       return currentBill;
     }
+  },
+  'totalBill': function () {
+    if (Router.current().params.id) {
+      let currentCustomer = Customers.findOne({_id: Router.current().params.id});
+      let totalBill = currentCustomer.total;
+      return totalBill;
+    }
   }
   ,
   'hasAvailed': function () {

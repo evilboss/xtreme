@@ -38,7 +38,12 @@ Template.Pos.helpers({
     }
 
   },
+  totalAndDiscount:function(){
 
+  },
+  getDiscountPrice:function(total,discount){
+    return total - discount;
+  },
   selectedBranch: function () {
     return selectedBranch.get();
   },
@@ -56,6 +61,9 @@ Template.Pos.helpers({
     }).fetch();
     let grandTotal = 0;
     _.each(totalList, function (item) {
+      if(item.discount){
+        grandTotal -= item.discount
+      }
       grandTotal += item.total;
     });
     return grandTotal;
@@ -68,6 +76,9 @@ Template.Pos.helpers({
     let grandTotal = 0;
     console.log(totalList);
     _.each(totalList, function (item) {
+      if(item.discount){
+        grandTotal -= item.discount
+      }
       grandTotal += item.total;
     });
     return grandTotal;

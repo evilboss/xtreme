@@ -1,5 +1,5 @@
-Template.notActive.helpers({
-  availableBranches: function () {
+Template.NotActive.helpers({
+  connectedBranches: function () {
     if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
       return true;
     }
@@ -14,19 +14,19 @@ Template.notActive.helpers({
     return false;
   }});
 
-Template.notActive.events({
+Template.NotActive.events({
   //add your events here
 });
 
-Template.notActive.onCreated(function () {
+Template.NotActive.onCreated(function () {
   //add your statement here
 });
 
-Template.notActive.onRendered(function () {
+Template.NotActive.onRendered(function () {
   //add your statement here
 });
 
-Template.notActive.onDestroyed(function () {
+Template.NotActive.onDestroyed(function () {
   //add your statement here
 });
 
