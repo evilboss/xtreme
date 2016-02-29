@@ -33,7 +33,6 @@ Template.Invoice.events({
       let billing = Customers.findOne({_id: Router.current().params.id});
       Customers.update({_id: billing._id}, {$set: {member: true}});
       currentCustomer.set(Customers.findOne({_id: Router.current().params.id}));
-      Router.current().render(Template.Invoice);
       sAlert.error('Member Confirmed');
 
     }
@@ -59,6 +58,14 @@ Template.Invoice.events({
   },
   'click .discount-option': function (e) {
     DiscountValue.set($(e.currentTarget).attr('discount'));
+  },
+  'click .cancel-command':function(e){
+    console.log('cancel');
+    location.pathname ='/dashboard';
+  },
+  'click .payment-confirm':function(){
+    console.log('payment');
+    Change.set(0);
   }
 });
 
@@ -85,7 +92,11 @@ Template.Invoice.helpers({
     if (Change.get() <= 0) {
       Change.set(0);
     }
-    return Change.get();
+    if($('#payment-input').val()){
+      return Change.get();
+    }
+    return 0;
+
   },
   isCurrentCustomer(id){
     if (Router.current().params.id) {

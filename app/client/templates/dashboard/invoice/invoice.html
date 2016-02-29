@@ -97,18 +97,33 @@
             {{>ServiceCart}}
           </div>
         </div>
-        <div class="row no-print">
+        <div class="row">
           <div class="col s12" style="border-bottom: none;">
             {{#if hasPaid}}
-              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                Confirm Payment
-              </button>
+              <div class="col-md-6" style="border-bottom: none;">
+                <button type="button" class="btn btn-primary btn-lg payment-confirm" data-toggle="modal" data-target="#myModal">
+                  Confirm Payment
+                </button>
+              </div>
+              <div class="col-md-6" style="border-bottom: none;">
+                <a class="btn btn-warning cancel-command" href="/dashboard/" style="color:black;">
+                  <i class=" fa fa-times"></i>Cancel
+                </a>
+              </div>
+
 
             {{else}}
-              <a class="btn btn-default" href="/dashboard/print/{{currentCustomer._id}}" style="color:black;"
-                 target="_blank">
-                <i class=" fa fa-print"></i> Print
-              </a>
+              <div class="col-md-6" style="border-bottom: none;">
+                <a class="btn btn-default" href="/dashboard/print/{{currentCustomer._id}}" style="color:black;"
+                   target="_blank">
+                  <i class=" fa fa-print"></i> Print
+                </a>
+              </div>
+              <div class="col-md-6" style="border-bottom: none;">
+                <a class="btn btn-success cancel-command" href="/dashboard/" style="color:black;">
+                  <i class=" fa fa-check"></i>Done
+                </a>
+              </div>
             {{/if}}
           </div>
 
