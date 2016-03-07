@@ -9,7 +9,6 @@ Template.ItemInfo.events({
 /*****************************************************************************/
 Template.ItemInfo.helpers({
   isOutOfStock:function(qty){
-    console.log(qty);
     if(qty == 0){
       return 'Out of Stock';
     }

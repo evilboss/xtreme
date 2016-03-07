@@ -35,10 +35,20 @@
                     <th>Description</th>
                     <th>Quantity</th>
                     <th>Operations</th>
+                    {{#each branchList}}
+                      <th>{{this.name}}</th>
+                    {{/each}}
                   </tr>
+
                   {{#each InventoryList}}
-                    {{>ItemInfo name=this.name description=this.description quantity=this.quantity id=this._id}}
+                    <tr>
+                      {{>ItemInfo name=this.name description=this.description quantity=this.quantity id=this._id}}
+                      {{#each branchList}}
+                        <td>{{getStockAmount ../_id this._id}}</td>
+                      {{/each}}
+                    </tr>
                   {{/each}}
+
                   </tbody>
                 </table>
               </div>

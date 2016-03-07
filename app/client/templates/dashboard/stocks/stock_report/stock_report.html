@@ -58,8 +58,8 @@
                         <th>Quantity</th>
                         <th>Requested By</th>
 
-
                         <th>Date</th>
+
                       </tr>
                       </thead>
                       <tbody>
@@ -76,6 +76,14 @@
                           <td>
                             {{formatDate this.createdAt}}
                           </td>
+                          {{#if isForDelivery this._id}}
+                            <td>
+                              <button data-value="{{this._id}}" class="btn btn-xs btn-success accept-stock-button">
+                                Accept
+                                <i class="fa fa-check"></i>
+                              </button>
+                            </td>
+                          {{/if}}
                         </tr>
                       {{/each}}
                       </tbody>

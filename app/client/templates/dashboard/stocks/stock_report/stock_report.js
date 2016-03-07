@@ -12,7 +12,46 @@ Template.StockReport.events({
   'keyup #search-box': function (e) {
     var text = $(e.target).val().trim();
     searchText.set(text);
-  }
+  },
+  'click .accept-stock-button': function (e) {
+    e.preventDefault();
+    let requestId = $(e.currentTarget).attr('data-value');
+    if (requestId) {
+      let request = Request.findOne({_id: requestId});
+      let inventoryItem = Inventory.find({_id: request.id});
+      console.log(request);
+      if (request) {
+        let branchId;
+        if (Session.get('branch')) {
+          branchId = Session.get('branch');
+        } else {
+          branchId = Meteor.user().profile.branchIds[0];
+        }
+        let currentBranch = Branches.find({_id: branchId}).fetch();
+        if (currentBranch) {
+          let selectedStock = Stocks.findOne({id: request.id});
+          if (selectedStock) {
+            request.qty += selectedStock.qty;
+            Stocks.update({_id: selectedStock._id}, {$set: {qty: request.qty}});
+          } else {
+            Stocks.insert({
+              name: request.name,
+              id: request.id,
+              qty: request.qty,
+              status: 'received',
+              branchId: request.branchId,
+              type: 'Product'
+            });
+          }
+          Request.update({_id: requestId}, {$set: {status: 'received'}});
+          sAlert.info('Stocks Updated');
+        }
+      }
+
+
+    }
+  },
+
 });
 
 /*****************************************************************************/
@@ -61,6 +100,16 @@ Template.StockReport.helpers({
       total += item.qty;
     });
     return total;
+  },
+  isForDelivery: function (id) {
+    if (Roles.userIsInRole(Meteor.userId(), ['manager'])) {
+      let request = Request.findOne({_id: id, status: 'for delivery'});
+      if (request) {
+        return request;
+      }
+    } else {
+      return false;
+    }
   }
 });
 

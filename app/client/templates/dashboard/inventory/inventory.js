@@ -6,7 +6,7 @@ Template.Inventory.events({
   'keyup #search-box': function (e) {
     var text = $(e.target).val().trim();
     searchText.set(text);
-  }
+  },
 });
 
 /*****************************************************************************/
@@ -18,10 +18,22 @@ Template.Inventory.helpers({
     if (toSearch) {
       return Inventory.find({
         name: {$regex: '.*' + toSearch + '.*'}
-      });
+      }, {sort: {'quantity': 1}});
     } else {
-      return Inventory.find({});
+      return Inventory.find({}, {sort: {'quantity': 1}});
     }
+  },
+  branchList: function () {
+    return Branches.find();
+  },
+  getStockAmount(itemId, branchId){
+    let stockAmount = Stocks.findOne({branchId: branchId, id: itemId});
+    if (stockAmount) {
+      if (stockAmount.qty) {
+        return stockAmount.qty
+      }
+    }
+    return '0';
   }
 
 });
