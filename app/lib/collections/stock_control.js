@@ -1,6 +1,4 @@
 StockControl = new Mongo.Collection('stock_control');
-
-
 if (Meteor.isServer) {
   StockControl.allow({
     insert: function (userId, doc) {

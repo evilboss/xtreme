@@ -160,3 +160,7 @@ Meteor.publish('cartData', function (/* args */) {
 Meteor.publish('members', function (/* args */) {
   return Members.find();
 });
+
+Meteor.publish('stockControl', function (/* args */) {
+  return StockControl.find();
+});

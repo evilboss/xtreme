@@ -1,4 +1,7 @@
 <template name="StockItem">
   <td>{{name}}</td>
-  <td><input class="form-control stock-control-limit" type="number" value="{{getStockLimit}}"></td>
+  <td><input class="form-control stock-control-limit" type="number" value="{{getStockLimit _id}}"></td>
+  <td>{{#if isChanged}}<button class="btn btn-success change-limit-button" data-value="{{_id}}"><i
+    class="fa fa-check-circle-o"></i>
+  </button>{{/if}}</td>
 </template>
