@@ -134,18 +134,25 @@ DashboardController = RouteController.extend({
   },
   addStocks: function () {
     this.render('addStock');
+  },
+  controlStocks: function () {
+    this.render('StockControl');
   }
+
   ,
   reportStocks: function () {
     this.render('StockReport');
-  },
+  }
+  ,
   /*Member controllers*/
   'members': function () {
     this.render('Members');
-  },
+  }
+  ,
   'members.add': function () {
     this.render('NewMember');
-  },
+  }
+  ,
   'members.update': function () {
     console.log('members -update');
   }

@@ -1,3 +1,56 @@
 <template name="StockControl">
-  <h1>Find me in app/client/templates/dashboard/stocks/stock_control/stock_control</h1>
+  <div class="content-wrapper">
+    <div class="container">
+      <section class="content-header">
+        <h1>
+          Stock Control
+          <small>Admin Stock Control</small>
+        </h1>
+      </section>
+      <section class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="input-group control-group">
+                <input type="text" id="search-box" class="form-control" placeholder="Search by Name"/>
+                <span class="input-group-addon">
+                <i class="fa fa-search"></i>
+                </span>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+            <div class="box box-danger">
+              <div class="box-header with-border">
+                <h3 class="box-title">Inventory</h3>
+              </div>
+              <div class="box-body">
+                <table class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <th>Item Name</th>
+                    <th>Limit</th>
+                    <th>Operation</th>
+                  </tr>
+
+                  {{#each InventoryList}}
+                    <tr>
+                        {{>StockItem this}}
+
+                    </tr>
+                  {{/each}}
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </template>

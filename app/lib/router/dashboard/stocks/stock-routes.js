@@ -13,6 +13,12 @@ Router.route('/dashboard/report/stocks', {
   controller: 'DashboardController',
   action: 'reportStocks'
 });
+Router.route('/dashboard/stocks/control', {
+  name: 'dashboard.stocks.control',
+  where: 'client',
+  controller: 'DashboardController',
+  action: 'controlStocks'
+});
 Router.route('/dashboard/stocks/:id', {
   name: 'dashboard.stocks.add',
   where: 'client',

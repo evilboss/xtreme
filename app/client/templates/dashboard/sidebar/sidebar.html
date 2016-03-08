@@ -34,7 +34,7 @@
             </ul>
           {{/if}}
         </li>
-            {{#if isManager}}
+        {{#if isManager}}
           <li class="treeview" id="inventory-tab">
             <a href="#"> <i class="fa fa-list"></i><span>Inventory</span> <i
               class="fa fa-angle-left pull-right"></i></a>
@@ -47,6 +47,9 @@
                   <a href="{{ pathFor 'dashboard.inventory' }}"><span>Inventory List</span></a></li>
                 <li class="{{ isActiveRoute regex='dashboard.inventory.add' }}">
                   <a href="{{ pathFor 'dashboard.inventory.add' }}"><span>Add Inventory Item</span></a>
+                </li>
+                <li class="{{ isActiveRoute regex='dashboard.stocks.control' }}">
+                  <a href="{{ pathFor 'dashboard.stocks.control' }}"><span>Stock Control</span></a>
                 </li>
               {{/if}}
             </ul>
