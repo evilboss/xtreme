@@ -1,6 +1,6 @@
 Template.stocks.helpers({
   'currentStocks':function(branchId){
-    return Stocks.find({branchId:branchId})
+    return Stocks.find({branchId:branchId}, {sort: {'qty': 1}})
   },
   getItemPrice:function(id){
     return Inventory.findOne({_id:id}).price;
@@ -12,7 +12,6 @@ Template.stocks.helpers({
 
   },
   isOutOfStock:function(qty){
-    console.log(qty);
     if(qty == 0){
       return 'Out of Stock';
     }
