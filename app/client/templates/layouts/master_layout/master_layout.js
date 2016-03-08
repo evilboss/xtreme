@@ -1,4 +1,3 @@
-
 function incrementProduct(itemId, amount) {
   let stock = Stocks.findOne({id: itemId});
   Stocks.update({_id: stock._id}, {$inc: {qty: amount}});
@@ -61,6 +60,7 @@ function returnPackage(packageId) {
 
 }
 function decrementProduct(itemId, amount) {
+  console.log('decrement called');
   let stock = Stocks.findOne({id: itemId});
   Stocks.update({_id: stock._id}, {$inc: {qty: -amount}});
 }
@@ -116,10 +116,11 @@ Template.MasterLayout.events({
         let branchId = Session.get('branch');
         if (branchId) {
           if (itemToAdd) {
-            console.log(itemToAdd);
+            console.log('itemToAdd', itemToAdd);
             let currentData = CartData.findOne({customerId: customerId, itemId: itemId});
             let currentSubtotal = itemToAdd.price;
             let update = true;
+            console.log(currentData);
             if (currentData) {
               console.log('Already Added');
               if (transType === 'Product') {
@@ -155,6 +156,7 @@ Template.MasterLayout.events({
               });
               if (transType === 'Product') {
                 decrementProduct(itemId, 1);
+                update = false;
               }
 
 
@@ -220,7 +222,6 @@ Template.MasterLayout.events({
   }
 });
 Template.MasterLayout.onRendered(function () {
-
 
 
 });
