@@ -32,7 +32,6 @@ Template.updateAccount.helpers({
 Template.updateAccount.events({
   'submit #updateAccountForm': function (e) {
     e.preventDefault();
-    console.log('update-account called');
     var data = SimpleForm.processForm(event.target);
 
     let error = [];

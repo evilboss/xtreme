@@ -156,7 +156,6 @@ DashboardController = RouteController.extend({
   }
   ,
   'members.update': function () {
-    console.log('members -update');
   }
 
 

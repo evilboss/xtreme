@@ -46,7 +46,6 @@ Template.Accounts.helpers({
         ['username', 'asc']
       ]
     }).fetch();
-    console.log(managers);
     return managers;
 
   },

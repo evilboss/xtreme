@@ -6,7 +6,6 @@ let searchText = new ReactiveVar('');
 Template.Packages.events({
   'keyup #search-box': function (e) {
     var text = $(e.target).val().trim();
-    console.log(searchText.get());
     searchText.set(text);
   }
 

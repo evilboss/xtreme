@@ -22,7 +22,6 @@ Template.ItemInfo.helpers({
         limiter = limit.limit;
       }
     }
-    console.log(parseInt(qty) <= limiter);
     if (parseInt(qty) <= limiter) {
       return 'bg-red badge';
     }

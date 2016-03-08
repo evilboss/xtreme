@@ -45,7 +45,6 @@ Template.Inventory.helpers({
   isLowLevel: function (itemId, branchId) {
     let stockAmount = Stocks.findOne({branchId: branchId, id: itemId});
     if (stockAmount) {
-      console.log(stockAmount);
       if (stockAmount.qty) {
         let limiter = 10;
         let limit = StockControl.findOne({itemId: itemId});

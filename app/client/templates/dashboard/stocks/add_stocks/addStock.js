@@ -15,7 +15,6 @@ Template.addStock.helpers({
 
   },
   isOutOfStock:function(qty){
-    console.log(qty);
     if(qty == 0){
       return 'Out of Stock';
     }
@@ -72,7 +71,6 @@ Template.addStock.events({
   },
   'change input.item-quantity': function (e) {
     console.log('change');
-    console.log($(e.currentTarget).val());
   },
   'click #cancel-delivery': function () {
     stockList.set([]);

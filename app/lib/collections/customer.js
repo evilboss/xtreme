@@ -66,25 +66,19 @@ Customers.attachSchema(new SimpleSchema({
 if (Meteor.isClient) {
   Customers.after.insert(function (userId, doc) {
     let currentPath = Router.current().route.getName();
-    console.log(currentPath);
     if (!currentPath.includes('customer')) {
       Router.go(currentPath + '.customer', {id: doc._id});
-      console.log('true');
     }
   });
 
   Customers.after.update(function (userId, doc) {
     let currentPath = Router.current().route.getName();
-    console.log(currentPath);
-    console.log(doc.member);
     if(doc.member){
       Router.go('dashboard.invoice', {id: doc._id});
     }
     if (currentPath.includes('invoice')) {
       let currentPathInvoicePath = Iron.Location.get().path;
       location.pathname =currentPathInvoicePath;
-      console.log(currentPathInvoicePath);
-      console.log(location.pathname);
     }
   });
 }

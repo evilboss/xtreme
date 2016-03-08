@@ -9,7 +9,6 @@ function checkService(serviceId) {
     let items = service.recipe;
     _.each(items, function (item) {
       let branchStock = Stocks.findOne({id: item.ingredient});
-      console.log(branchStock.qty, item.amount);
       if (item.amount < branchStock.qty) {
         decrementProduct(item.ingredient, item.amount);
       } else {
@@ -22,7 +21,6 @@ function checkService(serviceId) {
 }
 function returnService(serviceId) {
   let service = Services.findOne({_id: serviceId});
-  console.log(service);
   if (service.recipe) {
     let items = service.recipe;
     _.each(items, function (item) {
@@ -60,7 +58,6 @@ function returnPackage(packageId) {
 
 }
 function decrementProduct(itemId, amount) {
-  console.log('decrement called');
   let stock = Stocks.findOne({id: itemId});
   Stocks.update({_id: stock._id}, {$inc: {qty: -amount}});
 }
@@ -101,7 +98,6 @@ Template.MasterLayout.events({
       if (transType === 'Service') {
         itemToAdd = Services.findOne({_id: itemId});
         allowSale = checkService(itemId);
-        console.log(allowSale);
       }
       if (transType === 'Product') {
         itemToAdd = Inventory.findOne({_id: itemId});
@@ -116,17 +112,12 @@ Template.MasterLayout.events({
         let branchId = Session.get('branch');
         if (branchId) {
           if (itemToAdd) {
-            console.log('itemToAdd', itemToAdd);
             let currentData = CartData.findOne({customerId: customerId, itemId: itemId});
             let currentSubtotal = itemToAdd.price;
             let update = true;
-            console.log(currentData);
             if (currentData) {
-              console.log('Already Added');
               if (transType === 'Product') {
                 let checkStocks = Stocks.findOne({id: itemId});
-                console.log(checkStocks);
-                console.log(currentData.qty);
                 if (checkStocks.qty === 0) {
                   sAlert.error('You cannot add any more');
                   update = false;

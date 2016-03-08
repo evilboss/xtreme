@@ -19,7 +19,6 @@ Template.StockReport.events({
     if (requestId) {
       let request = Request.findOne({_id: requestId});
       let inventoryItem = Inventory.find({_id: request.id});
-      console.log(request);
       if (request) {
         let branchId;
         if (Session.get('branch')) {

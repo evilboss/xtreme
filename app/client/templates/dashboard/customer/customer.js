@@ -17,7 +17,6 @@ Template.customer.events({
     } else {
       sAlert.error('Select Your Branch');
     }
-    console.log(data);
 
   },
 

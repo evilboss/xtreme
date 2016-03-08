@@ -15,7 +15,6 @@ Template.Invoice.events({
       let billing = Customers.findOne({_id: Router.current().params.id});
       Customers.update({_id: billing._id}, {$set: {active: false, paid: totalPayment.get(), change: Change.get()}});
       billing = Customers.findOne({_id: Router.current().params.id});
-      console.log(billing);
       sAlert.error('Transaction Completed');
     }
 
@@ -54,7 +53,6 @@ Template.Invoice.events({
         }
       }
     }
-    console.log('discount');
   },
   'click .discount-option': function (e) {
     DiscountValue.set($(e.currentTarget).attr('discount'));
@@ -64,7 +62,6 @@ Template.Invoice.events({
     location.pathname ='/dashboard';
   },
   'click .payment-confirm':function(){
-    console.log('payment');
     Change.set(0);
   }
 });
@@ -111,14 +108,11 @@ Template.Invoice.helpers({
     return Customers.findOne({_id: Router.current().params.id}).active;
   },
   hasDiscount: function () {
-    console.log(currentCustomer.get());
-
     return currentCustomer.get().discount;
 
 
   },
   isMember: function () {
-    console.log(currentCustomer.get());
     return currentCustomer.get().member;
   }
 });

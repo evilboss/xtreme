@@ -1,7 +1,6 @@
 let onSignIn = function (error, state) {
   if (!error) {
     if (state === "signIn") {
-      console.log('signin completed');
     }
     if (state === "signUp") {
       // Successfully registered
