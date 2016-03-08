@@ -31,10 +31,9 @@
                   {{#each currentStocks this._id}}
                   <tr>
                     <td>{{this.name}}</td>
-                    <td><span class="{{isLowLevel this.qty}}">{{isOutOfStock this.qty}}</span></td>
+                    <td><span class="{{isLowLevel this.qty this._id}}">{{isOutOfStock this.qty}}</span></td>
                     <td>{{getItemPrice this.id}}</td>
                   </tr>
-
                   {{/each}}
                   </tbody>
                 </table>

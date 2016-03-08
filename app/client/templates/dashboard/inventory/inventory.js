@@ -33,8 +33,38 @@ Template.Inventory.helpers({
         return stockAmount.qty
       }
     }
-    return '0';
-  }
+    return 'Out of Stock';
+  },
+  isOutOfStock: function (qty) {
+    if (qty == 0) {
+      return 'Out of Stock';
+    }
+    return qty;
+
+  },
+  isLowLevel: function (itemId, branchId) {
+    let stockAmount = Stocks.findOne({branchId: branchId, id: itemId});
+    if (stockAmount) {
+      console.log(stockAmount);
+      if (stockAmount.qty) {
+        let limiter = 10;
+        let limit = StockControl.findOne({itemId: itemId});
+        if (limit) {
+          if (limit.limit) {
+            limiter = limit.limit;
+          }
+        }
+        if (parseInt(stockAmount.qty) <= parseInt(limiter)) {
+          return 'bg-red badge';
+        }
+      }
+    }
+    else {
+      return 'bg-red badge';
+    }
+
+
+  },
 
 });
 

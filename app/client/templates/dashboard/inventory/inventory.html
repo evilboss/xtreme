@@ -44,7 +44,7 @@
                     <tr>
                       {{>ItemInfo name=this.name description=this.description quantity=this.quantity id=this._id}}
                       {{#each branchList}}
-                        <td>{{getStockAmount ../_id this._id}}</td>
+                        <td><span class="{{isLowLevel ../_id this._id}}">{{getStockAmount ../_id this._id}}</span></td>
                       {{/each}}
                     </tr>
                   {{/each}}

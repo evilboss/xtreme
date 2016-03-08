@@ -5,8 +5,16 @@ Template.stocks.helpers({
   getItemPrice:function(id){
     return Inventory.findOne({_id:id}).price;
   },
-  isLowLevel:function(qty){
-    if(parseInt(qty)<=10){
+  isLowLevel: function (qty, id) {
+    let limiter = 10;
+    let limit = StockControl.findOne({itemId: id});
+    if (limit) {
+      if (limit.limit) {
+        limiter = limit.limit;
+      }
+    }
+    console.log(parseInt(qty) <= limiter);
+    if (parseInt(qty) <= limiter) {
       return 'bg-red badge';
     }
 

@@ -22,6 +22,7 @@ Template.StockItem.events({
 
     }
     Template.instance().state.set('selected', false);
+    sAlert.info('Stock Limit Updated');
 
   }
 });
