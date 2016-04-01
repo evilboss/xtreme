@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>mini-files.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="boot-utils.html">
+                  boot-utils.js
+                </a>
+              
+                
+                <a class="source" href="boot.html">
+                  boot.js
+                </a>
+              
+                
+                <a class="source" href="mini-files.html">
+                  mini-files.js
+                </a>
+              
+                
+                <a class="source" href="shell-server.html">
+                  shell-server.js
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>mini-files.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">"underscore"</span>);
+<span class="hljs-keyword">var</span> os = <span class="hljs-built_in">require</span>(<span class="hljs-string">"os"</span>);
+<span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"path"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>All of these functions are attached to files.js for the tool;
+they live here because we need them in boot.js as well to avoid duplicating
+a lot of the code.</p>
+<p>Note that this file does NOT contain any of the “perform I/O maybe
+synchronously” functions from files.js; this is intentional, because we want
+to make it very hard to accidentally use fs.*Sync functions in the app server
+after bootup (since they block all concurrency!)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> files = <span class="hljs-built_in">module</span>.exports;
+
+<span class="hljs-keyword">var</span> toPosixPath = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">p, partialPath</span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Sometimes, you can have a path like \Users\IEUser on windows, and this
+actually means you want C:\Users\IEUser</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">if</span> (p[<span class="hljs-number">0</span>] === <span class="hljs-string">"\\"</span> &amp;&amp; (! partialPath)) {
+    p = process.env.SystemDrive + p;
+  }
+
+  p = p.replace(<span class="hljs-regexp">/\\/g</span>, <span class="hljs-string">'/'</span>);
+  <span class="hljs-keyword">if</span> (p[<span class="hljs-number">1</span>] === <span class="hljs-string">':'</span> &amp;&amp; ! partialPath) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>transform “C:/bla/bla” to “/c/bla/bla”</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    p = <span class="hljs-string">'/'</span> + p[<span class="hljs-number">0</span>] + p.slice(<span class="hljs-number">2</span>);
+  }
+
+  <span class="hljs-keyword">return</span> p;
+};
+
+<span class="hljs-keyword">var</span> toDosPath = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">p, partialPath</span>) </span>{
+  <span class="hljs-keyword">if</span> (p[<span class="hljs-number">0</span>] === <span class="hljs-string">'/'</span> &amp;&amp; ! partialPath) {
+    <span class="hljs-keyword">if</span> (! <span class="hljs-regexp">/^\/[A-Za-z](\/|$)/</span>.test(p))
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"Surprising path: "</span> + p);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>transform a previously windows path back
+“/C/something” to “c:/something”</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    p = p[<span class="hljs-number">1</span>] + <span class="hljs-string">":"</span> + p.slice(<span class="hljs-number">2</span>);
+  }
+
+  p = p.replace(<span class="hljs-regexp">/\//g</span>, <span class="hljs-string">'\\'</span>);
+  <span class="hljs-keyword">return</span> p;
+};
+
+
+<span class="hljs-keyword">var</span> convertToOSPath = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">standardPath, partialPath</span>) </span>{
+  <span class="hljs-keyword">if</span> (process.platform === <span class="hljs-string">"win32"</span>) {
+    <span class="hljs-keyword">return</span> toDosPath(standardPath, partialPath);
+  }
+
+  <span class="hljs-keyword">return</span> standardPath;
+};
+
+<span class="hljs-keyword">var</span> convertToStandardPath = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">osPath, partialPath</span>) </span>{
+  <span class="hljs-keyword">if</span> (process.platform === <span class="hljs-string">"win32"</span>) {
+    <span class="hljs-keyword">return</span> toPosixPath(osPath, partialPath);
+  }
+
+  <span class="hljs-keyword">return</span> osPath;
+}
+
+<span class="hljs-keyword">var</span> convertToOSLineEndings = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">fileContents</span>) </span>{
+  <span class="hljs-keyword">return</span> fileContents.replace(<span class="hljs-regexp">/\n/g</span>, os.EOL);
+};
+
+<span class="hljs-keyword">var</span> convertToStandardLineEndings = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">fileContents</span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Convert all kinds of end-of-line chars to linuxy “\n”.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">return</span> fileContents.replace(<span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">"\r\n"</span>, <span class="hljs-string">"g"</span>), <span class="hljs-string">"\n"</span>)
+                     .replace(<span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">"\r"</span>, <span class="hljs-string">"g"</span>), <span class="hljs-string">"\n"</span>);
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>wrappings for path functions that always run as they were on unix (using
+forward slashes)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> wrapPathFunction = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">name, partialPaths</span>) </span>{
+  <span class="hljs-keyword">var</span> f = path[name];
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"><span class="hljs-comment">/* args */</span></span>) </span>{
+    <span class="hljs-keyword">if</span> (process.platform === <span class="hljs-string">'win32'</span>) {
+      <span class="hljs-keyword">var</span> args = _.toArray(<span class="hljs-built_in">arguments</span>);
+      args = _.map(args, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">p, i</span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>if partialPaths is turned on (for path.join mostly)
+forget about conversion of absolute paths for Windows</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">return</span> toDosPath(p, partialPaths);
+      });
+      <span class="hljs-keyword">return</span> toPosixPath(f.apply(path, args), partialPaths);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">return</span> f.apply(path, <span class="hljs-built_in">arguments</span>);
+    }
+  };
+};
+
+files.pathJoin = wrapPathFunction(<span class="hljs-string">"join"</span>, <span class="hljs-literal">true</span>);
+files.pathNormalize = wrapPathFunction(<span class="hljs-string">"normalize"</span>);
+files.pathRelative = wrapPathFunction(<span class="hljs-string">"relative"</span>);
+files.pathResolve = wrapPathFunction(<span class="hljs-string">"resolve"</span>);
+files.pathDirname = wrapPathFunction(<span class="hljs-string">"dirname"</span>);
+files.pathBasename = wrapPathFunction(<span class="hljs-string">"basename"</span>);
+files.pathExtname = wrapPathFunction(<span class="hljs-string">"extname"</span>);
+files.pathSep = <span class="hljs-string">'/'</span>;
+files.pathDelimiter = <span class="hljs-string">':'</span>;
+files.pathOsDelimiter = path.delimiter;
+
+files.convertToStandardPath = convertToStandardPath;
+files.convertToOSPath = convertToOSPath;
+files.convertToWindowsPath = toDosPath;
+files.convertToPosixPath = toPosixPath;
+
+files.convertToStandardLineEndings = convertToStandardLineEndings;
+files.convertToOSLineEndings = convertToOSLineEndings;</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
